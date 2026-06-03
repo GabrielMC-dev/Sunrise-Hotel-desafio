@@ -20,3 +20,5 @@ public function realizar_hospm() {
 }
 
 }
+
+echo "<pre>"; print_r($obDatabase);
