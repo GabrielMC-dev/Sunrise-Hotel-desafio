@@ -11,22 +11,32 @@ class Database {
     const NAME = 'srhotel';
     const USER = 'root';
     const PASS = '1234';
-//--------------------------------------------------------------------------//
-    private $table;
-
-    private $connection;
-    private function setConnection() {
-        try {
-            $this->connection = new PDO('mysql:host='.self::HOST.';dbname='.self::NAME, self::USER, self::PASS);
-            $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        }catch(PDOException $e) {
-            die('ERROR: '. $e->getMessage());
-        }
-    }
+    const MENSAGEM = 'ERRO no banco de dados!';
 //--------------------------------------------------------------------------//
 public function __construct($table=null) {
     $this->table = $table;
     $this->setConnection();
+}
+//--------------------------------------------------------------------------//
+private $table;
+
+private $connection;
+private function setConnection() {
+    try {
+        $this->connection = new PDO('mysql:host='.self::HOST.';dbname='.self::NAME, self::USER, self::PASS);
+        $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    }catch(PDOException $e) {
+        //die('ERROR: '. $e->getMessage());
+        die('ERROR: '. self::MENSAGEM);
+    }
+}
+
+public function insert($values) {
+    $fields = array_keys($values);
+
+    $query = 'INSERT INTO ' .$this->table. ' ('. implode(',', $fields) .') VALUES (?,?,?,?,?,?,?,?,?)';
+
+    echo $query; exit;
 }
 
 }
