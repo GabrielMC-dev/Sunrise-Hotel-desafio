@@ -1,5 +1,10 @@
 <?php
 
+namespace App\Db;
+
+use \PDO;
+use \PDOException;
+
 //config banco de dados
 class Database {
     const HOST = 'localhost';
@@ -11,7 +16,12 @@ class Database {
 
     private $connection;
     private function setConnection() {
-        $this->connection = new PDO('mysql:host='.self::HOST.';dbname='.self::NAME, self::USER, self::PASS);
+        try {
+            $this->connection = new PDO('mysql:host='.self::HOST.';dbname='.self::NAME, self::USER, self::PASS);
+            $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        }catch(PDOException $e) {
+            die('ERROR: '. $e->getMessage());
+        }
     }
 //--------------------------------------------------------------------------//
 public function __construct($table=null) {

@@ -1,6 +1,8 @@
 <?php
 
 
+use \App\Db\Database;
+
 class Hospedagem {
     private $id;
     private $nome_hosp;
@@ -17,8 +19,9 @@ public function realizar_hospm() {
     $this->data = date('Y-m-d');
     //inserir hospedagem no banco
     $obDatabase = new Database('hospedagem');
+    echo "<pre>"; print_r($obDatabase); echo '</pre>';
 }
 
 }
 
-echo "<pre>"; print_r($obDatabase);
+$this->realizar_hospm();
