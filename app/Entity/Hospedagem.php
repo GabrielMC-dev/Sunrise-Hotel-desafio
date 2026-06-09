@@ -20,7 +20,7 @@ public function realizar_hospm() {
     $this->data = date('Y-m-d');
     //inserir hospedagem no banco
     $obDatabase = new Database('hospedagem');
-    $obDatabase->insert([
+    $this->id = $obDatabase->insert([
                          'nome_hosp'    => $this->id_hospedes,
                          'data'        => $this->data,
                          'entrada_prev' => $this->entrada_prev,
@@ -30,7 +30,8 @@ public function realizar_hospm() {
                          'valor_tot'    => $this->valor_tot,
                          'status'      => $this->status
                      ]);
-    
+
+    return true;
 }
 //--------------------------------------------------------------------------//
 public function setId($id) {

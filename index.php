@@ -8,13 +8,14 @@ use \app\Entity\Hospedagem;
 
 $obHospedagem = new Hospedagem;
 $obHospedagem->setId(1);
-$obHospedagem->setData(2026-07-29);
-$obHospedagem->setEntradaPrev(2026-12-05);
-$obHospedagem->setEntradaPrev(2026-12-12);
+$obHospedagem->setData(date('Y-m-d'));
+$obHospedagem->setEntradaPrev('2026-12-05');
+$obHospedagem->setSaidaPrev('2026-12-11');
 $obHospedagem->setQtd_hospedes(10);
 $obHospedagem->setQtdQuartos(3);
 $obHospedagem->setValorTot(5000);
 $obHospedagem->setStatus('Confirmado');
+echo '<pre>'; $obHospedagem->realizar_hospm(); echo '</pre>'; exit;
 
 
 include __DIR__.'/includes/header.php';

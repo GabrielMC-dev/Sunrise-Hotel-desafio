@@ -31,12 +31,35 @@ private function setConnection() {
     }
 }
 
+public function execute($query, $params=[]) {
+    try {
+        $statement = $this->connection->prepare($query);
+        $statement->execute($params);
+        return $statement;
+    }catch(PDOException $e) {
+        die('ERROR: '. $e->getMessage());
+        //die('ERROR: '. self::MENSAGEM);
+    }
+}
+
 public function insert($values) {
     $fields = array_keys($values);
+    $binds = array_pad([], count($fields), '?');
 
-    $query = 'INSERT INTO ' .$this->table. ' ('. implode(',', $fields) .') VALUES (?,?,?,?,?,?,?,?,?)';
+    $query = 'INSERT INTO ' .$this->table. ' ('. implode(',', $fields) .') VALUES ('.implode(',', $binds).')';
 
-    echo $query; exit;
+    return $this->execute($query, array_values($values));
+
+    return $this->connection->lastInsertId();
+}
+
+public function select($where=null, $order=null, $limit=null, $fields='*') {
+    $where = strlen($where) ? 'WHERE '.$where : '';
+    $order = strlen($order) ? 'ORDER BY '.$order : '';
+    $limit = strlen($limit) ? 'LIMIT '.$limit : '';
+
+    $query = 'SELECT '.$fields.' FROM '.$this->table.' '.$where.' '.$order.' '.$limit;
+
 }
 
 }
