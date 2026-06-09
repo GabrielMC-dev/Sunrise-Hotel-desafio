@@ -34,7 +34,7 @@ public function realizar_hospm() {
     return true;
 }
 //--------------------------------------------------------------------------//
-public function setId($id) {
+/*public function setId($id) {
     $this->id = $id;
 }
 public function getId() {
@@ -96,5 +96,5 @@ public function setStatus($status) {
 public function getStatus() {
     return $this->status;
 }
-
+*/
 }
