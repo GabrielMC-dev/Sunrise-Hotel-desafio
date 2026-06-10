@@ -1,3 +1,30 @@
+            <!-- page title area start -->
+            <div class="page-title-area">
+                <div class="row align-items-center">
+                    <div class="col-sm-6">
+                        <div class="breadcrumbs-area clearfix">
+                            <h4 class="page-title pull-left">Sunrise Hotel</h4>
+                            <ul class="breadcrumbs pull-left">
+                                <li><a href="index.html">Home</a></li>
+                                <li><span>Dashboards</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 clearfix">
+                        <div class="user-profile pull-right">
+                            <img class="avatar user-thumb" src="assets/images/author/avatar.png" alt="avatar">
+                            <h4 class="user-name dropdown-toggle" data-toggle="dropdown">Kumkum Rai <i class="fa fa-angle-down"></i></h4>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="#">Message</a>
+                                <a class="dropdown-item" href="#">Settings</a>
+                                <a class="dropdown-item" href="#">Log Out</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- page title area end -->            
+            
             <div class="main-content-inner">
                 <!-- MAIN CONTENT GOES HERE -->
                  <div class="main-content-inner">
@@ -7,10 +34,10 @@
                             <div class="card card-bordered">
                                 <img class="card-img-top img-fluid" src="assets/images/card/card-img1.jpg" alt="image">
                                 <div class="card-body">
-                                    <h5 class="title">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, dicta.</h5>
-                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia adipisci quidem, quam nam reiciendis facere blanditiis atque neque architecto omnis magni totam, voluptate maiores, iusto molestias incidunt unde nesciunt cum.
+                                    <h4 class="mb-3">Gerenciamento de Hóspedes</h4>
+                                    <p class="title">Gerenciamento focado unicamente nos hóspedes.
                                     </p>
-                                    <a href="#" class="btn btn-primary">Go More....</a>
+                                    <a href="genHospedes.php" class="btn btn-primary">Acessar</a>
                                 </div>
                             </div>
                         </div>
@@ -18,10 +45,10 @@
                             <div class="card card-bordered">
                                 <img class="card-img-top img-fluid" src="assets/images/card/card-img2.jpg" alt="image">
                                 <div class="card-body">
-                                    <h5 class="title">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, dicta.</h5>
-                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia adipisci quidem, quam nam reiciendis facere blanditiis atque neque architecto omnis magni totam, voluptate maiores, iusto molestias incidunt unde nesciunt cum.
+                                    <h4 style="margin-bottom: 10px;">Gerenciamento de Hospedagens</h4>
+                                    <p class="title">Gerenciamento focado unicamente nas hospedagens.
                                     </p>
-                                    <a href="#" class="btn btn-primary">Go More....</a>
+                                    <a href="#" class="btn btn-primary">Acessar</a>
                                 </div>
                             </div>
                         </div>
@@ -29,10 +56,10 @@
                             <div class="card card-bordered">
                                 <img class="card-img-top img-fluid" src="assets/images/card/card-img3.jpg" alt="image">
                                 <div class="card-body">
-                                    <h5 class="title">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, dicta.</h5>
-                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia adipisci quidem, quam nam reiciendis facere blanditiis atque neque architecto omnis magni totam, voluptate maiores, iusto molestias incidunt unde nesciunt cum.
+                                    <h4 style="margin-bottom: 10px;">Gerenciamento de Quartos</h4>
+                                    <p class="title">Gerenciamento focado unicamente nos quartos.
                                     </p>
-                                    <a href="#" class="btn btn-primary">Go More....</a>
+                                    <a href="#" class="btn btn-primary">Acessar</a>
                                 </div>
                             </div>
                         </div>

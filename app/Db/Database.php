@@ -60,6 +60,8 @@ public function select($where=null, $order=null, $limit=null, $fields='*') {
 
     $query = 'SELECT '.$fields.' FROM '.$this->table.' '.$where.' '.$order.' '.$limit;
 
+    return $this->execute($query);
+
 }
 
 }
