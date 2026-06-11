@@ -14,6 +14,7 @@ class Hospede {
     public $endereco;
     public $telefone;
     public $email;
+    public $senha;
 //--------------------------------------------------------------------------//
 function CadastrarHospede() {
     $obDatabase = new Database('hospede');
@@ -24,13 +25,14 @@ function CadastrarHospede() {
                                      'endereco'   => $this->endereco,
                                      'telefone'   => $this->telefone,
                                      'email'      => $this->email,
+                                     'senha'      => $this->senha,
                                     ]);
     return true;
 }
 
 public static function getHospede($where=null,$order=null,$limit=null) {
     return (new Database('hospede'))->select($where,$order,$limit)
-                                    ->fetchAll(PDO::FETCH_CLASS, self::class);
+                                    ->fetchAll(PDO::FETCH_OBJ);
 }
 
 /*

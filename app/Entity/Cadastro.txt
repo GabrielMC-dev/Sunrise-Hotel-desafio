@@ -33,3 +33,18 @@ function Cadastrar($nome, $cpf, $nascimento, $endereco, $telefone, $email) {
 }
 
 }
+
+
+
+
+/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+
+VOLTAR ID PRO 1 QUANDO FINALIZAR O PROJETO:
+
+ALTER TABLE nome_da_tabela AUTO_INCREMENT = valor
+
+ex. : ALTER TABLE hospedes AUTO_INCREMENT = 10;
+
+REINICIAR TABELA: ALTER TABLE hospedes AUTO_INCREMENT = 1;
+
+/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\

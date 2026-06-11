@@ -13,17 +13,17 @@ $hospedes = Hospede::getHospede();
 
 //$hospedagens = Hospedagem::getHospedagem();
 //echo '<pre>'; print_r($hospedagens); echo '</pre>'; exit;
-/*
-$cadastro = new Hospede;
-$cadastro->nome = 'Roberto Carlos da Silva Azevedo';
-$cadastro->cpf = '123.654.010-19';
-$cadastro->nascimento = '1923-12-12';
-$cadastro->endereco = 'aafegdgsddsfhkshfkjhef1, Nº4';
-$cadastro->telefone = '(41)53241-4871';
-$cadastro->email = 'robcarlossa@gmail.com';
-$cadastro->CadastrarHospede();
-print_r($cadastro); exit;
-*/
+
+// $cadastro = new Hospede;
+// $cadastro->nome = 'Samuel Providelli';
+// $cadastro->cpf = '321.213.987-10';
+// $cadastro->nascimento = '2007-09-11';
+// $cadastro->endereco = 'dugwfgsgfjgwegf, Nºsitio';
+// $cadastro->telefone = '(00)12345-1234';
+// $cadastro->email = 'samuelprovidello1@gmail.com';
+// $cadastro->senha = 'samuel123';
+// $cadastro->CadastrarHospede();
+
 
 include __DIR__.'/includes/header.php';
 include __DIR__.'/includes/ppadm.php';
