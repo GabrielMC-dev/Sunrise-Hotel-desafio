@@ -7,14 +7,14 @@ use \App\Db\Database;
 use \PDO;
 
 class Hospede {
-    public $id;
-    public $nome;
-    public $cpf;
-    public $nascimento;
-    public $endereco;
-    public $telefone;
-    public $email;
-    public $senha;
+    private $id;
+    private $nome;
+    private $cpf;
+    private $nascimento;
+    private $endereco;
+    private $telefone;
+    private $email;
+    private $senha;
 //--------------------------------------------------------------------------//
 function CadastrarHospede() {
     $obDatabase = new Database('hospede');

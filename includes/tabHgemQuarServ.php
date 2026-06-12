@@ -1,6 +1,7 @@
-<?php 
-use \app\Entity\Hospedagem;
-$hospedagens = Hospedagem::getHospedagem();
+<?php
+
+use app\Entity\HgemQuarServ;
+$HgemQuarServs = HgemQuarServ::getHgemQuarServ();
 ?>
 
 <!-- page title area start -->
@@ -42,38 +43,25 @@ $hospedagens = Hospedagem::getHospedagem();
                                         <table class="table text-center">
                                             <thead class="text-uppercase">
                                                 <tr>
-                                                    <th scope="col">ID</th>
-                                                    <th scope="col">Nome Responsável</th>
-                                                    <th scope="col">Data</th>
-                                                    <th scope="col">Entrada Prevista</th>
-                                                    <th scope="col">Saída Prevista</th>
-                                                    <th scope="col">Check-in</th>
-                                                    <th scope="col">Check-out</th>
-                                                    <th scope="col">Qtd Hóspedes</th>
-                                                    <th scope="col">Qtd Quartos</th>
+                                                    <th scope="col">ID Hospedagem</th>
+                                                    <th scope="col">Número Quarto</th>
+                                                    <th scope="col">Servico</th>
+                                                    <th scope="col">Data e Hora</th>
+                                                    <th scope="col">Quantidade</th>
                                                     <th scope="col">Valor Total</th>
-                                                    <th scope="col">Status</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <?php
                                                     $resultados = '';
-                                                    foreach($hospedagens as $hospedagem) {
-                                                    if($hospedagem->check_out < date('Y-m-d H:i:s') /*and $cancelar=false*/) {
-                                                        $hospedagem->status = 'Concluída';
-                                                    }
+                                                    foreach($HgemQuarServs as $HgemQuarServ) {
                                                         $resultados .= '<tr>
-                                                                            <td>'.$hospedagem->id.'</td>
-                                                                            <td>'.$hospedagem->nome.'</td>
-                                                                            <td>'.$hospedagem->data.'</td>
-                                                                            <td>'.$hospedagem->entrada_prevista.'</td>
-                                                                            <td>'.$hospedagem->saida_prevista.'</td>
-                                                                            <td>'.$hospedagem->check_in.'</td>
-                                                                            <td>'.$hospedagem->check_out.'</td>
-                                                                            <td>'.$hospedagem->qtd_hospede.'</td>
-                                                                            <td>'.$hospedagem->qtd_quarto.'</td>
-                                                                            <td>'.$hospedagem->valor_tot.'</td>
-                                                                            <td>'.$hospedagem->status.'</td>
+                                                                            <td>'.$HgemQuarServ->id_hospedagem.'</td>
+                                                                            <td>'.$HgemQuarServ->num_quarto.'</td>
+                                                                            <td>'.$HgemQuarServ->servico.'</td>
+                                                                            <td>'.$HgemQuarServ->data_h.'</td>
+                                                                            <td>'.$HgemQuarServ->qtd.'</td>
+                                                                            <td>'.$HgemQuarServ->valor_tot.'</td>
                                                                         </tr>';
                                                     }
 

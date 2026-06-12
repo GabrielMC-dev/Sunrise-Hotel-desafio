@@ -13,7 +13,7 @@
                     <div class="col-sm-6 clearfix">
                         <div class="user-profile pull-right">
                             <img class="avatar user-thumb" src="assets/images/author/avatar.png" alt="avatar">
-                            <h4 class="user-name dropdown-toggle" data-toggle="dropdown"><?php  ?> ?> <i class="fa fa-angle-down"></i></h4>
+                            <h4 class="user-name dropdown-toggle" data-toggle="dropdown"><?php  ?> <i class="fa fa-angle-down"></i></h4>
                             <div class="dropdown-menu">
                                 <a class="dropdown-item" href="#">Message</a>
                                 <a class="dropdown-item" href="#">Settings</a>
@@ -32,7 +32,6 @@
                     <div class="row">
                         <div class="col-lg-4 col-md-6 mt-5">
                             <div class="card card-bordered">
-                                <img class="card-img-top img-fluid" src="assets/images/card/card-img1.jpg" alt="image">
                                 <div class="card-body">
                                     <h4 class="mb-3">Gerenciamento de Hóspedes</h4>
                                     <p class="title">Gerenciamento focado unicamente nos hóspedes.
@@ -43,7 +42,6 @@
                         </div>
                         <div class="col-lg-4 col-md-6 mt-5">
                             <div class="card card-bordered">
-                                <img class="card-img-top img-fluid" src="assets/images/card/card-img2.jpg" alt="image">
                                 <div class="card-body">
                                     <h4 style="margin-bottom: 10px;">Gerenciamento de Hospedagens</h4>
                                     <p class="title">Gerenciamento focado unicamente nas hospedagens.
@@ -54,12 +52,21 @@
                         </div>
                         <div class="col-lg-4 col-md-6 mt-5">
                             <div class="card card-bordered">
-                                <img class="card-img-top img-fluid" src="assets/images/card/card-img3.jpg" alt="image">
                                 <div class="card-body">
                                     <h4 style="margin-bottom: 10px;">Gerenciamento de Quartos</h4>
                                     <p class="title">Gerenciamento focado unicamente nos quartos.
                                     </p>
-                                    <a href="#" class="btn btn-primary">Acessar</a>
+                                    <a href="gerQuartos.php" class="btn btn-primary">Acessar</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 mt-5">
+                            <div class="card card-bordered">
+                                <div class="card-body">
+                                    <h4 style="margin-bottom: 10px;">Gerenciamento de Serviços</h4>
+                                    <p class="title">Gerenciamento focado nos serviços de cada hospedagem.
+                                    </p>
+                                    <a href="gerHgemQuarServ.php" class="btn btn-primary">Acessar</a>
                                 </div>
                             </div>
                         </div>

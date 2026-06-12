@@ -64,28 +64,114 @@ public function select($where=null, $order=null, $limit=null, $fields='*') {
 
 }
 
-public function selectJoinHgemHe($where=null, $order=null, $limit=null, $join='hospede he', $fields='hgem.id, 
-                                                                                       he.nome, 
-                                                                                       hgem.data, 
-                                                                                       hgem.entrada_prevista, 
-                                                                                       hgem.saida_prevista, 
-                                                                                       hgem.check_in, 
-                                                                                       hgem.check_out, 
-                                                                                       hgem.qtd_hospede, 
-                                                                                       hgem.qtd_quarto, 
-                                                                                       hgem.valor_tot, 
-                                                                                       hgem.status')
+// public function selectJoinHgemHe($where=null, $order=null, $limit=null, $join='hospede he', $onHgemHe=null, $fields='hospedagem.id, 
+//                                                                                                                      he.nome, 
+//                                                                                                                      hospedagem.data, 
+//                                                                                                                      hospedagem.entrada_prevista, 
+//                                                                                                                      hospedagem.saida_prevista, 
+//                                                                                                                      hospedagem.check_in, 
+//                                                                                                                      hospedagem.check_out, 
+//                                                                                                                      hospedagem.qtd_hospede, 
+//                                                                                                                      hospedagem.qtd_quarto, 
+//                                                                                                                      hospedagem.valor_tot, 
+//                                                                                                                      hospedagem.status')
+// {
+//     $join = 'JOIN '.$join;
+//     $onHgemHe = 'ON hospedagem.id_hospede = he.id';
+//     $where = strlen($where) ? 'WHERE '.$where : '';
+//     $order = strlen($order) ? 'ORDER BY '.$order : '';
+//     $limit = strlen($limit) ? 'LIMIT '.$limit : '';
+
+//     $query = 'SELECT '.$fields.' FROM '.$this->table.' '.$join.' '.$onHgemHe.' '.$where.' '.$order.' '.$limit;
+    
+//     return $this->execute($query);
+
+// }
+
+public function selectJoinHgemHe($where=null, $order=null, $limit=null, $join=null, $onHgemHe=null, $fields=null)
 {
-    $join = 'JOIN '.$join;
-    $onHgemHe = 'ON hgem.id_hospede = he.id';
-    $where = strlen($where) ? 'WHERE '.$where : '';
-    $order = strlen($order) ? 'ORDER BY '.$order : '';
-    $limit = strlen($limit) ? 'LIMIT '.$limit : '';
+    // 1. Se fields vier nulo do getHospedagem, garante a lista padrão de colunas
+    if (empty($fields)) {
+        $fields = 'hospedagem.id, he.nome, hospedagem.data, hospedagem.entrada_prevista, hospedagem.saida_prevista, hospedagem.check_in, hospedagem.check_out, hospedagem.qtd_hospede, hospedagem.qtd_quarto, hospedagem.valor_tot, hospedagem.status';
+    }
 
-    $query = 'SELECT '.$fields.' FROM '.$this->table.' '.$join.' '.$onHgemHe.' '.$where.' '.$order.' '.$limit;
-    print_r($query); exit;
+    // 2. Se join vier nulo, garante a tabela padrão do join
+    if (empty($join)) {
+        $join = 'hospede he';
+    }
+
+    // 3. Monta as cláusulas isoladas SEMPRE começando com um espaço em branco seguro
+    $joinClause  = ' JOIN ' . $join;
+    $onClause    = ' ON hospedagem.id_hospede = he.id';
+    $whereClause = strlen($where) ? ' WHERE ' . $where : '';
+    $orderClause = strlen($order) ? ' ORDER BY ' . $order : '';
+    $limitClause = strlen($limit) ? ' LIMIT ' . $limit : '';
+
+    // 4. Concatena tudo de forma limpa e sem risco de grudar palavras
+    $query = 'SELECT ' . $fields . ' FROM ' . $this->table . $joinClause . $onClause . $whereClause . $orderClause . $limitClause;
+    
     return $this->execute($query);
-
 }
+
+public function selectJoinQuarCatquar($where=null, $order=null, $limit=null, $join=null, $fields=null)
+{
+    if (empty($fields)) {
+        $fields = 'quarto.id, quarto.numero, quarto.andar, categoria_quarto.categoria, categoria_quarto.valor_dia, categoria_quarto.capac_max, quarto.status';
+    }
+
+    if (empty($join)) {
+        $join = 'categoria_quarto';
+    }
+
+    if (empty($order)) {
+        $order = 'quarto.numero';
+    }
+
+    $joinClause  = ' JOIN ' . $join;
+    $onClause    = ' ON quarto.id_categoria = categoria_quarto.id';
+    $whereClause = strlen($where) ? ' WHERE ' . $where : '';
+    $orderClause = strlen($order) ? ' ORDER BY ' . $order : '';
+    $limitClause = strlen($limit) ? ' LIMIT ' . $limit : '';
+
+    $query = 'SELECT ' . $fields . ' FROM ' . $this->table . $joinClause . $onClause . $whereClause . $orderClause . $limitClause;
+    
+    return $this->execute($query);
+}
+
+public function selectJoinHgem_Quar_Serv($where=null, $order=null, $limit=null, $join1=null, $join2=null, $join3=null, $fields=null)
+{
+    if (empty($fields)) {
+        $fields = 'hospedagem.id, quarto.numero, servico.servico, quarto_servico.data_h, quarto_servico.qtd, quarto_servico.valor_tot';
+    }
+
+    if (empty($join1)) {
+        $join1 = 'hospedagem';
+    }
+    if (empty($join2)) {
+        $join2 = 'quarto';
+    }
+    if (empty($join3)) {
+        $join3 = 'servico';
+    }
+
+    if (empty($order)) {
+        $order = 'quarto.numero';
+    }
+
+    $joinClause1  = ' JOIN ' . $join1;
+    $joinClause2  = ' JOIN ' . $join2;
+    $joinClause3  = ' JOIN ' . $join3;
+    $onClause1    = ' ON quarto_servico.id_hospedagem = hospedagem.id';
+    $onClause2    = ' ON quarto_servico.id_quarto = quarto.id';
+    $onClause3    = ' ON quarto_servico.id_servico = servico.id';
+    $whereClause = strlen($where) ? ' WHERE ' . $where : '';
+    $orderClause = strlen($order) ? ' ORDER BY ' . $order : '';
+    $limitClause = strlen($limit) ? ' LIMIT ' . $limit : '';
+
+    $query = 'SELECT ' . $fields . ' FROM ' . $this->table . $joinClause1 . $onClause1 . $joinClause2 . $onClause2 .  $joinClause3 . $onClause3 . $whereClause . $orderClause . $limitClause;
+    
+    return $this->execute($query);
+}
+
 
 }

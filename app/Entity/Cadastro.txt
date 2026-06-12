@@ -48,3 +48,27 @@ ex. : ALTER TABLE hospedes AUTO_INCREMENT = 10;
 REINICIAR TABELA: ALTER TABLE hospedes AUTO_INCREMENT = 1;
 
 /\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+
+public function selectJoinHgemHe($where=null, $order=null, $limit=null, $join='hospede he', $onHgemHe=null, $fields='hospedagem.id, 
+                                                                                                                     he.nome, 
+                                                                                                                     hospedagem.data, 
+                                                                                                                     hospedagem.entrada_prevista, 
+                                                                                                                     hospedagem.saida_prevista, 
+                                                                                                                     hospedagem.check_in, 
+                                                                                                                     hospedagem.check_out, 
+                                                                                                                     hospedagem.qtd_hospede, 
+                                                                                                                     hospedagem.qtd_quarto, 
+                                                                                                                     hospedagem.valor_tot, 
+                                                                                                                     hospedagem.status')
+{
+    $join = 'JOIN '.$join;
+    $onHgemHe = 'ON hospedagem.id_hospede = he.id';
+    $where = strlen($where) ? 'WHERE '.$where : '';
+    $order = strlen($order) ? 'ORDER BY '.$order : '';
+    $limit = strlen($limit) ? 'LIMIT '.$limit : '';
+
+    $query = 'SELECT '.$fields.' FROM '.$this->table.' '.$join.' '.$onHgemHe.' '.$where.' '.$order.' '.$limit;
+    
+    return $this->execute($query);
+
+}
