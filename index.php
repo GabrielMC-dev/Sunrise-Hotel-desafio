@@ -9,10 +9,6 @@ use \app\Entity\Hospedagem;
 require_once 'app/Entity/Hospede.php';
 use \app\Entity\Hospede;
 
-
-//$hospedagens = Hospedagem::getHospedagem();
-//echo '<pre>'; print_r($hospedagens); echo '</pre>'; exit;
-
 // $cadastro = new Hospede;
 // $cadastro->nome = 'Samuel Providelli';
 // $cadastro->cpf = '321.213.987-10';
@@ -39,6 +35,8 @@ use \app\Entity\Hospede;
 // echo '<pre>';
 // print_r($hosp);
 // echo '</pre>'; exit;
+
+
 
 include __DIR__.'/includes/header.php';
 include __DIR__.'/includes/ppadm.php';

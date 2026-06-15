@@ -63,10 +63,31 @@
                         <div class="col-lg-4 col-md-6 mt-5">
                             <div class="card card-bordered">
                                 <div class="card-body">
-                                    <h4 style="margin-bottom: 10px;">Gerenciamento de Serviços</h4>
+                                    <h4 style="margin-bottom: 10px;">Gerenciamento de Serviços por Quarto e Hospedagem</h4>
                                     <p class="title">Gerenciamento focado nos serviços de cada hospedagem.
                                     </p>
                                     <a href="gerHgemQuarServ.php" class="btn btn-primary">Acessar</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 mt-5">
+                            <div class="card card-bordered">
+                                <div class="card-body">
+                                    <h4 style="margin-bottom: 10px;">Gerenciamento de Manutenção/Limpeza</h4>
+                                    <p class="title">Gerenciamento focado nas manutenções e limpezas de cada quarto.
+                                    </p>
+                                    <a href="gerManut_limpQuar.php" class="btn btn-primary">Acessar</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 mt-5">
+                            <div class="card card-bordered">
+                                <div class="card-body">
+                                    <h4 style="margin-bottom: 10px;">Relatório Geral de todo o Hotel Sunrise</h4>
+                                    <p class="title">Relatório sobre dados e informações específicos do Hotel Sunrise.
+                                    </p>
+                                    <!-- FINALIZAR APÓS DEFINIR VALORES DAS OUTRAS TABELAS -->
+                                    <a href="Relatorio.php" class="btn btn-primary">Acessar</a>
                                 </div>
                             </div>
                         </div>

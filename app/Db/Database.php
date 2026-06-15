@@ -11,7 +11,7 @@ class Database {
     const NAME = 'srhotel';
     const USER = 'root';
     const PASS = '1234';
-    const MENSAGEM = 'ERRO no banco de dados!';
+    const MENSAGEM = 'ERRO no sistema!';
 //--------------------------------------------------------------------------//
 public function __construct($table=null) {
     $this->table = $table;
@@ -37,8 +37,8 @@ public function execute($query, $params=[]) {
         $statement->execute($params);
         return $statement;
     }catch(PDOException $e) {
-        die('ERROR: '. $e->getMessage());
-        //die('ERROR: '. self::MENSAGEM);
+        //die('ERROR: '. $e->getMessage());
+        die('ERROR: '. self::MENSAGEM);
     }
 }
 
@@ -113,6 +113,9 @@ public function selectJoinHgemHe($where=null, $order=null, $limit=null, $join=nu
     return $this->execute($query);
 }
 
+
+
+
 public function selectJoinQuarCatquar($where=null, $order=null, $limit=null, $join=null, $fields=null)
 {
     if (empty($fields)) {
@@ -138,8 +141,12 @@ public function selectJoinQuarCatquar($where=null, $order=null, $limit=null, $jo
     return $this->execute($query);
 }
 
+
+
+
 public function selectJoinHgem_Quar_Serv($where=null, $order=null, $limit=null, $join1=null, $join2=null, $join3=null, $fields=null)
 {
+
     if (empty($fields)) {
         $fields = 'hospedagem.id, quarto.numero, servico.servico, quarto_servico.data_h, quarto_servico.qtd, quarto_servico.valor_tot';
     }
@@ -164,14 +171,35 @@ public function selectJoinHgem_Quar_Serv($where=null, $order=null, $limit=null, 
     $onClause1    = ' ON quarto_servico.id_hospedagem = hospedagem.id';
     $onClause2    = ' ON quarto_servico.id_quarto = quarto.id';
     $onClause3    = ' ON quarto_servico.id_servico = servico.id';
+    $whereClause = !empty($where) ? ' WHERE ' . $where : '';
+    $orderClause = !empty($order) ? ' ORDER BY ' . $order : '';
+    $limitClause = !empty($limit) ? ' LIMIT ' . $limit : '';
+
+    $query = 'SELECT ' . $fields . ' FROM ' . $this->table . $joinClause1 . $onClause1 . $joinClause2 . $onClause2 .  $joinClause3 . $onClause3 . $whereClause . $orderClause . $limitClause;
+
+    return $this->execute($query);
+}
+
+
+
+public function selectJoinManut_limpQuar($where=null, $order=null, $limit=null, $join=null, $fields=null) {
+    if (empty($fields)) {
+        $fields = 'manut_limp.id, quarto.numero, manut_limp.data, manut_limp.tipo, manut_limp.responsavel, manut_limp.status';
+    }
+
+    if (empty($join)) {
+        $join = 'quarto';
+    }
+
+    $joinClause  = ' JOIN ' . $join;
+    $onClause    = ' ON manut_limp.id_quarto = quarto.id';
     $whereClause = strlen($where) ? ' WHERE ' . $where : '';
     $orderClause = strlen($order) ? ' ORDER BY ' . $order : '';
     $limitClause = strlen($limit) ? ' LIMIT ' . $limit : '';
 
-    $query = 'SELECT ' . $fields . ' FROM ' . $this->table . $joinClause1 . $onClause1 . $joinClause2 . $onClause2 .  $joinClause3 . $onClause3 . $whereClause . $orderClause . $limitClause;
+    $query = 'SELECT ' . $fields . ' FROM ' . $this->table . $joinClause . $onClause . $whereClause . $orderClause . $limitClause;
     
     return $this->execute($query);
 }
-
 
 }

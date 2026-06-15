@@ -1,7 +1,7 @@
 <?php
 
-require_once 'app/Entity/Hospedagem.php';
-use \app\Entity\Hospedagem;
+require_once 'app/Entity/HgemQuarServ.php';
+use \app\Entity\HgemQuarServ;
 
 
 

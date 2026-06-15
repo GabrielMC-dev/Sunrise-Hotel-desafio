@@ -1,6 +1,6 @@
 <?php
-use app\Entity\HgemQuarServ;
-$HgemQuarServs = HgemQuarServ::getHgemQuarServ();
+use app\Entity\Manut_limpQuar;
+$HgemQuarServs = Manut_limpQuar::Manut_limpQuar();
 ?>
 
 <!-- page title area start -->
@@ -11,7 +11,7 @@ $HgemQuarServs = HgemQuarServ::getHgemQuarServ();
                             <h4 class="page-title pull-left">Sunrise Hotel</h4>
                             <ul class="breadcrumbs pull-left">
                                 <li><a href="index.php">Início</a></li>
-                                <li><span>Dashboard Hospedagem-Quarto-Serviço</span></li>
+                                <li><span>Dashboard Manutenção e Limpesa dos Quartos</span></li>
                             </ul>
                         </div>
                     </div>
@@ -36,18 +36,18 @@ $HgemQuarServs = HgemQuarServ::getHgemQuarServ();
                     <div class="col-lg-6 mt-5" style="max-width: 100%; flex: 0 0 100%">
                         <div class="card">
                             <div class="card-body">
-                                <h3 class="header-title">Serviço por Quarto por Hospedagem</h3>
+                                <h3 class="header-title">Manutenção e Limpesa (Quartos)</h3>
                                 <div class="single-table">
                                     <div class="table-responsive">
                                         <table class="table text-center">
                                             <thead class="text-uppercase">
                                                 <tr>
-                                                    <th scope="col">ID Hospedagem</th>
+                                                    <th scope="col">ID</th>
                                                     <th scope="col">Número Quarto</th>
-                                                    <th scope="col">Servico</th>
-                                                    <th scope="col">Data e Hora</th>
-                                                    <th scope="col">Quantidade</th>
-                                                    <th scope="col">Valor Total</th>
+                                                    <th scope="col">Data</th>
+                                                    <th scope="col">Tipo</th>
+                                                    <th scope="col">Responsável</th>
+                                                    <th scope="col">Status</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -57,10 +57,10 @@ $HgemQuarServs = HgemQuarServ::getHgemQuarServ();
                                                         $resultados .= '<tr>
                                                                             <td>'.$HgemQuarServ->id.'</td>
                                                                             <td>'.$HgemQuarServ->numero.'</td>
-                                                                            <td>'.$HgemQuarServ->servico.'</td>
-                                                                            <td>'.$HgemQuarServ->data_h.'</td>
-                                                                            <td>'.$HgemQuarServ->qtd.'</td>
-                                                                            <td>'.$HgemQuarServ->valor_tot.'</td>
+                                                                            <td>'.$HgemQuarServ->data.'</td>
+                                                                            <td>'.$HgemQuarServ->tipo.'</td>
+                                                                            <td>'.$HgemQuarServ->responsavel.'</td>
+                                                                            <td>'.$HgemQuarServ->status.'</td>
                                                                         </tr>';
                                                     }
 

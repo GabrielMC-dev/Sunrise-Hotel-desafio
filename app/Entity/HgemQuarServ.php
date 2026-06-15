@@ -8,8 +8,8 @@ use \app\Db\Database;
 use \PDO;
 
 class HgemQuarServ {
-    private $id_hospedagem;
-    private $num_quarto;
+    private $id;
+    private $numero;
     private $servico;
     private $data_h;
     private $qtd;
@@ -17,7 +17,7 @@ class HgemQuarServ {
 //--------------------------------------------------------------------------//
 public static function getHgemQuarServ($where=null, $order=null, $limit=null, $join1=null, $join2=null, $join3=null, $fields=null) {
     return (new Database('quarto_servico'))->selectJoinHgem_Quar_Serv($where,$order,$limit,$join1,$join2,$join3,$fields)
-                                       ->fetchAll(PDO::FETCH_OBJ);
+                                           ->fetchAll(PDO::FETCH_OBJ);
 }
 
 }

@@ -47,12 +47,15 @@ $hospedagens = Hospedagem::getHospedagem();
                                                     <th scope="col">Data</th>
                                                     <th scope="col">Entrada Prevista</th>
                                                     <th scope="col">Saída Prevista</th>
+                                                    <th scope="col">Total Dias</th>
+                                                    <!-- 
                                                     <th scope="col">Check-in</th>
                                                     <th scope="col">Check-out</th>
                                                     <th scope="col">Qtd Hóspedes</th>
-                                                    <th scope="col">Qtd Quartos</th>
+                                                    <th scope="col">Qtd Quartos</th> -->
                                                     <th scope="col">Valor Total</th>
                                                     <th scope="col">Status</th>
+                                                    <th scope="col">Detalhes</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -68,12 +71,10 @@ $hospedagens = Hospedagem::getHospedagem();
                                                                             <td>'.$hospedagem->data.'</td>
                                                                             <td>'.$hospedagem->entrada_prevista.'</td>
                                                                             <td>'.$hospedagem->saida_prevista.'</td>
-                                                                            <td>'.$hospedagem->check_in.'</td>
-                                                                            <td>'.$hospedagem->check_out.'</td>
-                                                                            <td>'.$hospedagem->qtd_hospede.'</td>
-                                                                            <td>'.$hospedagem->qtd_quarto.'</td>
+                                                                            <td>'.$hospedagem->total_dias.'</td>
                                                                             <td>'.$hospedagem->valor_tot.'</td>
                                                                             <td>'.$hospedagem->status.'</td>
+                                                                            <td><a href="descricaoHospedagens.php" class="btn btn-success">Ver mais</a></td>
                                                                         </tr>';
                                                     }
 
@@ -89,3 +90,12 @@ $hospedagens = Hospedagem::getHospedagem();
                     <!-- basic table end -->
                 </div>
             </div>
+
+
+
+
+<!-- PARA A DESCRIÇÃO DAS HOSPEDAGENS
+<td>'.$hospedagem->check_in.'</td>
+<td>'.$hospedagem->check_out.'</td>
+<td>'.$hospedagem->qtd_hospede.'</td>
+<td>'.$hospedagem->qtd_quarto.'</td> -->

@@ -17,6 +17,7 @@ class Hospedagem {
     private $saida_prevista;
     private $check_in;
     private $check_out;
+    private $total_dias;
     private $qtd_hospede;
     private $qtd_quarto;
     private $valor_tot;
@@ -47,6 +48,18 @@ public function realizar_hospm() {
 public static function getHospedagem($where=null,$order=null,$limit=null,$join=null, $fields=null) {
     return (new Database('hospedagem'))->selectJoinHgemHe($where,$order,$limit,$join,$fields)
                                        ->fetchAll(PDO::FETCH_OBJ);
+}
+
+private function diasTotais() {
+    $inicio = strtotime('2026-12-01 14:00:00');
+    $fim = strtotime('2026-12-31 10:30:00');
+
+    $diferenca = $fim - $inicio;
+    $diasFracionados = $diferenca / 86400;
+
+    $diasArredondados = ceil($diasFracionados); 
+
+    $this->total_dias = $diasArredondados + 1;
 }
 
 }

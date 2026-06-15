@@ -16,7 +16,7 @@ class Hospede {
     private $email;
     private $senha;
 //--------------------------------------------------------------------------//
-function CadastrarHospede() {
+function cadastrarHospede() {
     $obDatabase = new Database('hospede');
     $this->id = $obDatabase->insert([
                                      'nome'       => $this->nome,
