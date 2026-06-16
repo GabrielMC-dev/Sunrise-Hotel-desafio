@@ -1,6 +1,8 @@
 <?php 
 use \app\Entity\Hospedagem;
 $hospedagens = Hospedagem::getHospedagem();
+
+$obHospedagem = new Hospedagem;
 ?>
 
 <!-- page title area start -->
@@ -55,13 +57,18 @@ $hospedagens = Hospedagem::getHospedagem();
                                                     <th scope="col">Qtd Quartos</th> -->
                                                     <th scope="col">Valor Total</th>
                                                     <th scope="col">Status</th>
-                                                    <th scope="col">Detalhes</th>
+                                                    <th scope="col"></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <?php
                                                     $resultados = '';
                                                     foreach($hospedagens as $hospedagem) {
+
+                                                        $obHospedagem->check_in = $hospedagem->check_in;
+                                                        $obHospedagem->check_out = $hospedagem->check_out;
+
+
                                                     if($hospedagem->check_out < date('Y-m-d H:i:s') /*and $cancelar=false*/) {
                                                         $hospedagem->status = 'Concluída';
                                                     }
@@ -71,10 +78,10 @@ $hospedagens = Hospedagem::getHospedagem();
                                                                             <td>'.$hospedagem->data.'</td>
                                                                             <td>'.$hospedagem->entrada_prevista.'</td>
                                                                             <td>'.$hospedagem->saida_prevista.'</td>
-                                                                            <td>'.$hospedagem->total_dias.'</td>
+                                                                            <td>'.$obHospedagem->diasTotais().'</td>
                                                                             <td>'.$hospedagem->valor_tot.'</td>
                                                                             <td>'.$hospedagem->status.'</td>
-                                                                            <td><a href="descricaoHospedagens.php" class="btn btn-success">Ver mais</a></td>
+                                                                            <td><a href="descricaoHospedagens.php" class="btn btn-success">Detalhes</a></td>
                                                                         </tr>';
                                                     }
 

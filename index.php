@@ -9,6 +9,17 @@ use \app\Entity\Hospedagem;
 require_once 'app/Entity/Hospede.php';
 use \app\Entity\Hospede;
 
+require_once 'app/Entity/CatQuarto.php';
+use \app\Entity\CatQuarto;
+
+// $obHospedagem = new Hospedagem;
+
+$obCatQuar = new CatQuarto; 
+
+// echo '<pre>';
+// var_dump($obCatQuar->getCategoria());
+// echo '</pre>'; exit;
+
 // $cadastro = new Hospede;
 // $cadastro->nome = 'Samuel Providelli';
 // $cadastro->cpf = '321.213.987-10';

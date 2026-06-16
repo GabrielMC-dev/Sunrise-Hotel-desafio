@@ -49,8 +49,6 @@ public function insert($values) {
     $query = 'INSERT INTO ' .$this->table. ' ('. implode(',', $fields) .') VALUES ('.implode(',', $binds).')';
 
     return $this->execute($query, array_values($values));
-
-    //return $this->connection->lastInsertId();
 }
 
 public function select($where=null, $order=null, $limit=null, $fields='*') {
@@ -90,24 +88,20 @@ public function select($where=null, $order=null, $limit=null, $fields='*') {
 
 public function selectJoinHgemHe($where=null, $order=null, $limit=null, $join=null, $onHgemHe=null, $fields=null)
 {
-    // 1. Se fields vier nulo do getHospedagem, garante a lista padrão de colunas
     if (empty($fields)) {
         $fields = 'hospedagem.id, he.nome, hospedagem.data, hospedagem.entrada_prevista, hospedagem.saida_prevista, hospedagem.check_in, hospedagem.check_out, hospedagem.qtd_hospede, hospedagem.qtd_quarto, hospedagem.valor_tot, hospedagem.status';
     }
 
-    // 2. Se join vier nulo, garante a tabela padrão do join
     if (empty($join)) {
         $join = 'hospede he';
     }
 
-    // 3. Monta as cláusulas isoladas SEMPRE começando com um espaço em branco seguro
     $joinClause  = ' JOIN ' . $join;
     $onClause    = ' ON hospedagem.id_hospede = he.id';
     $whereClause = strlen($where) ? ' WHERE ' . $where : '';
     $orderClause = strlen($order) ? ' ORDER BY ' . $order : '';
     $limitClause = strlen($limit) ? ' LIMIT ' . $limit : '';
 
-    // 4. Concatena tudo de forma limpa e sem risco de grudar palavras
     $query = 'SELECT ' . $fields . ' FROM ' . $this->table . $joinClause . $onClause . $whereClause . $orderClause . $limitClause;
     
     return $this->execute($query);
