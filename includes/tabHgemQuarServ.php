@@ -1,6 +1,8 @@
 <?php
 use app\Entity\HgemQuarServ;
 $HgemQuarServs = HgemQuarServ::getHgemQuarServ();
+$obHQS = new HgemQuarServ;
+$obHQS->valorTotal();
 ?>
 
 <!-- page title area start -->
@@ -18,7 +20,7 @@ $HgemQuarServs = HgemQuarServ::getHgemQuarServ();
                     <div class="col-sm-6 clearfix">
                         <div class="user-profile pull-right">
                             <img class="avatar user-thumb" src="assets/images/author/avatar.png" alt="avatar">
-                            <h4 class="user-name dropdown-toggle" data-toggle="dropdown">Kumkum Rai <i class="fa fa-angle-down"></i></h4>
+                            <h4 class="user-name dropdown-toggle" data-toggle="dropdown"> <i class="fa fa-angle-down"></i></h4>
                             <div class="dropdown-menu">
                                 <a class="dropdown-item" href="#">Message</a>
                                 <a class="dropdown-item" href="#">Settings</a>
@@ -47,6 +49,7 @@ $HgemQuarServs = HgemQuarServ::getHgemQuarServ();
                                                     <th scope="col">Servico</th>
                                                     <th scope="col">Data e Hora</th>
                                                     <th scope="col">Quantidade</th>
+                                                    <th scope="col">Valor Unitário</th>
                                                     <th scope="col">Valor Total</th>
                                                 </tr>
                                             </thead>
@@ -54,13 +57,17 @@ $HgemQuarServs = HgemQuarServ::getHgemQuarServ();
                                                 <?php
                                                     $resultados = '';
                                                     foreach($HgemQuarServs as $HgemQuarServ) {
+                                                        $obHQS->qtd = $HgemQuarServ->qtd;
+                                                        $obHQS->valor_uni = $HgemQuarServ->valor_uni;
+
                                                         $resultados .= '<tr>
                                                                             <td>'.$HgemQuarServ->id.'</td>
                                                                             <td>'.$HgemQuarServ->numero.'</td>
                                                                             <td>'.$HgemQuarServ->servico.'</td>
                                                                             <td>'.$HgemQuarServ->data_h.'</td>
                                                                             <td>'.$HgemQuarServ->qtd.'</td>
-                                                                            <td>'.$HgemQuarServ->valor_tot.'</td>
+                                                                            <td>'.$HgemQuarServ->valor_uni.'</td>
+                                                                            <td>'.$obHQS->valorTotal().'</td>
                                                                         </tr>';
                                                     }
 

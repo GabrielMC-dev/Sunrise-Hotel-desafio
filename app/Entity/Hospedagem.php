@@ -47,10 +47,16 @@ public function realizar_hospm() {
                      ]);
 }
 
-public static function getHospedagem($where=null,$order=null,$limit=null,$join=null, $fields=null) {
+public static function getHospedagens($where=null,$order=null,$limit=null,$join=null, $fields=null) {
     return (new Database('hospedagem'))->selectJoinHgemHe($where,$order,$limit,$join,$fields)
                                        ->fetchAll(PDO::FETCH_OBJ);
 
+}
+
+public static function getHospedagem($id) {
+    $id = (int)$id;
+    return (new Database('hospedagem'))->select('hospedagem.id='. $id)
+                                       ->fetchObject(self::class);
 }
 
 public function diasTotais() {
@@ -67,13 +73,16 @@ public function diasTotais() {
     return $this->total_dias;
 }
 
-public function valorTotal() {
-    $obHospedagem = new Hospedagem;
-    $obCatQuarto = new CatQuarto;
-    
-    return (new Database(''))
+public function valorTotal($idHgem) {
+    $Hospedagem = new Hospedagem;
+    $Hospedagem::getHospedagens();
+    $CatQuarto = new CatQuarto;
+    $CatQuarto::getCategoria($idHgem);
+    $obHQServico = new HgemQuarServ;
+    $Hospedagem::getHospedagens();
 
-    $this->valor_tot = $obCatQuarto->valor_dia * $obHospedagem->qtd_hospede * $obHospedagem->total_dias;
+    $this->valor_tot = $CatQuarto->valor_dia * $Hospedagem->qtd_hospede * $Hospedagem->total_dias/* * $obHQServico->valor_tot*/;
+    return $this->valor_tot;
 }
 
 }

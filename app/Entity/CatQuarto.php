@@ -13,9 +13,14 @@ class CatQuarto {
     public $valor_dia;
     public $capac_max;
 //--------------------------------------------------------------------------//
-function getCategoria($where=null, $order=null, $limit=null, $fields='*') {
+public static function getCategorias($where=null, $order=null, $limit=null, $fields='*') {
     return (new Database('categoria_quarto'))->select($where,$order,$limit,$fields)
                                              ->fetchAll(PDO::FETCH_OBJ);
+}
+
+public static function getCategoria($id) {
+    return (new Database('categoria_quarto'))->select('categoria_quarto.id ='. $id)
+                                             ->fetchObject();
 }
 
 }

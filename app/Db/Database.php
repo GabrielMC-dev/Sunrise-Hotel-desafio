@@ -37,8 +37,8 @@ public function execute($query, $params=[]) {
         $statement->execute($params);
         return $statement;
     }catch(PDOException $e) {
-        //die('ERROR: '. $e->getMessage());
-        die('ERROR: '. self::MENSAGEM);
+        die('ERROR: '. $e->getMessage());
+        //die('ERROR: '. self::MENSAGEM);
     }
 }
 
@@ -51,11 +51,11 @@ public function insert($values) {
     return $this->execute($query, array_values($values));
 }
 
-public function select($where=null, $order=null, $limit=null, $fields='*') {
+public function select($where, $order=null, $limit=null, $fields='*') {
     $where = strlen($where) ? 'WHERE '.$where : '';
     $order = strlen($order) ? 'ORDER BY '.$order : '';
     $limit = strlen($limit) ? 'LIMIT '.$limit : '';
-
+    
     $query = 'SELECT '.$fields.' FROM '.$this->table.' '.$where.' '.$order.' '.$limit;
 
     return $this->execute($query);
@@ -142,7 +142,7 @@ public function selectJoinHgem_Quar_Serv($where=null, $order=null, $limit=null, 
 {
 
     if (empty($fields)) {
-        $fields = 'hospedagem.id, quarto.numero, servico.servico, quarto_servico.data_h, quarto_servico.qtd, quarto_servico.valor_tot';
+        $fields = 'hospedagem.id, quarto.numero, servico.servico, quarto_servico.data_h, quarto_servico.qtd, servico.valor_uni, quarto_servico.valor_tot';
     }
 
     if (empty($join1)) {
