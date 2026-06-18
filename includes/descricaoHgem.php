@@ -1,5 +1,6 @@
 <?php
 require_once 'descricaoHospedagens.php';
+
 ?>
 
 <!-- page title area start -->
@@ -54,8 +55,6 @@ require_once 'descricaoHospedagens.php';
                                                 <?php
                                                     $resultados = '';
 
-                                                        $obHospedagem->check_in = $hospedagens->check_in;
-                                                        $obHospedagem->check_out = $hospedagens->check_out;
 
                                                         $resultados .= '<tr>
                                                                             <td>'.$hospedagens->check_in.'</td>
@@ -63,6 +62,7 @@ require_once 'descricaoHospedagens.php';
                                                                             <td>'.$hospedagens->qtd_hospede.'</td>
                                                                             <td>'.$hospedagens->qtd_quarto.'</td>
                                                                             <td>'.$obHospedagem->diasTotais().'</td>
+                                                                            <td>'.$obHospedagem->valorTotal($id_hospedagem).'</td>
                                                                             <td><a href="gerHospedagens.php" class="btn btn-danger">Voltar</a></td>
                                                                         </tr>';
                                                     

@@ -13,7 +13,7 @@ use \app\Entity\Quarto;
 
 require_once 'app/Entity/CatQuarto.php';
 use \app\Entity\CatQuarto;
-
+use Exception;
 use \PDO;
 
 class Hospedagem {
@@ -41,8 +41,11 @@ public function realizar_hospm() {
                          'data'             => $this->data,
                          'entrada_prevista' => $this->entrada_prevista,
                          'saida_prevista'   => $this->saida_prevista,
+                         'check_in'         => $this->check_in,
+                         'check_out'        => $this->check_out,
                          'qtd_hospede'      => $this->qtd_hospede,
                          'qtd_quarto'       => $this->qtd_quarto,
+                         'valor_tot'        => $this->valor_tot,
                          'status'           => $this->status
                      ]);
 }
@@ -74,14 +77,21 @@ public function diasTotais() {
 }
 
 public function valorTotal($idHgem) {
-    $Hospedagem = new Hospedagem;
-    $Hospedagem::getHospedagens();
-    $CatQuarto = new CatQuarto;
-    $CatQuarto::getCategoria($idHgem);
-    $obHQServico = new HgemQuarServ;
-    $Hospedagem::getHospedagens();
+    $id = (int)$idHgem;
 
-    $this->valor_tot = $CatQuarto->valor_dia * $Hospedagem->qtd_hospede * $Hospedagem->total_dias/* * $obHQServico->valor_tot*/;
+        try{
+            $Hospedagem = (new Database('hospedagem_quarto'))->selectVT('hgem.id='. $id)->fetchAll();
+        }catch(Exception $e){
+            return $e->getMessage();
+            exit;
+        }
+
+        foreach($Hospedagem as $hospedagem){
+
+        }
+        
+    $this->valor_tot = $hospedagem->valor_dia * $hospedagem->qtd_hospede * $hospedagem->total_dias * $hospedagem->valor_tot;
+
     return $this->valor_tot;
 }
 

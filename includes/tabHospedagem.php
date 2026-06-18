@@ -62,13 +62,16 @@ require_once 'gerHospedagens.php';
                                                     $resultados = '';
                                                     foreach($hospedagens as $hospedagem) {
 
-                                                        $obHospedagem->check_in = $hospedagem->check_in;
-                                                        $obHospedagem->check_out = $hospedagem->check_out;
+                                                        $obHospedagem->entrada_prevista = $hospedagem->entrada_prevista;
+                                                        $obHospedagem->saida_prevista = $hospedagem->saida_prevista;
 
 
-                                                    if($hospedagem->check_out < date('Y-m-d H:i:s') /*and $cancelar=false*/) {
+                                                    if($hospedagem->saida_prevista < date('Y-m-d H:i:s') /*and $cancelar=false*/) {
                                                         $hospedagem->status = 'Concluída';
                                                     }
+                                                    // else {
+                                                    //     $hospedagem->status = 'Confirmada';
+                                                    // }
                                                         $resultados .= '<tr>
                                                                             <td>'.$hospedagem->id.'</td>
                                                                             <td>'.$hospedagem->nome.'</td>

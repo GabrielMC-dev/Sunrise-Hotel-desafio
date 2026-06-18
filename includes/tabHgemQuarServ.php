@@ -1,6 +1,6 @@
 <?php
 use app\Entity\HgemQuarServ;
-$HgemQuarServs = HgemQuarServ::getHgemQuarServ();
+$HgemQuarServs = HgemQuarServ::getHgemQuarServs();
 $obHQS = new HgemQuarServ;
 $obHQS->valorTotal();
 ?>
@@ -38,7 +38,7 @@ $obHQS->valorTotal();
                     <div class="col-lg-6 mt-5" style="max-width: 100%; flex: 0 0 100%">
                         <div class="card">
                             <div class="card-body">
-                                <h3 class="header-title">Serviço por Quarto por Hospedagem</h3>
+                                <h3 class="header-title">Serviços e Quartos por Hospedagem</h3>
                                 <div class="single-table">
                                     <div class="table-responsive">
                                         <table class="table text-center">
@@ -67,7 +67,7 @@ $obHQS->valorTotal();
                                                                             <td>'.$HgemQuarServ->data_h.'</td>
                                                                             <td>'.$HgemQuarServ->qtd.'</td>
                                                                             <td>'.$HgemQuarServ->valor_uni.'</td>
-                                                                            <td>'.$obHQS->valorTotal().'</td>
+                                                                            <td>'.$obHQS->valorTotal($HgemQuarServ->id).'</td>
                                                                         </tr>';
                                                     }
 

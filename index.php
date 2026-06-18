@@ -31,15 +31,15 @@ $obCatQuar = new CatQuarto;
 // $cadastro->CadastrarHospede();
 
 // $hosp = new Hospedagem;
-// $hosp->id_hospede = 6;
-// $hosp->data = '2025-09-11';
-// $hosp->entrada_prevista = '2025-12-11';
-// $hosp->saida_prevista = '2025-12-16';
-// $hosp->check_in = '2025-12-11 16:11:22';
-// $hosp->check_out = '2025-12-16 16:11:22';
-// $hosp->qtd_hospede = 3;
-// $hosp->qtd_quarto = 1;
-// $hosp->valor_tot = 3780.30;
+// $hosp->id_hospede = 5;
+// $hosp->data = '2026-09-11';
+// $hosp->entrada_prevista = '2027-01-11';
+// $hosp->saida_prevista = '2027-01-20';
+// $hosp->check_in = null;
+// $hosp->check_out = null;
+// $hosp->qtd_hospede = 7;
+// $hosp->qtd_quarto = 2;
+// $hosp->valor_tot = null;
 // $hosp->status = 'Confirmada';
 // $hosp->realizar_hospm();
 

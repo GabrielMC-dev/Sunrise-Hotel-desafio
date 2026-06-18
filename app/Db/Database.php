@@ -13,7 +13,7 @@ class Database {
     const PASS = '1234';
     const MENSAGEM = 'ERRO no sistema!';
 //--------------------------------------------------------------------------//
-public function __construct($table=null) {
+public function __construct($table) {
     $this->table = $table;
     $this->setConnection();
 }
@@ -49,6 +49,12 @@ public function insert($values) {
     $query = 'INSERT INTO ' .$this->table. ' ('. implode(',', $fields) .') VALUES ('.implode(',', $binds).')';
 
     return $this->execute($query, array_values($values));
+}
+
+public function updateVT($vt, $id) {
+    $query = 'UPDATE quarto_servico SET valor_tot = '.$vt.' WHERE id = '.$id;
+    var_dump($query); exit;
+    return $this->execute($query);
 }
 
 public function select($where, $order=null, $limit=null, $fields='*') {
@@ -193,6 +199,41 @@ public function selectJoinManut_limpQuar($where=null, $order=null, $limit=null, 
 
     $query = 'SELECT ' . $fields . ' FROM ' . $this->table . $joinClause . $onClause . $whereClause . $orderClause . $limitClause;
     
+    return $this->execute($query);
+}
+
+public function selectVT($where, $order=null, $limit=null, $join1=null, $join2=null, $join3=null, $fields=null) {
+    
+    if (empty($fields)) {
+        
+    }
+
+    $fields = 'hgem.id, hgem.qtd_hospede, cq.valor_dia, qs.valor_tot';
+
+    if (empty($join1)) {
+        $join1 = 'hospedagem hgem';
+    }
+
+    if (empty($join2)) {
+        $join2 = 'quarto q';
+    }
+
+        if (empty($join3)) {
+        $join3 = 'categoria_quarto cq';
+    }
+
+    $joinClause1  = ' JOIN ' . $join1;
+    $joinClause2  = ' JOIN ' . $join2;
+    $joinClause3  = ' JOIN ' . $join3;
+    $onClause1    = ' ON hgem.id = hospedagem_quarto.id_hospedagem';
+    $onClause2    = ' ON q.id = hospedagem_quarto.id_quarto';
+    $onClause3    = ' ON q.id_categoria = cq.id';
+    $whereClause = strlen($where) ? ' WHERE ' . $where : '';
+    $orderClause = strlen($order) ? ' ORDER BY ' . $order : '';
+    $limitClause = strlen($limit) ? ' LIMIT ' . $limit : '';
+
+    $query = 'SELECT ' . $fields . ' FROM ' . $this->table . $joinClause1 . $onClause1 . $joinClause2 . $onClause2 . $joinClause3 . $onClause3 . $whereClause . $orderClause . $limitClause;
+
     return $this->execute($query);
 }
 
