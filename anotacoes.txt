@@ -65,3 +65,12 @@ Relatório:
         quantidade total de hóspedes pela capac máx do hotel
         
     }
+
+/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+
+para segunda(19/06) {
+    inserts para hospedagens:
+        valor_tot,
+        status
+    condição(if) para valores antes do fim da hospedagem (antes do check_out)
+}

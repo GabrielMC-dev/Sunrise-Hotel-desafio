@@ -23,9 +23,17 @@ public static function getHgemQuarServs($where=null, $order=null, $limit=null, $
 
 public function valorTotal($id) {
     $this->valor_tot = $this->valor_uni * $this->qtd;
-    $insert = new Database('quarto_servico');
-    $insert->updateVT($this->valor_tot, $id);
+    $update = new Database('quarto_servico');
+    $update->updateVTServ($this->valor_tot, $id);
+    $var = $this->getHgemQuarServs('quarto_servico.id = '.$id, $order=null, $limit=1, $join1=null, $join2=null, $join3=null, $fields='quarto_servico.valor_tot');
+    $this->valor_tot = $var[0]->valor_tot;
     return $this->valor_tot;
+}
+
+public static function getHgemQuarServ($id) {
+    $id = (int)$id;
+    return (new Database('quarto_servico'))->select('quarto_servico.id='. $id)
+                                       ->fetchObject(self::class);
 }
 
 }

@@ -14,7 +14,8 @@ use \app\Entity\CatQuarto;
 
 // $obHospedagem = new Hospedagem;
 
-$obCatQuar = new CatQuarto; 
+// $obCatQuar = new CatQuarto;
+// var_dump($obCatQuar); exit;
 
 // echo '<pre>';
 // var_dump($obCatQuar->getCategoria());

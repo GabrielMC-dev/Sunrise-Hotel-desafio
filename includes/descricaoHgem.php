@@ -61,8 +61,8 @@ require_once 'descricaoHospedagens.php';
                                                                             <td>'.$hospedagens->check_out.'</td>
                                                                             <td>'.$hospedagens->qtd_hospede.'</td>
                                                                             <td>'.$hospedagens->qtd_quarto.'</td>
-                                                                            <td>'.$obHospedagem->diasTotais().'</td>
-                                                                            <td>'.$obHospedagem->valorTotal($id_hospedagem).'</td>
+                                                                            <td>'.$obHospedagem->diasTotais($hospedagens->check_in, $hospedagens->check_out).'</td>
+                                                                            <td>'.$obHospedagem->valorTotalHgem($id_hospedagem).'</td>
                                                                             <td><a href="gerHospedagens.php" class="btn btn-danger">Voltar</a></td>
                                                                         </tr>';
                                                     

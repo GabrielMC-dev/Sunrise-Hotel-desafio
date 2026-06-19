@@ -2,7 +2,6 @@
 use app\Entity\HgemQuarServ;
 $HgemQuarServs = HgemQuarServ::getHgemQuarServs();
 $obHQS = new HgemQuarServ;
-$obHQS->valorTotal();
 ?>
 
 <!-- page title area start -->

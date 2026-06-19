@@ -51,9 +51,8 @@ public function insert($values) {
     return $this->execute($query, array_values($values));
 }
 
-public function updateVT($vt, $id) {
+public function updateVTServ($vt, $id) {
     $query = 'UPDATE quarto_servico SET valor_tot = '.$vt.' WHERE id = '.$id;
-    var_dump($query); exit;
     return $this->execute($query);
 }
 
@@ -92,7 +91,7 @@ public function select($where, $order=null, $limit=null, $fields='*') {
 
 // }
 
-public function selectJoinHgemHe($where=null, $order=null, $limit=null, $join=null, $onHgemHe=null, $fields=null)
+public function selectJoinHgemHeQuar($where=null, $order=null, $limit=null, $join=null, $fields=null)
 {
     if (empty($fields)) {
         $fields = 'hospedagem.id, he.nome, hospedagem.data, hospedagem.entrada_prevista, hospedagem.saida_prevista, hospedagem.check_in, hospedagem.check_out, hospedagem.qtd_hospede, hospedagem.qtd_quarto, hospedagem.valor_tot, hospedagem.status';
@@ -144,7 +143,7 @@ public function selectJoinQuarCatquar($where=null, $order=null, $limit=null, $jo
 
 
 
-public function selectJoinHgem_Quar_Serv($where=null, $order=null, $limit=null, $join1=null, $join2=null, $join3=null, $fields=null)
+public function selectJoinHgem_Quar_Serv($where, $order, $limit, $join1, $join2, $join3, $fields)
 {
 
     if (empty($fields)) {
@@ -162,7 +161,7 @@ public function selectJoinHgem_Quar_Serv($where=null, $order=null, $limit=null, 
     }
 
     if (empty($order)) {
-        $order = 'quarto.numero';
+        $order = 'quarto_servico.id_hospedagem';
     }
 
     $joinClause1  = ' JOIN ' . $join1;
@@ -176,7 +175,7 @@ public function selectJoinHgem_Quar_Serv($where=null, $order=null, $limit=null, 
     $limitClause = !empty($limit) ? ' LIMIT ' . $limit : '';
 
     $query = 'SELECT ' . $fields . ' FROM ' . $this->table . $joinClause1 . $onClause1 . $joinClause2 . $onClause2 .  $joinClause3 . $onClause3 . $whereClause . $orderClause . $limitClause;
-
+    
     return $this->execute($query);
 }
 

@@ -5,15 +5,13 @@ namespace app\Entity;
 require_once 'app/Db/Database.php';
 use \app\Db\Database;
 
-require_once 'app/Entity/Hospede.php';
-use \app\Entity\Hospede;
-
-require_once 'app/Entity/Quarto.php';
-use \app\Entity\Quarto;
 
 require_once 'app/Entity/CatQuarto.php';
 use \app\Entity\CatQuarto;
-use Exception;
+
+require_once 'app/Entity/HgemQuarServ.php';
+use \app\Entity\HgemQuarServ;
+
 use \PDO;
 
 class Hospedagem {
@@ -51,7 +49,7 @@ public function realizar_hospm() {
 }
 
 public static function getHospedagens($where=null,$order=null,$limit=null,$join=null, $fields=null) {
-    return (new Database('hospedagem'))->selectJoinHgemHe($where,$order,$limit,$join,$fields)
+    return (new Database('hospedagem'))->selectJoinHgemHeQuar($where,$order,$limit,$join,$fields)
                                        ->fetchAll(PDO::FETCH_OBJ);
 
 }
@@ -62,9 +60,9 @@ public static function getHospedagem($id) {
                                        ->fetchObject(self::class);
 }
 
-public function diasTotais() {
-    $inicio = strtotime($this->check_in);
-    $fim = strtotime($this->check_out);
+public function diasTotais($check_in, $check_out) {
+    $inicio = strtotime($check_in);
+    $fim = strtotime($check_out);
 
     $diferenca = $fim - $inicio;
     $diasFracionados = $diferenca / 86400;
@@ -76,22 +74,24 @@ public function diasTotais() {
     return $this->total_dias;
 }
 
-public function valorTotal($idHgem) {
+public function valorTotalHgem($idHgem) {
     $id = (int)$idHgem;
-
-        try{
-            $Hospedagem = (new Database('hospedagem_quarto'))->selectVT('hgem.id='. $id)->fetchAll();
-        }catch(Exception $e){
-            return $e->getMessage();
-            exit;
-        }
-
-        foreach($Hospedagem as $hospedagem){
-
-        }
-        
-    $this->valor_tot = $hospedagem->valor_dia * $hospedagem->qtd_hospede * $hospedagem->total_dias * $hospedagem->valor_tot;
-
+    
+    $obCarQuar = new CatQuarto;
+    $obCarQuar->getCategoria($id);
+    $valor_dia = $obCarQuar->getCategoria($id)->valor_dia;
+    
+    $obHospedagem = new Hospedagem;
+    $obHospedagem->getHospedagem($id);
+    $qtd_hospede = $obHospedagem->getHospedagem($id)->qtd_hospede;
+    $total_dias = $obHospedagem->diasTotais($obHospedagem->getHospedagem($id)->check_in, $obHospedagem->getHospedagem($id)->check_out);
+    
+    $obHQS = new HgemQuarServ;
+    $obHQS->getHgemQuarServ($id);
+    $valor_tot = $obHQS->getHgemQuarServ($id)->valor_tot;
+    
+    $this->valor_tot = $valor_dia * $qtd_hospede * $total_dias * $valor_tot;
+    
     return $this->valor_tot;
 }
 
