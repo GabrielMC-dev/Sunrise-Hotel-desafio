@@ -55,6 +55,10 @@ require_once 'descricaoHospedagens.php';
                                                 <?php
                                                     $resultados = '';
 
+                                                        if($hospedagens->check_in==null || $hospedagens->check_out==null) {
+                                                            $hospedagens->check_in==0;
+                                                            $hospedagens->check_out==0;
+                                                        }
 
                                                         $resultados .= '<tr>
                                                                             <td>'.$hospedagens->check_in.'</td>

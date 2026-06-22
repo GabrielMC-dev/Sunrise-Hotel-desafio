@@ -65,13 +65,10 @@ require_once 'gerHospedagens.php';
                                                         $obHospedagem->entrada_prevista = $hospedagem->entrada_prevista;
                                                         $obHospedagem->saida_prevista = $hospedagem->saida_prevista;
 
-
                                                     if($hospedagem->saida_prevista < date('Y-m-d H:i:s') /*and $cancelar=false*/) {
                                                         $hospedagem->status = 'Concluída';
                                                     }
-                                                    // else {
-                                                    //     $hospedagem->status = 'Confirmada';
-                                                    // }
+                                                    
                                                         $resultados .= '<tr>
                                                                             <td>'.$hospedagem->id.'</td>
                                                                             <td>'.$hospedagem->nome.'</td>

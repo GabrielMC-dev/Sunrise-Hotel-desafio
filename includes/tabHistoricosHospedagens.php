@@ -1,7 +1,8 @@
 <?php
-require_once 'app/Entity/HospedesMFrequentes.php';
-use app\Entity\HospedesMFrequentes;
-$HospedesMFs = HospedesMFrequentes::getHospedesMFrequentes();
+require_once 'app/Entity/HistoricosHospedagens.php';
+use app\Entity\HistoricosHospedagens;
+$HistoricosHospedagens = HistoricosHospedagens::getHistoricoHgens();
+$obHH = new HistoricosHospedagens;
 ?>
 
 <!-- page title area start -->
@@ -12,7 +13,7 @@ $HospedesMFs = HospedesMFrequentes::getHospedesMFrequentes();
                             <h4 class="page-title pull-left">Sunrise Hotel</h4>
                             <ul class="breadcrumbs pull-left">
                                 <li><a href="index.php">Início</a></li>
-                                <li><span>Dashboard Hóspedes mais Frequentes</span></li>
+                                <li><span>Dashboard Hospedagem-Quarto-Serviço</span></li>
                             </ul>
                         </div>
                     </div>
@@ -37,33 +38,42 @@ $HospedesMFs = HospedesMFrequentes::getHospedesMFrequentes();
                     <div class="col-lg-6 mt-5" style="max-width: 100%; flex: 0 0 100%">
                         <div class="card">
                             <div class="card-body">
-                                <h3 class="header-title">Hóspedes mais Frequentes</h3>
+                                <h3 class="header-title">Serviços e Quartos por Hospedagem</h3>
                                 <div class="single-table">
                                     <div class="table-responsive">
                                         <table class="table text-center">
                                             <thead class="text-uppercase">
                                                 <tr>
-                                                    <th scope="col">ID Hóspedes mais Frequentes</th>
-                                                    <th scope="col">Hóspedes</th>
-                                                    <th scope="col">Quantidade de Reservas</th>
-                                                    <th scope="col"></th>
+                                                    <th scope="col">ID Hospedagem</th>
+                                                    <th scope="col">Número Quarto</th>
+                                                    <th scope="col">Servico</th>
+                                                    <th scope="col">Data e Hora</th>
+                                                    <th scope="col">Quantidade</th>
+                                                    <th scope="col">Valor Unitário</th>
+                                                    <th scope="col">Valor Total</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <?php
-                                                   //  $resultados = '';
-                                                   //  foreach($HospedesMFs as $HospedeMF) {
+                                                    // $resultados = '';
+                                                    // foreach($HistoricosHospedagens as $HistoricoHospedagem) {
+                                                    //     $obHQS->qtd = $HistoricoHospedagem->qtd;
+                                                    //     $obHQS->valor_uni = $HistoricoHospedagem->valor_uni;
 
-                                                   //      $resultados .= '<tr>
-                                                   //                          <td>'./* id do mês/ano */'</td>
-                                                   //                          <td>'./*mês e ano*/'</td>
-                                                   //                          <td>'./*fatura mensal*/'</td>
-                                                   //                      </tr>';
-                                                   //  }
+                                                    //     $resultados .= '<tr>
+                                                    //                         <td>'.$HistoricoHospedagem->id.'</td>
+                                                    //                         <td>'.$HistoricoHospedagem->numero.'</td>
+                                                    //                         <td>'.$HistoricoHospedagem->servico.'</td>
+                                                    //                         <td>'.$HistoricoHospedagem->data_h.'</td>
+                                                    //                         <td>'.$HistoricoHospedagem->qtd.'</td>
+                                                    //                         <td>'.$HistoricoHospedagem->valor_uni.'</td>
+                                                    //                         <td>'.$obHQS->valorTotal($HistoricoHospedagem->id).'</td>
+                                                    //                     </tr>';
+                                                    // }
 
-                                                   //  echo $resultados;
+                                                    // echo $resultados;
                                                 ?>
-                                                    <td><a href="javascript:history.back()" class="btn btn-danger">Voltar</a></td>
+                                                        <td><a href="javascript:history.back()" class="btn btn-danger">Voltar</a></td>
                                                 </tr>
                                             </tbody>
                                             </table>

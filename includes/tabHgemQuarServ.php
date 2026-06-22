@@ -43,7 +43,7 @@ $obHQS = new HgemQuarServ;
                                         <table class="table text-center">
                                             <thead class="text-uppercase">
                                                 <tr>
-                                                    <th scope="col">ID Hospedagem</th>
+                                                    <th scope="col">ID</th>
                                                     <th scope="col">Número Quarto</th>
                                                     <th scope="col">Servico</th>
                                                     <th scope="col">Data e Hora</th>

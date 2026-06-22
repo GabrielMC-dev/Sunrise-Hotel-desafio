@@ -77,9 +77,15 @@ public function diasTotais($check_in, $check_out) {
 public function valorTotalHgem($idHgem) {
     $id = (int)$idHgem;
     
+    // echo 'inicio';
     $obCarQuar = new CatQuarto;
     $obCarQuar->getCategoria($id);
-    $valor_dia = $obCarQuar->getCategoria($id)->valor_dia;
+    $valor_dia = $obCarQuar->valor_dia;
+    if($valor_dia == null) {
+        $valor_dia = 0;
+    }
+    // echo 'fim';
+    // var_dump($valor_dia); exit;
     
     $obHospedagem = new Hospedagem;
     $obHospedagem->getHospedagem($id);
@@ -91,8 +97,12 @@ public function valorTotalHgem($idHgem) {
     $valor_tot = $obHQS->getHgemQuarServ($id)->valor_tot;
     
     $this->valor_tot = $valor_dia * $qtd_hospede * $total_dias * $valor_tot;
-    
+    $update = new Database('hospedagem');
+    $update->updateVTHgem($this->valor_tot, $id);
+    $var = $this->getHospedagens('hospedagem.id = '.$id, $order=null, $limit=1, $join1=null, $join2=null, $join3=null, $fields='hospedagem.valor_tot');
+    $this->valor_tot = $var[0]->valor_tot;
     return $this->valor_tot;
+    
 }
 
 }

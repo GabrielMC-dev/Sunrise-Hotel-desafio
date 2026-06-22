@@ -56,15 +56,20 @@ public function updateVTServ($vt, $id) {
     return $this->execute($query);
 }
 
+public function updateVTHgem($vt, $id) {
+    $query = 'UPDATE hospedagem SET valor_tot = '.$vt.' WHERE id = '.$id;
+    return $this->execute($query);
+}
+
+
+
 public function select($where, $order=null, $limit=null, $fields='*') {
     $where = strlen($where) ? 'WHERE '.$where : '';
     $order = strlen($order) ? 'ORDER BY '.$order : '';
     $limit = strlen($limit) ? 'LIMIT '.$limit : '';
     
     $query = 'SELECT '.$fields.' FROM '.$this->table.' '.$where.' '.$order.' '.$limit;
-
     return $this->execute($query);
-
 }
 
 // public function selectJoinHgemHe($where=null, $order=null, $limit=null, $join='hospede he', $onHgemHe=null, $fields='hospedagem.id, 
@@ -147,7 +152,7 @@ public function selectJoinHgem_Quar_Serv($where, $order, $limit, $join1, $join2,
 {
 
     if (empty($fields)) {
-        $fields = 'hospedagem.id, quarto.numero, servico.servico, quarto_servico.data_h, quarto_servico.qtd, servico.valor_uni, quarto_servico.valor_tot';
+        $fields = 'quarto_servico.id, quarto.numero, servico.servico, quarto_servico.data_h, quarto_servico.qtd, servico.valor_uni, quarto_servico.valor_tot';
     }
 
     if (empty($join1)) {

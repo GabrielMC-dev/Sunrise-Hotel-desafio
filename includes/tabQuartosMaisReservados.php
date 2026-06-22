@@ -47,6 +47,7 @@ $obHQS = new QuartosMReservados;
                                                     <th scope="col">ID Quartos mais Reservados</th>
                                                     <th scope="col">Quartos</th>
                                                     <th scope="col">Quantidade de Reservas</th>
+                                                    <th scope="col"></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -63,6 +64,8 @@ $obHQS = new QuartosMReservados;
 
                                                    //  echo $resultados;
                                                 ?>
+                                                    <td><a href="javascript:history.back()" class="btn btn-danger">Voltar</a></td>
+                                                </tr>
                                             </tbody>
                                             </table>
                                     </div>

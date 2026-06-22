@@ -1,7 +1,7 @@
 <?php
 
-require_once 'app/Entity/QuartoMReservado.php';
-use \app\Entity\QuartoMReservado;
+require_once 'app/Entity/QuartosMReservados.php';
+use app\Entity\QuartosMReservados;
 
 
 

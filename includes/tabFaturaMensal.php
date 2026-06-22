@@ -47,6 +47,7 @@ $obHQS = new FaturaMensal;
                                                     <th scope="col">ID mês/ano</th>
                                                     <th scope="col">Mês/ano</th>
                                                     <th scope="col">Fatura Mensal</th>
+                                                    <th scope="col"></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -63,6 +64,8 @@ $obHQS = new FaturaMensal;
 
                                                    //  echo $resultados;
                                                 ?>
+                                                    <td><a href="javascript:history.back()" class="btn btn-danger">Voltar</a></td>
+                                                </tr>
                                             </tbody>
                                             </table>
                                     </div>
