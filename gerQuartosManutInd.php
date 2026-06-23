@@ -1,6 +1,6 @@
 <?php
 
-require_once 'app/Entity/QuartosLimpManut.php';
+require_once 'app/Entity/QuartosManutInd.php';
 use \app\Entity\QuartosLimpManut;
 
 

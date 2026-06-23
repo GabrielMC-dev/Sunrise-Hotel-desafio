@@ -4,7 +4,7 @@ require_once 'app/Entity/Hospedagem.php';
 use \app\Entity\Hospedagem;
 
 $confirmada = 'Confirmada';
-$hospedagens = Hospedagem::getHospedagens('status = '.$confirmada);
+$hospedagens = Hospedagem::getHospedagens(/*'status = '.$confirmada*/);
 $obHospedagem = new Hospedagem;
 
 

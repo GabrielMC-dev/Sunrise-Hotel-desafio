@@ -51,7 +51,7 @@
                                                     <td><a href="gerFaturaMensal.php" class="btn btn-success">Acessar</a></td>
                                                     <td><a href="gerQuartosMReservados.php" class="btn btn-success">Acessar</a></td>
                                                     <?php 
-                                                        echo '<td>taxa(%)</td>';
+                                                        //echo '<td>taxa(%)</td>';
                                                     ?>
                                                     <td><a href="gerHospedesMFrequentes.php" class="btn btn-success">Acessar</a></td>
                                                     <td><a href="gerServicosMConsumidos.php" class="btn btn-success">Acessar</a></td>
@@ -109,8 +109,8 @@
                                     <div class="media-body">
                                         <h4 class="mb-3">Fatura Mensal</h4>
                                         <div style="display: flex;">
-                                            <h2 style="margin-right: 600px;">X</h2>
-                                            <a href="" class="btn btn-success">Ver Mais</a>
+                                            <h2 style="margin-right: 75%;">X</h2>
+                                            <a href="gerFaturaMensal.php" class="btn btn-success">Ver Mais</a>
                                         </div>
                                     </div>
                                 </div>
@@ -124,8 +124,8 @@
                                     <div class="media-body">
                                         <h4 class="mb-3">Quartos mais Reservados</h4>
                                         <div style="display: flex;">
-                                            <h2 style="margin-right: 600px;">X</h2>
-                                            <a href="" class="btn btn-success">Ver Mais</a>
+                                            <h2 style="margin-right: 75%;">X</h2>
+                                            <a href="gerQuartosMReservados.php" class="btn btn-success">Ver Mais</a>
                                         </div>
                                     </div>
                                 </div>
@@ -139,8 +139,8 @@
                                     <div class="media-body">
                                         <h4 class="mb-3">Hóspedes mais Frequentes</h4>
                                         <div style="display: flex;">
-                                            <h2 style="margin-right: 600px;">X</h2>
-                                            <a href="" class="btn btn-success">Ver Mais</a>
+                                            <h2 style="margin-right: 75%;">X</h2>
+                                            <a href="gerHospedesMFrequentes.php" class="btn btn-success">Ver Mais</a>
                                         </div>
                                     </div>
                                 </div>
@@ -154,8 +154,8 @@
                                     <div class="media-body">
                                         <h4 class="mb-3">Serviços mais Consumidos</h4>
                                         <div style="display: flex;">
-                                            <h2 style="margin-right: 600px;">X</h2>
-                                            <a href="" class="btn btn-success">Ver Mais</a>
+                                            <h2 style="margin-right: 75%;">X</h2>
+                                            <a href="gerServicosMConsumidos.php" class="btn btn-success">Ver Mais</a>
                                         </div>
                                     </div>
                                 </div>
@@ -169,8 +169,8 @@
                                     <div class="media-body">
                                         <h4 class="mb-3">Histórico de Hospedagens por Hóspede</h4>
                                         <div style="display: flex;">
-                                            <h2 style="margin-right: 600px;">X</h2>
-                                            <a href="" class="btn btn-success">Ver Mais</a>
+                                            <h2 style="margin-right: 75%;">X</h2>
+                                            <a href="gerHistoricosHospedagens.php" class="btn btn-success">Ver Mais</a>
                                         </div>
                                     </div>
                                 </div>
@@ -184,8 +184,8 @@
                                     <div class="media-body">
                                         <h4 class="mb-3">Quantos em Manutenção/Indisponíveis</h4>
                                         <div style="display: flex;">
-                                            <h2 style="margin-right: 600px;">X</h2>
-                                            <a href="" class="btn btn-success">Ver Mais</a>
+                                            <h2 style="margin-right: 75%;">X</h2>
+                                            <a href="gerQuartosManutInd.php" class="btn btn-success">Ver Mais</a>
                                         </div>
                                     </div>
                                 </div>
@@ -198,7 +198,7 @@
                                 <div class="media mb-1">
                                     <div class="media-body">
                                         <h4 class="mb-3">Taxa de Ocupação do Sunrise Hotel</h4>
-                                        <h2><?php  ?></h2>
+                                        <h2><?php echo 'X%';  ?></h2>
                                     </div>
                                 </div>
                             </div>

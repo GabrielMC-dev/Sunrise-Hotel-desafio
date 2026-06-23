@@ -1,8 +1,8 @@
 <?php
-require_once 'app/Entity/QuartosLimpManut.php';
-use app\Entity\QuartosLimpManut;
-$QuartosLimpManut = QuartosLimpManut::getQuartosLM();
-$obQLM = new QuartosLimpManut;
+require_once 'app/Entity/QuartosManutInd.php';
+use app\Entity\QuartosManutInd;
+$QuartosLimpManut = QuartosManutInd::getQuartosMI();
+$obQLM = new QuartosManutInd;
 ?>
 
 <!-- page title area start -->
