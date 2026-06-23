@@ -96,7 +96,7 @@ public function select($where, $order=null, $limit=null, $fields='*') {
 
 // }
 
-public function selectJoinHgemHeQuar($where=null, $order=null, $limit=null, $join=null, $fields=null)
+public function selectJoinHgemHeQuar($where, $order=null, $limit=null, $join=null, $fields=null)
 {
     if (empty($fields)) {
         $fields = 'hospedagem.id, he.nome, hospedagem.data, hospedagem.entrada_prevista, hospedagem.saida_prevista, hospedagem.check_in, hospedagem.check_out, hospedagem.qtd_hospede, hospedagem.qtd_quarto, hospedagem.valor_tot, hospedagem.status';

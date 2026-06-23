@@ -13,7 +13,7 @@ $obHQS = new FaturaMensal;
                             <h4 class="page-title pull-left">Sunrise Hotel</h4>
                             <ul class="breadcrumbs pull-left">
                                 <li><a href="index.php">Início</a></li>
-                                <li><span>Dashboard Fatura Mensal</span></li>
+                                <li><span>Dashboard Relatório / Fatura Mensal</span></li>
                             </ul>
                         </div>
                     </div>

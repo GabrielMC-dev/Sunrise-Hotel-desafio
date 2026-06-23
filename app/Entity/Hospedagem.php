@@ -76,16 +76,13 @@ public function diasTotais($check_in, $check_out) {
 
 public function valorTotalHgem($idHgem) {
     $id = (int)$idHgem;
-    
-    // echo 'inicio';
-    $obCarQuar = new CatQuarto;
-    $obCarQuar->getCategoria($id);
-    $valor_dia = $obCarQuar->valor_dia;
-    if($valor_dia == null) {
-        $valor_dia = 0;
-    }
-    // echo 'fim';
-    // var_dump($valor_dia); exit;
+
+    // $obCarQuar = new CatQuarto;
+    // $obCarQuar->getCategoria($id);
+    // $valor_dia = $obCarQuar->getCategoria($id)->valor_dia   ;
+    $obCatQuar = new CatQuarto;
+    $obCatQuar->
+
     
     $obHospedagem = new Hospedagem;
     $obHospedagem->getHospedagem($id);

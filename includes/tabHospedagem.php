@@ -1,5 +1,7 @@
 <?php 
-require_once 'gerHospedagens.php';
+
+require_once 'app/Entity/Hospedagem.php';
+use app\Entity\Hospedagem;
 ?>
 
 <!-- page title area start -->
@@ -19,8 +21,6 @@ require_once 'gerHospedagens.php';
                             <img class="avatar user-thumb" src="assets/images/author/avatar.png" alt="avatar">
                             <h4 class="user-name dropdown-toggle" data-toggle="dropdown">Kumkum Rai <i class="fa fa-angle-down"></i></h4>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="#">Message</a>
-                                <a class="dropdown-item" href="#">Settings</a>
                                 <a class="dropdown-item" href="#">Log Out</a>
                             </div>
                         </div>
@@ -40,6 +40,21 @@ require_once 'gerHospedagens.php';
                                     <div class="table-responsive">
                                         <table class="table text-center">
                                             <thead class="text-uppercase">
+                                                <form action="<?= $_SERVER["PHP_SELF"] ?>" method="post">
+                                                    <select name="filtroHospedagem" id="filtroHospedagem">
+                                                        <?php
+                                                            if(!isset($_POST['filtroHospedagem'])) {
+                                                                $_POST['filtroHospedagem'] = 'todas';
+                                                            } ?>
+                                                        <option value="todas" <?php if($_POST['filtroHospedagem'] == 'todas'){echo 'selected';}?>>Todas</option>
+                                                        <option value="Confirmada" <?php if($_POST['filtroHospedagem'] == 'Confirmada'){echo 'selected';}?>>Confirmadas</option>
+                                                        <option value="Em andamento" <?php if($_POST['filtroHospedagem'] == 'Em andamento'){echo 'selected';}?>>Em andamento</option>
+                                                        <option value="Concluida" <?php if($_POST['filtroHospedagem'] == 'Concluída'){echo 'selected';}?>>Concluídas</option>
+                                                        <option value="Cancelada" <?php if($_POST['filtroHospedagem'] == 'Cancelada'){echo 'selected';}?>>Canceladas</option>
+                                                    </select>
+                                                    <button type="submit" style="border: 1px solid black; margin-left: 5px;">Filtrar</button>
+                                                </form>
+                                                    
                                                 <tr>
                                                     <th scope="col">ID</th>
                                                     <th scope="col">Nome Responsável</th>
@@ -55,18 +70,45 @@ require_once 'gerHospedagens.php';
                                                     <!-- <th scope="col">Valor Total</th> -->
                                                     <th scope="col">Status</th>
                                                     <th scope="col"></th>
+                                                    <th scope="col"></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <?php
+                                                    $where = null;
+                                                    if(isset($_POST['filtroHospedagem'])) {
+                                                        //início filtro
+                                                        $filtro = $_POST['filtroHospedagem'];
+                                                        if($filtro == 'todas') {
+                                                            $where = null;
+
+                                                        }
+                                                        else {
+                                                            $filtragem = "'".$filtro."'";
+                                                            $where = "hospedagem.status = ".$filtragem;
+                                                        }
+                                                        //fim filtro
+                                                    }
+
+                                                    $hospedagens = Hospedagem::getHospedagens($where);
+                                                    $obHospedagem = new Hospedagem;
+
                                                     $resultados = '';
                                                     foreach($hospedagens as $hospedagem) {
 
                                                         $obHospedagem->entrada_prevista = $hospedagem->entrada_prevista;
                                                         $obHospedagem->saida_prevista = $hospedagem->saida_prevista;
 
-                                                    if($hospedagem->saida_prevista < date('Y-m-d H:i:s') /*and $cancelar=false*/) {
-                                                        $hospedagem->status = 'Concluída';
+                                                    // if($hospedagem->saida_prevista < date('Y-m-d H:i:s') /*and $cancelar=false*/) {
+                                                    //     $hospedagem->status = 'Concluída';
+                                                    // }
+
+                                                    $botao = '';
+                                                    switch($hospedagem->status) {
+                                                        case 'Confirmada': $botao = '<a href="#" class="btn btn-primary" onclick="checkIn()">Check in</a>'; break;
+                                                        case 'Em andamento': $botao = '<a href="#" class="btn btn-info" onclick="checkOut()">Check out</a>'; break;
+                                                        case 'Cancelada': $botao = '<b style="color: red;">Cancelada</b>'; break;
+                                                        case 'Concluída': $botao = '<b style="color: green;">Concluída</b>'; break;
                                                     }
                                                     
                                                         $resultados .= '<tr>
@@ -77,6 +119,7 @@ require_once 'gerHospedagens.php';
                                                                             <td>'.$hospedagem->saida_prevista.'</td>    
                                                                             <td>'.$hospedagem->status.'</td>
                                                                             <td><a href="descricaoHospedagens.php?id='.$hospedagem->id.'" class="btn btn-success">Detalhes</a></td>
+                                                                            <td>'.$botao.'</td>
                                                                         </tr>';
                                                     }
 

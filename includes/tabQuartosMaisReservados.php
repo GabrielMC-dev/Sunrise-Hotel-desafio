@@ -13,7 +13,7 @@ $obHQS = new QuartosMReservados;
                             <h4 class="page-title pull-left">Sunrise Hotel</h4>
                             <ul class="breadcrumbs pull-left">
                                 <li><a href="index.php">Início</a></li>
-                                <li><span>Dashboard Quartos mais Reservados</span></li>
+                                <li><span>Dashboard Relatório / Quartos mais Reservados</span></li>
                             </ul>
                         </div>
                     </div>

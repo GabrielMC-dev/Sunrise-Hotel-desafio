@@ -13,7 +13,7 @@ $obHH = new HistoricosHospedagens;
                             <h4 class="page-title pull-left">Sunrise Hotel</h4>
                             <ul class="breadcrumbs pull-left">
                                 <li><a href="index.php">Início</a></li>
-                                <li><span>Dashboard Hospedagem-Quarto-Serviço</span></li>
+                                <li><span>Dashboard Relatório / Hospedagem-Quarto-Serviço</span></li>
                             </ul>
                         </div>
                     </div>

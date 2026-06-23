@@ -23,4 +23,11 @@ public static function getCategoria($id) {
                                              ->fetchObject();
 }
 
+// para hoje(MySQL):
+// select hq.id_hospedagem, hq.id_quarto, cq.categoria, cq.valor_dia from hospedagem_quarto hq
+// join hospedagem h on hq.id_hospedagem = h.id
+// join quarto q on hq.id_quarto = q.id
+// join categoria_quarto cq on q.id_categoria = cq.id
+// order by h.id;
+
 }
