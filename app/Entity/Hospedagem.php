@@ -80,8 +80,11 @@ public function valorTotalHgem($idHgem) {
     // $obCarQuar = new CatQuarto;
     // $obCarQuar->getCategoria($id);
     // $valor_dia = $obCarQuar->getCategoria($id)->valor_dia   ;
-    $obCatQuar = new CatQuarto;
-    $obCatQuar->
+    $obCatQuars = new CatQuarto;
+    $ress = $obCatQuars->getCategoria($id);
+    foreach($ress as $res) {
+        var_dump($res);
+    } exit;
 
     
     $obHospedagem = new Hospedagem;

@@ -241,4 +241,38 @@ public function selectVT($where, $order=null, $limit=null, $join1=null, $join2=n
     return $this->execute($query);
 }
 
+public function selectCatQuar($where, $order, $limit=null, $join1=null, $join2=null, $join3=null, $fields=null) {
+    
+    if (empty($fields)) {
+        $fields = 'hospedagem_quarto.id_hospedagem, hospedagem_quarto.id_quarto, cq.categoria, cq.valor_dia';
+    }
+
+
+    if (empty($join1)) {
+        $join1 = 'hospedagem hgem';
+    }
+
+    if (empty($join2)) {
+        $join2 = 'quarto q';
+    }
+
+        if (empty($join3)) {
+        $join3 = 'categoria_quarto cq';
+    }
+
+    $joinClause1  = ' JOIN ' . $join1;
+    $joinClause2  = ' JOIN ' . $join2;
+    $joinClause3  = ' JOIN ' . $join3;
+    $onClause1    = ' ON hospedagem_quarto.id_hospedagem = hgem.id';
+    $onClause2    = ' ON hospedagem_quarto.id_quarto = q.id';
+    $onClause3    = ' ON q.id_categoria = cq.id';
+    $whereClause = strlen($where) ? ' WHERE ' . $where : '';
+    $orderClause = strlen($order) ? ' ORDER BY ' . $order : '';
+    $limitClause = strlen($limit) ? ' LIMIT ' . $limit : '';
+
+    $query = 'SELECT ' . $fields . ' FROM ' . $this->table . $joinClause1 . $onClause1 . $joinClause2 . $onClause2 . $joinClause3 . $onClause3 . $whereClause . $orderClause . $limitClause;
+
+    return $this->execute($query);
+}
+
 }

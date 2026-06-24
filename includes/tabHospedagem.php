@@ -43,7 +43,7 @@ use app\Entity\Hospedagem;
                                                 <form action="<?= $_SERVER["PHP_SELF"] ?>" method="post">
                                                     <select name="filtroHospedagem" id="filtroHospedagem">
                                                         <?php
-                                                            if(!isset($_POST['filtroHospedagem'])) {
+                                                            if(empty($_POST['filtroHospedagem'])) {
                                                                 $_POST['filtroHospedagem'] = 'todas';
                                                             } ?>
                                                         <option value="todas" <?php if($_POST['filtroHospedagem'] == 'todas'){echo 'selected';}?>>Todas</option>
