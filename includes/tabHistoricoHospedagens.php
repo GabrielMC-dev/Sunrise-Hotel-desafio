@@ -1,7 +1,8 @@
-<?php 
-
-require_once 'app/Entity/Hospedagem.php';
-use app\Entity\Hospedagem;
+<?php
+require_once 'app/Entity/HistoricosHospedagens.php';
+use app\Entity\HistoricosHospedagens;
+$HistoricosHospedagens = HistoricosHospedagens::getHistoricoHgens();
+$obHH = new HistoricosHospedagens;
 ?>
 
 <!-- page title area start -->
@@ -12,15 +13,17 @@ use app\Entity\Hospedagem;
                             <h4 class="page-title pull-left">Sunrise Hotel</h4>
                             <ul class="breadcrumbs pull-left">
                                 <li><a href="index.php">Início</a></li>
-                                <li><span>Dashboard Hospedagens</span></li>
+                                <li><span>Dashboard Relatório / Hospedagem-Quarto-Serviço</span></li>
                             </ul>
                         </div>
                     </div>
                     <div class="col-sm-6 clearfix">
                         <div class="user-profile pull-right">
                             <img class="avatar user-thumb" src="assets/images/author/avatar.png" alt="avatar">
-                            <h4 class="user-name dropdown-toggle" data-toggle="dropdown">Kumkum Rai <i class="fa fa-angle-down"></i></h4>
+                            <h4 class="user-name dropdown-toggle" data-toggle="dropdown"> <i class="fa fa-angle-down"></i></h4>
                             <div class="dropdown-menu">
+                                <a class="dropdown-item" href="#">Message</a>
+                                <a class="dropdown-item" href="#">Settings</a>
                                 <a class="dropdown-item" href="#">Log Out</a>
                             </div>
                         </div>
@@ -33,41 +36,20 @@ use app\Entity\Hospedagem;
                 <div class="row">
                     <!-- basic table start -->
                     <div class="col-lg-6 mt-5" style="max-width: 100%; flex: 0 0 100%">
+                        <a href="javascript:history.back()" class="btn btn-danger">Voltar</a>
                         <div class="card">
                             <div class="card-body">
-                                <h3 class="header-title">Hospedagens</h3>
+                                <h3 class="header-title">Serviços e Quartos por Hospedagem</h3>
                                 <div class="single-table">
                                     <div class="table-responsive">
                                         <table class="table text-center">
                                             <thead class="text-uppercase">
-                                                <form action="<?= $_SERVER["PHP_SELF"] ?>" method="post">
-                                                    <select name="filtroHospedagem" id="filtroHospedagem">
-                                                        <?php
-                                                            if(empty($_POST['filtroHospedagem'])) {
-                                                                $_POST['filtroHospedagem'] = 'todas';
-                                                            } ?>
-                                                        <option value="todas" <?php if($_POST['filtroHospedagem'] == 'todas'){echo 'selected';}?>>Todas</option>
-                                                        <option value="Confirmada" <?php if($_POST['filtroHospedagem'] == 'Confirmada'){echo 'selected';}?>>Confirmadas</option>
-                                                        <option value="Em andamento" <?php if($_POST['filtroHospedagem'] == 'Em andamento'){echo 'selected';}?>>Em andamento</option>
-                                                        <option value="Concluida" <?php if($_POST['filtroHospedagem'] == 'Concluída'){echo 'selected';}?>>Concluídas</option>
-                                                        <option value="Cancelada" <?php if($_POST['filtroHospedagem'] == 'Cancelada'){echo 'selected';}?>>Canceladas</option>
-                                                    </select>
-                                                    <button type="submit" style="border: 1px solid black; margin-left: 5px;">Filtrar</button>
-                                                </form>
-                                                    
                                                 <tr>
                                                     <th scope="col">ID</th>
                                                     <th scope="col">Nome Responsável</th>
                                                     <th scope="col">Data</th>
                                                     <th scope="col">Entrada Prevista</th>
                                                     <th scope="col">Saída Prevista</th>
-                                                    <!-- <th scope="col">Total Dias</th> -->
-                                                    <!-- 
-                                                    <th scope="col">Check-in</th>
-                                                    <th scope="col">Check-out</th>
-                                                    <th scope="col">Qtd Hóspedes</th>
-                                                    <th scope="col">Qtd Quartos</th> -->
-                                                    <!-- <th scope="col">Valor Total</th> -->
                                                     <th scope="col">Status</th>
                                                     <th scope="col"></th>
                                                     <th scope="col"></th>
@@ -75,22 +57,10 @@ use app\Entity\Hospedagem;
                                             </thead>
                                             <tbody>
                                                 <?php
-                                                    $where = null;
-                                                    if(isset($_POST['filtroHospedagem'])) {
-                                                        //início filtro
-                                                        $filtro = $_POST['filtroHospedagem'];
-                                                        if($filtro == 'todas') {
-                                                            $where = null;
+                                                    require_once 'app/Entity/Hospedagem.php';
+                                                    use app\Entity\Hospedagem;
 
-                                                        }
-                                                        else {
-                                                            $filtragem = "'".$filtro."'";
-                                                            $where = "hospedagem.status = ".$filtragem;
-                                                        }
-                                                        //fim filtro
-                                                    }
-
-                                                    $hospedagens = Hospedagem::getHospedagens($where);
+                                                    $hospedagens = Hospedagem::getHospedagens('id_hospede = '. $_GET['id']);
                                                     $obHospedagem = new Hospedagem;
 
                                                     $resultados = '';
@@ -126,7 +96,7 @@ use app\Entity\Hospedagem;
                                                     echo $resultados;
                                                 ?>
                                             </tbody>
-                                        </table>
+                                            </table>
                                     </div>
                                 </div>
                             </div>
@@ -135,12 +105,3 @@ use app\Entity\Hospedagem;
                     <!-- basic table end -->
                 </div>
             </div>
-
-
-
-
-<!-- PARA A DESCRIÇÃO DAS HOSPEDAGENS
-<td>'.$hospedagem->check_in.'</td>
-<td>'.$hospedagem->check_out.'</td>
-<td>'.$hospedagem->qtd_hospede.'</td>
-<td>'.$hospedagem->qtd_quarto.'</td> -->

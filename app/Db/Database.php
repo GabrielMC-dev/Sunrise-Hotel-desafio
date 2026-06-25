@@ -56,12 +56,22 @@ public function updateVTServ($vt, $id) {
     return $this->execute($query);
 }
 
+//UPDATE PARA ATUALIZAR O STATUS DA TABELA DE MANUT_LIMP
+
+// public function updateHgemQuarServ($status, $id) {
+//     $query = 'UPDATE quarto_servico SET status = '.$status.' WHERE id = '.$id;
+//     return $this->execute($query);
+// }
+
+public function updateDiasTot($qtd, $id) {
+    $query = 'UPDATE '.$this->table.' SET total_dias = '.$qtd.' WHERE id = '.$id;
+    return $this->execute($query);
+}
+
 public function updateVTHgem($vt, $id) {
     $query = 'UPDATE hospedagem SET valor_tot = '.$vt.' WHERE id = '.$id;
     return $this->execute($query);
 }
-
-
 
 public function select($where, $order=null, $limit=null, $fields='*') {
     $where = strlen($where) ? 'WHERE '.$where : '';

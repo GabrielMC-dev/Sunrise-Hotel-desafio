@@ -1,4 +1,7 @@
 <?php
+
+use app\Entity\Hospedagem;
+
 require_once 'descricaoHospedagens.php';
 
 ?>
@@ -34,6 +37,7 @@ require_once 'descricaoHospedagens.php';
                 <div class="row">
                     <!-- basic table start -->
                     <div class="col-lg-6 mt-5" style="max-width: 100%; flex: 0 0 100%">
+                        <a href="javascript:history.back()" class="btn btn-danger">Voltar</a>
                         <div class="card">
                             <div class="card-body">
                                 <h3 class="header-title">Detalhes</h3>
@@ -48,28 +52,35 @@ require_once 'descricaoHospedagens.php';
                                                     <th scope="col">Qtd Quartos</th>
                                                     <th scope="col">Total Dias</th>
                                                     <th scope="col">Valor Total</th>
-                                                    <th scope="col"></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <?php
                                                     $resultados = '';
 
-                                                        if($hospedagens->check_in==null || $hospedagens->check_out==null) {
-                                                            $hospedagens->check_in==0;
-                                                            $hospedagens->check_out==0;
-                                                        }
+                                                    $detHospedagem = new Hospedagem;
+                                                    $hgem = $detHospedagem->getHospedagem($_GET['id']);
+                                                    $valorTotal = $hgem->valorTotalHgem($id_hospedagem);
 
-                                                        $resultados .= '<tr>
-                                                                            <td>'.$hospedagens->check_in.'</td>
-                                                                            <td>'.$hospedagens->check_out.'</td>
-                                                                            <td>'.$hospedagens->qtd_hospede.'</td>
-                                                                            <td>'.$hospedagens->qtd_quarto.'</td>
-                                                                            <td>'.$obHospedagem->diasTotais($hospedagens->check_in, $hospedagens->check_out).'</td>
-                                                                            <td>'.$obHospedagem->valorTotalHgem($id_hospedagem).'</td>
-                                                                            <td><a href="gerHospedagens.php" class="btn btn-danger">Voltar</a></td>
-                                                                        </tr>';
+                                                    if($hgem->check_in==0 || $hgem->check_out==0) {
+                                                        $valorTotal = '?';
+                                                    }
+
+                                                    if($hgem->check_in==0) {$hgem->check_in = '?';}
                                                     
+                                                    if($hgem->check_out==0) {$hgem->check_out = '?';}
+
+                                                    $hgem->entrada_prevista = $obHospedagem->entrada_prevista;
+                                                    $hgem->saida_prevista = $obHospedagem->saida_prevista;
+
+                                                    $resultados .= '<tr>
+                                                                        <td>'.$hgem->check_in.'</td>
+                                                                        <td>'.$hgem->check_out.'</td>
+                                                                        <td>'.$hgem->qtd_hospede.'</td>
+                                                                        <td>'.$hgem->qtd_quarto.'</td>
+                                                                        <td>'.$hgem->diasTotais($hgem->check_in, $hgem->check_out, $_GET['id']).'</td>
+                                                                        <td>'.$valorTotal.'</td>
+                                                                    </tr>';
 
                                                     echo $resultados;
                                                 ?>

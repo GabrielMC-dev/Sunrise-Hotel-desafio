@@ -1,8 +1,7 @@
 <?php
-require_once 'app/Entity/HistoricosHospedagens.php';
-use app\Entity\HistoricosHospedagens;
-$HistoricosHospedagens = HistoricosHospedagens::getHistoricoHgens();
-$obHH = new HistoricosHospedagens;
+require_once 'app/Entity/Hospede.php';
+use app\Entity\Hospede;
+$HistoricosHospedes = Hospede::getHospedes();
 ?>
 
 <!-- page title area start -->
@@ -36,6 +35,7 @@ $obHH = new HistoricosHospedagens;
                 <div class="row">
                     <!-- basic table start -->
                     <div class="col-lg-6 mt-5" style="max-width: 100%; flex: 0 0 100%">
+                        <a href="javascript:history.back()" class="btn btn-danger">Voltar</a>
                         <div class="card">
                             <div class="card-body">
                                 <h3 class="header-title">Serviços e Quartos por Hospedagem</h3>
@@ -44,39 +44,34 @@ $obHH = new HistoricosHospedagens;
                                         <table class="table text-center">
                                             <thead class="text-uppercase">
                                                 <tr>
-                                                    <th scope="col">ID Hospedagem</th>
-                                                    <th scope="col">Número Quarto</th>
-                                                    <th scope="col">Servico</th>
-                                                    <th scope="col">Data e Hora</th>
-                                                    <th scope="col">Quantidade</th>
-                                                    <th scope="col">Valor Unitário</th>
-                                                    <th scope="col">Valor Total</th>
+                                                    <th scope="col">ID</th>
+                                                    <th scope="col">Nome</th>
+                                                    <th scope="col">Email</th>
+                                                    <th scope="col">CFP</th>
+                                                    <th scope="col">Telefone</th>
+                                                    <th scope="col">Endereço</th>
+                                                    <th scope="col"></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <?php
-                                                    // $resultados = '';
-                                                    // foreach($HistoricosHospedagens as $HistoricoHospedagem) {
-                                                    //     $obHQS->qtd = $HistoricoHospedagem->qtd;
-                                                    //     $obHQS->valor_uni = $HistoricoHospedagem->valor_uni;
+                                                    $resultados = '';
+                                                    foreach($HistoricosHospedes as $HistoricosHospede) {
+                                                        $resultados .= '<tr>
+                                                                            <td>'.$HistoricosHospede->id.'</td>
+                                                                            <td>'.$HistoricosHospede->nome.'</td>
+                                                                            <td>'.$HistoricosHospede->email.'</td>
+                                                                            <td>'.$HistoricosHospede->cpf.'</td>
+                                                                            <td>'.$HistoricosHospede->telefone.'</td>
+                                                                            <td>'.$HistoricosHospede->endereco.'</td>
+                                                                            <td><a href="gerHistoricosHospedagens.php?id='.$HistoricosHospede->id.'" class="btn btn-success">Hospedagens</a></td>
+                                                                        </tr>';
+                                                    }
 
-                                                    //     $resultados .= '<tr>
-                                                    //                         <td>'.$HistoricoHospedagem->id.'</td>
-                                                    //                         <td>'.$HistoricoHospedagem->numero.'</td>
-                                                    //                         <td>'.$HistoricoHospedagem->servico.'</td>
-                                                    //                         <td>'.$HistoricoHospedagem->data_h.'</td>
-                                                    //                         <td>'.$HistoricoHospedagem->qtd.'</td>
-                                                    //                         <td>'.$HistoricoHospedagem->valor_uni.'</td>
-                                                    //                         <td>'.$obHQS->valorTotal($HistoricoHospedagem->id).'</td>
-                                                    //                     </tr>';
-                                                    // }
-
-                                                    // echo $resultados;
+                                                    echo $resultados;
                                                 ?>
-                                                        <td><a href="javascript:history.back()" class="btn btn-danger">Voltar</a></td>
-                                                </tr>
                                             </tbody>
-                                            </table>
+                                        </table>
                                     </div>
                                 </div>
                             </div>

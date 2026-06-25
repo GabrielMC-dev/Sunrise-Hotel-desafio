@@ -60,7 +60,7 @@ public static function getHospedagem($id) {
                                        ->fetchObject(self::class);
 }
 
-public function diasTotais($check_in, $check_out) {
+public function diasTotais($check_in, $check_out, $id) {
     $inicio = strtotime($check_in);
     $fim = strtotime($check_out);
 
@@ -71,38 +71,36 @@ public function diasTotais($check_in, $check_out) {
 
     $this->total_dias = $diasArredondados + 1;
 
+    $update = new Database('hospedagem');
+    $update->updateDiasTot($this->total_dias, $id);
+    
     return $this->total_dias;
 }
 
 public function valorTotalHgem($idHgem) {
     $id = (int)$idHgem;
 
-    // $obCarQuar = new CatQuarto;
-    // $obCarQuar->getCategoria($id);
-    // $valor_dia = $obCarQuar->getCategoria($id)->valor_dia   ;
     $obCatQuars = new CatQuarto;
     $ress = $obCatQuars->getCategoria($id);
-    foreach($ress as $res) {
-        var_dump($res);
-    } exit;
 
+    $valor_dia = 1;
     
     $obHospedagem = new Hospedagem;
     $obHospedagem->getHospedagem($id);
     $qtd_hospede = $obHospedagem->getHospedagem($id)->qtd_hospede;
-    $total_dias = $obHospedagem->diasTotais($obHospedagem->getHospedagem($id)->check_in, $obHospedagem->getHospedagem($id)->check_out);
+    $total_dias = $obHospedagem->diasTotais($obHospedagem->getHospedagem($id)->check_in, $obHospedagem->getHospedagem($id)->check_out, $id);
     
     $obHQS = new HgemQuarServ;
     $obHQS->getHgemQuarServ($id);
-    $valor_tot = $obHQS->getHgemQuarServ($id)->valor_tot;
+    $valorServ_tot = $obHQS->getHgemQuarServ($id)->valor_tot;
     
-    $this->valor_tot = $valor_dia * $qtd_hospede * $total_dias * $valor_tot;
+    $this->valor_tot = $valor_dia * $qtd_hospede * $total_dias * $valorServ_tot;
     $update = new Database('hospedagem');
     $update->updateVTHgem($this->valor_tot, $id);
     $var = $this->getHospedagens('hospedagem.id = '.$id, $order=null, $limit=1, $join1=null, $join2=null, $join3=null, $fields='hospedagem.valor_tot');
     $this->valor_tot = $var[0]->valor_tot;
-    return $this->valor_tot;
     
+    return $this->valor_tot;
 }
 
 }

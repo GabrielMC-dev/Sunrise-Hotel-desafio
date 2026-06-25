@@ -1,4 +1,6 @@
 <?php
+
+use App\Db\Database;
 use app\Entity\Manut_limpQuar;
 $HgemQuarServs = Manut_limpQuar::Manut_limpQuar();
 ?>
@@ -39,35 +41,44 @@ $HgemQuarServs = Manut_limpQuar::Manut_limpQuar();
                                 <h3 class="header-title">Manutenção e Limpesa (Quartos)</h3>
                                 <div class="single-table">
                                     <div class="table-responsive">
-                                        <table class="table text-center">
-                                            <thead class="text-uppercase">
-                                                <tr>
-                                                    <th scope="col">ID</th>
-                                                    <th scope="col">Número Quarto</th>
-                                                    <th scope="col">Data</th>
-                                                    <th scope="col">Tipo</th>
-                                                    <th scope="col">Responsável</th>
-                                                    <th scope="col">Status</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <?php
-                                                    $resultados = '';
-                                                    foreach($HgemQuarServs as $HgemQuarServ) {
-                                                        $resultados .= '<tr>
-                                                                            <td>'.$HgemQuarServ->id.'</td>
-                                                                            <td>'.$HgemQuarServ->numero.'</td>
-                                                                            <td>'.$HgemQuarServ->data.'</td>
-                                                                            <td>'.$HgemQuarServ->tipo.'</td>
-                                                                            <td>'.$HgemQuarServ->responsavel.'</td>
-                                                                            <td>'.$HgemQuarServ->status.'</td>
-                                                                        </tr>';
-                                                    }
+                                        <form action="<?= $_SERVER['PHP_SELF'] ?>" method="POST">    
+                                            <table class="table text-center">
+                                                <thead class="text-uppercase">
+                                                    <tr>
+                                                        <th scope="col">ID</th>
+                                                        <th scope="col">Número Quarto</th>
+                                                        <th scope="col">Data</th>
+                                                        <th scope="col">Tipo</th>
+                                                        <th scope="col">Responsável</th>
+                                                        <th scope="col">Status</th>
+                                                        <th scope="col"></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <?php
+                                                        $resultados = '';
+                                                        foreach($HgemQuarServs as $HgemQuarServ) {
+                                                            $resultados .= '<tr>
+                                                                                <td>'.$HgemQuarServ->id.'</td>
+                                                                                <td>'.$HgemQuarServ->numero.'</td>
+                                                                                <td>'.$HgemQuarServ->data.'</td>
+                                                                                <td>'.$HgemQuarServ->tipo.'</td>
+                                                                                <td>'.$HgemQuarServ->responsavel.'</td>
+                                                                                <td>'.$HgemQuarServ->status.'</td>
+                                                                                <td><buttom class="btn btn-success" name="concluirLM" type="submit">Concluir</td>
+                                                                            </tr>';
+                                                        }
+                                                        // if(isset($_POST['concluirLM'])) {
+                                                        //     $update = new Database('quarto_servico');
+                                                        //     $update->updateHgemQuarServ("'Concluída'", $HgemQuarServ->id);
+                                                        //     $HgemQuarServ->status = 'Concluída';
+                                                        // }
 
-                                                    echo $resultados;
-                                                ?>
-                                            </tbody>
+                                                        echo $resultados;
+                                                    ?>
+                                                </tbody>
                                             </table>
+                                        </form>
                                     </div>
                                 </div>
                             </div>

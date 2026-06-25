@@ -1,6 +1,6 @@
 <?php 
 use \app\Entity\Hospede;
-$hospedes = Hospede::getHospede();
+$hospedes = Hospede::getHospedes();
 ?>
 
 <!-- page title area start -->

@@ -30,7 +30,7 @@ function cadastrarHospede() {
     return true;
 }
 
-public static function getHospede($where=null,$order=null,$limit=null) {
+public static function getHospedes($where=null,$order=null,$limit=null) {
     return (new Database('hospede'))->select($where,$order,$limit)
                                     ->fetchAll(PDO::FETCH_OBJ);
 }
