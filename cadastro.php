@@ -1,3 +1,25 @@
+<?php
+    require_once 'app/Entity/Hospede.php';
+    use app\Entity\Hospede;
+    $obHospede = new Hospede;
+
+    if(isset($_POST['nome'], $_POST['email'], $_POST['cpf'], $_POST['telefone'], $_POST['nascimento'], $_POST['endereco'], $_POST['senha'], $_POST['confsenha'])) {
+        $obHospede->nome = $_POST['nome'];
+        $obHospede->email = $_POST['email'];
+        $obHospede->cpf = $_POST['cpf'];
+        $obHospede->telefone = $_POST['telefone'];
+        $obHospede->nascimento = $_POST['nascimento'];
+        $obHospede->endereco = $_POST['endereco'];
+        $obHospede->senha = $_POST['senha'];
+        if($_POST['senha'] != $_POST['confsenha']) {
+            die('Erro: as senhas não coincidem. Volte e tente novamente');
+        }
+        else {
+            $obHospede->cadastrarHospede();
+        }
+    }
+?>
+
 <!doctype html>
 <html class="no-js" lang="en">
 
@@ -30,18 +52,6 @@
     -webkit-appearance: none;
 }
 
-input[type="date"] {
-    -moz-appearance: textfield;
-}
-
-input[type="date"]::-webkit-datetime-edit {
-    color: rgba(0, 0, 0, 0.4); 
-}
-
-input[type="date"]:focus {
-    color: rgba(0, 0, 0, 1);
-}
-
 </style>
 
 <body>
@@ -65,42 +75,42 @@ input[type="date"]:focus {
                     <div class="login-form-body">
                         <div class="form-gp">
                             <label for="exampleInputName1">Nome</label>
-                            <input type="text" name="nome" id="exampleInputName1" require>
+                            <input type="text" name="nome" id="exampleInputName1" required>
                             <i class="ti-user"></i>
                         </div>
                         <div class="form-gp">
                             <label for="exampleInputEmail1">Email</label>
-                            <input type="email" name="email" id="exampleInputEmail1" require>
+                            <input type="email" name="email" id="exampleInputEmail1" required>
                             <i class="ti-email"></i>
                         </div>
                         <div class="form-gp">
                             <label for="exampleInputCPF">CPF</label>
-                            <input type="text" name="cpf" id="exampleInputEmail1" require>
+                            <input type="text" name="cpf" id="exampleInputEmail1" required>
                             <i class="fa fa-list-alt"></i>
                         </div>
                         <div class="form-gp">
                             <label for="exampleInputTel">Telefone</label>
-                            <input type="tel" name="telefone" id="exampleInputEmail1" require>
+                            <input type="tel" name="telefone" id="exampleInputEmail1" required>
                             <i class="fa fa-phone"></i>
                         </div>
                         <div class="form-gp">
                             <label for="exampleInputNasc"></label>
-                            <input type="date" name="nascimento" id="exampleInputEmail1" require>
+                            <input type="date" name="nascimento" id="exampleInputEmail1" required>
                             <i class="fa fa-calendar"></i>
                         </div>
                         <div class="form-gp">
                             <label for="exampleInputPassword1">Endereço</label>
-                            <input type="text" name="endereco" id="exampleInputPassword1" require>
+                            <input type="text" name="endereco" id="exampleInputPassword1" required>
                             <i class="fa fa-map-o"></i>
                         </div>
                         <div class="form-gp">
                             <label for="exampleInputPassword1">Senha</label>
-                            <input type="password" name="senha" id="exampleInputPassword1" require>
+                            <input type="password" name="senha" id="exampleInputPassword1" minlength="8" required>
                             <i class="ti-lock"></i>
                         </div>
                         <div class="form-gp">
                             <label for="exampleInputPassword2">Confirmar Senha</label>
-                            <input type="password" name="confsenha" id="exampleInputPassword2" require>
+                            <input type="password" name="confsenha" id="exampleInputPassword2" minlength="8" required>
                             <i class="ti-lock"></i>
                         </div>
                         <div class="submit-btn-area">
