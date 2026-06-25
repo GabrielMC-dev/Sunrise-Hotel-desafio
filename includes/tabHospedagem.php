@@ -49,7 +49,7 @@ use app\Entity\Hospedagem;
                                                         <option value="todas" <?php if($_POST['filtroHospedagem'] == 'todas'){echo 'selected';}?>>Todas</option>
                                                         <option value="Confirmada" <?php if($_POST['filtroHospedagem'] == 'Confirmada'){echo 'selected';}?>>Confirmadas</option>
                                                         <option value="Em andamento" <?php if($_POST['filtroHospedagem'] == 'Em andamento'){echo 'selected';}?>>Em andamento</option>
-                                                        <option value="Concluida" <?php if($_POST['filtroHospedagem'] == 'Concluída'){echo 'selected';}?>>Concluídas</option>
+                                                        <option value="Concluida" <?php if($_POST['filtroHospedagem'] == 'Concluida'){echo 'selected';}?>>Concluídas</option>
                                                         <option value="Cancelada" <?php if($_POST['filtroHospedagem'] == 'Cancelada'){echo 'selected';}?>>Canceladas</option>
                                                     </select>
                                                     <button type="submit" style="border: 1px solid black; margin-left: 5px;">Filtrar</button>

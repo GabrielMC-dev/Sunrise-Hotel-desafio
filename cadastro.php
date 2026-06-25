@@ -1,25 +1,3 @@
-<?php
-    require_once 'app/Entity/Hospede.php';
-    use app\Entity\Hospede;
-    $obHospede = new Hospede;
-
-    if(isset($_POST['nome'], $_POST['email'], $_POST['cpf'], $_POST['telefone'], $_POST['nascimento'], $_POST['endereco'], $_POST['senha'], $_POST['confsenha'])) {
-        $obHospede->nome = $_POST['nome'];
-        $obHospede->email = $_POST['email'];
-        $obHospede->cpf = $_POST['cpf'];
-        $obHospede->telefone = $_POST['telefone'];
-        $obHospede->nascimento = $_POST['nascimento'];
-        $obHospede->endereco = $_POST['endereco'];
-        $obHospede->senha = $_POST['senha'];
-        if($_POST['senha'] != $_POST['confsenha']) {
-            die('Erro: as senhas não coincidem. Volte e tente novamente');
-        }
-        else {
-            $obHospede->cadastrarHospede();
-        }
-    }
-?>
-
 <!doctype html>
 <html class="no-js" lang="en">
 
@@ -55,6 +33,27 @@
 </style>
 
 <body>
+    <?php
+    require_once 'app/Entity/Hospede.php';
+    use app\Entity\Hospede;
+    $obHospede = new Hospede;
+
+    if(isset($_POST['nome'], $_POST['email'], $_POST['cpf'], $_POST['telefone'], $_POST['nascimento'], $_POST['endereco'], $_POST['senha'], $_POST['confsenha'])) {
+        $obHospede->nome = $_POST['nome'];
+        $obHospede->email = $_POST['email'];
+        $obHospede->cpf = $_POST['cpf'];
+        $obHospede->telefone = $_POST['telefone'];
+        $obHospede->nascimento = $_POST['nascimento'];
+        $obHospede->endereco = $_POST['endereco'];
+        $obHospede->senha = $_POST['senha'];
+        if($_POST['senha'] != $_POST['confsenha']) {
+            die('Erro: as senhas não coincidem. Volte e tente novamente');
+        }
+        else {
+            $obHospede->cadastrarHospede();
+        }
+    }
+?>
     <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->

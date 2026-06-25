@@ -61,9 +61,11 @@ require_once 'descricaoHospedagens.php';
                                                     $detHospedagem = new Hospedagem;
                                                     $hgem = $detHospedagem->getHospedagem($_GET['id']);
                                                     $valorTotal = $hgem->valorTotalHgem($id_hospedagem);
+                                                    $diasTotais = $hgem->diasTotais($hgem->check_in, $hgem->check_out, $_GET['id']);
 
                                                     if($hgem->check_in==0 || $hgem->check_out==0) {
                                                         $valorTotal = '?';
+                                                        $diasTotais = '?';
                                                     }
 
                                                     if($hgem->check_in==0) {$hgem->check_in = '?';}
@@ -78,7 +80,7 @@ require_once 'descricaoHospedagens.php';
                                                                         <td>'.$hgem->check_out.'</td>
                                                                         <td>'.$hgem->qtd_hospede.'</td>
                                                                         <td>'.$hgem->qtd_quarto.'</td>
-                                                                        <td>'.$hgem->diasTotais($hgem->check_in, $hgem->check_out, $_GET['id']).'</td>
+                                                                        <td>'.$diasTotais.'</td>
                                                                         <td>'.$valorTotal.'</td>
                                                                     </tr>';
 
