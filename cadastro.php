@@ -52,6 +52,8 @@
         else {
             $obHospede->cadastrarHospede();
         }
+        
+        header('Location: gerHospedes.php');
     }
 ?>
     <!--[if lt IE 8]>
@@ -66,7 +68,7 @@
     <div class="login-area">
         <div class="container">
             <div class="login-box ptb--100">
-                <form action="index.php" method="post">
+                <form action="" method="post">
                     <div class="login-form-head">
                         <h4>Cadastro</h4>
                         <p>Olá, cadastre-se e junte-se a nós!</p>
