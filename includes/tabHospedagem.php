@@ -1,8 +1,26 @@
 <?php 
 
 require_once 'app/Entity/Hospedagem.php';
+
+use App\Db\Database;
 use app\Entity\Hospedagem;
+
+if(isset($_GET['check_in'])){
+    $updateSts = new Database('hospedagem');
+    $updateSts->updateStatusHgem("'Em andamento'", $_GET['id']);
+    var_dump($_GET['id'], $_GET['check_in']);
+}
+
+if(isset($_GET['check_in'])){
+
+}
+
+
+
 ?>
+
+
+
 
 <!-- page title area start -->
             <div class="page-title-area">
@@ -102,11 +120,10 @@ use app\Entity\Hospedagem;
                                                     // if($hospedagem->saida_prevista < date('Y-m-d H:i:s') /*and $cancelar=false*/) {
                                                     //     $hospedagem->status = 'Concluída';
                                                     // }
-
                                                     $botao = '';
                                                     switch($hospedagem->status) {
-                                                        case 'Confirmada': $botao = '<a href="#" class="btn btn-primary" onclick="checkIn()">Check in</a>'; break;
-                                                        case 'Em andamento': $botao = '<a href="#" class="btn btn-info" onclick="checkOut()" ">Check out</a>'; break;
+                                                        case 'Confirmada': $botao = '<a href="includes/mudarStatus.php?id='.$hospedagem->id.'&check_in="" class="btn btn-primary">Check in</a>'; break;
+                                                        case 'Em andamento': $botao = '<includes/mudarStatus.php?id='.$hospedagem->id.'&check_out="" class="btn btn-primary">Check out</a>'; break;
                                                         case 'Cancelada': $botao = '<b style="color: red;">Cancelada</b>'; break;
                                                         case 'Concluída': $botao = '<b style="color: green;">Concluída</b>'; break;
                                                     }

@@ -24,6 +24,14 @@
     <title>Sunrise Hotel</title>
 </head>
 
+<style>
+    input[type="date"]::-webkit-calendar-picker-indicator {
+    display: none;
+    -webkit-appearance: none;
+}
+
+</style>
+
 <body>
     <div id="preloader">
         <div class="loader"></div>

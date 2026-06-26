@@ -68,12 +68,6 @@ $HgemQuarServs = Manut_limpQuar::Manut_limpQuar();
                                                                                 <td><buttom class="btn btn-success" name="concluirLM" type="submit">Concluir</td>
                                                                             </tr>';
                                                         }
-                                                        // if(isset($_POST['concluirLM'])) {
-                                                        //     $update = new Database('quarto_servico');
-                                                        //     $update->updateHgemQuarServ("'Concluída'", $HgemQuarServ->id);
-                                                        //     $HgemQuarServ->status = 'Concluída';
-                                                        // }
-
                                                         echo $resultados;
                                                     ?>
                                                 </tbody>

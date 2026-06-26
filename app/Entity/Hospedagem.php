@@ -77,24 +77,32 @@ public function diasTotais($check_in, $check_out, $id) {
     return $this->total_dias;
 }
 
+public function valorDiaria($id) {
+    return (new Database('hospedagem_quarto'))->selectValor_dia($id)
+                                              ->fetchAll(PDO::FETCH_OBJ);
+}
+
 public function valorTotalHgem($idHgem) {
     $id = (int)$idHgem;
-
-    $obCatQuars = new CatQuarto;
-    $ress = $obCatQuars->getCategoria($id);
-
-    $valor_dia = 1;
     
     $obHospedagem = new Hospedagem;
+    $hgens = $obHospedagem->valorDiaria('hospedagem_quarto.id_hospedagem ='.$id);
+    //var_dump($hgens[0]->valor_dia);exit;
+    //var_dump($hgens[0]->valor_dia);exit;
+    $valor_dia = 0;
+    $i=0;
+    foreach($hgens as $hgem) {
+        $valor_tot = $valor_dia += $hgem->valor_dia;
+    }
     $obHospedagem->getHospedagem($id);
     $qtd_hospede = $obHospedagem->getHospedagem($id)->qtd_hospede;
     $total_dias = $obHospedagem->diasTotais($obHospedagem->getHospedagem($id)->check_in, $obHospedagem->getHospedagem($id)->check_out, $id);
-    
+
     $obHQS = new HgemQuarServ;
     $obHQS->getHgemQuarServ($id);
     $valorServ_tot = $obHQS->getHgemQuarServ($id)->valor_tot;
     
-    $this->valor_tot = $valor_dia * $qtd_hospede * $total_dias * $valorServ_tot;
+    $this->valor_tot = $valor_tot * $qtd_hospede * $total_dias + $valorServ_tot;
     $update = new Database('hospedagem');
     $update->updateVTHgem($this->valor_tot, $id);
     $var = $this->getHospedagens('hospedagem.id = '.$id, $order=null, $limit=1, $join1=null, $join2=null, $join3=null, $fields='hospedagem.valor_tot');

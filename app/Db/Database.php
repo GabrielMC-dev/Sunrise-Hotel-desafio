@@ -73,6 +73,12 @@ public function updateVTHgem($vt, $id) {
     return $this->execute($query);
 }
 
+public function updateStatusHgem($status, $id) {
+    $query = 'UPDATE '.$this->table.' SET status = '.$status.' WHERE hospedagem.id = '.$id;
+    //var_dump($query); exit;
+    return $this->execute($query);
+}
+
 public function select($where, $order=null, $limit=null, $fields='*') {
     $where = strlen($where) ? 'WHERE '.$where : '';
     $order = strlen($order) ? 'ORDER BY '.$order : '';
@@ -216,42 +222,7 @@ public function selectJoinManut_limpQuar($where=null, $order=null, $limit=null, 
     return $this->execute($query);
 }
 
-public function selectVT($where, $order=null, $limit=null, $join1=null, $join2=null, $join3=null, $fields=null) {
-    
-    if (empty($fields)) {
-        
-    }
-
-    $fields = 'hgem.id, hgem.qtd_hospede, cq.valor_dia, qs.valor_tot';
-
-    if (empty($join1)) {
-        $join1 = 'hospedagem hgem';
-    }
-
-    if (empty($join2)) {
-        $join2 = 'quarto q';
-    }
-
-        if (empty($join3)) {
-        $join3 = 'categoria_quarto cq';
-    }
-
-    $joinClause1  = ' JOIN ' . $join1;
-    $joinClause2  = ' JOIN ' . $join2;
-    $joinClause3  = ' JOIN ' . $join3;
-    $onClause1    = ' ON hgem.id = hospedagem_quarto.id_hospedagem';
-    $onClause2    = ' ON q.id = hospedagem_quarto.id_quarto';
-    $onClause3    = ' ON q.id_categoria = cq.id';
-    $whereClause = strlen($where) ? ' WHERE ' . $where : '';
-    $orderClause = strlen($order) ? ' ORDER BY ' . $order : '';
-    $limitClause = strlen($limit) ? ' LIMIT ' . $limit : '';
-
-    $query = 'SELECT ' . $fields . ' FROM ' . $this->table . $joinClause1 . $onClause1 . $joinClause2 . $onClause2 . $joinClause3 . $onClause3 . $whereClause . $orderClause . $limitClause;
-
-    return $this->execute($query);
-}
-
-public function selectCatQuar($where, $order, $limit=null, $join1=null, $join2=null, $join3=null, $fields=null) {
+public function selectValor_dia($where, $order=null, $limit=null, $join1=null, $join2=null, $join3=null, $fields=null) {
     
     if (empty($fields)) {
         $fields = 'hospedagem_quarto.id_hospedagem, hospedagem_quarto.id_quarto, cq.categoria, cq.valor_dia';
