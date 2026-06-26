@@ -21,6 +21,11 @@ public static function getHgemQuarServs($where=null, $order=null, $limit=null, $
                                            ->fetchAll(PDO::FETCH_OBJ);
 }
 
+public static function getServMC() {
+    return (new Database('quarto_servico'))->selectServMC()
+                                           ->fetchAll(PDO::FETCH_OBJ);
+}
+
 public function valorTotal($id) {
     $this->valor_tot = $this->valor_uni * $this->qtd;
     $update = new Database('quarto_servico');

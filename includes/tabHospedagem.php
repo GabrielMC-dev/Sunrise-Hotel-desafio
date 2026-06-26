@@ -106,7 +106,7 @@ use app\Entity\Hospedagem;
                                                     $botao = '';
                                                     switch($hospedagem->status) {
                                                         case 'Confirmada': $botao = '<a href="#" class="btn btn-primary" onclick="checkIn()">Check in</a>'; break;
-                                                        case 'Em andamento': $botao = '<a href="#" class="btn btn-info" onclick="checkOut()">Check out</a>'; break;
+                                                        case 'Em andamento': $botao = '<a href="#" class="btn btn-info" onclick="checkOut()" ">Check out</a>'; break;
                                                         case 'Cancelada': $botao = '<b style="color: red;">Cancelada</b>'; break;
                                                         case 'Concluída': $botao = '<b style="color: green;">Concluída</b>'; break;
                                                     }

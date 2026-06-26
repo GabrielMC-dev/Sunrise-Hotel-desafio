@@ -1,8 +1,7 @@
 <?php
-require_once 'app/Entity/ServicosMConsumidos.php';
-use app\Entity\ServicosMConsumidos;
-$ServicosMConsumidos = ServicosMConsumidos::getServicosMC();
-$obSMC = new ServicosMConsumidos;
+require_once 'app/Entity/HgemQuarServ.php';
+use app\Entity\HgemQuarServ;
+$ServicosMConsumidos = HgemQuarServ::getServMC();
 ?>
 
 <!-- page title area start -->
@@ -36,6 +35,7 @@ $obSMC = new ServicosMConsumidos;
                 <div class="row">
                     <!-- basic table start -->
                     <div class="col-lg-6 mt-5" style="max-width: 100%; flex: 0 0 100%">
+                        <a href="javascript:history.back()" class="btn btn-danger">Voltar</a>
                         <div class="card">
                             <div class="card-body">
                                 <h3 class="header-title">Serviços Serviços mais Consumidos</h3>
@@ -44,27 +44,25 @@ $obSMC = new ServicosMConsumidos;
                                         <table class="table text-center">
                                             <thead class="text-uppercase">
                                                 <tr>
-                                                    <th scope="col">ID</th>
+                                                    <th scope="col">ID Serviço</th>
                                                     <th scope="col">Serviço</th>
                                                     <th scope="col">Consumo</th>
-                                                    <th scope="col"></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <?php
-                                                   //  $resultados = '';
-                                                   //  foreach($ServicosMConsumidos as $ServicoMConsumido) {
+                                                    $resultados = '';
+                                                    foreach($ServicosMConsumidos as $ServicoMConsumido) {
 
-                                                   //      $resultados .= '<tr>
-                                                   //                          <td>'./* id do mês/ano */'</td>
-                                                   //                          <td>'./*mês e ano*/'</td>
-                                                   //                          <td>'./*fatura mensal*/'</td>
-                                                   //                      </tr>';
-                                                   //  }
+                                                        $resultados .= '<tr>
+                                                                            <td>'.$ServicoMConsumido->id.'</td>
+                                                                            <td>'.$ServicoMConsumido->servico.'</td>
+                                                                            <td>'.$ServicoMConsumido->{'SUM(quarto_servico.qtd)'}.'</td>
+                                                                        </tr>';
+                                                    }
 
-                                                   //  echo $resultados;
+                                                    echo $resultados;
                                                 ?>
-                                                    <td><a href="javascript:history.back()" class="btn btn-danger">Voltar</a></td>
                                                 </tr>
                                             </tbody>
                                             </table>

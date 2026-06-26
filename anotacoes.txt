@@ -68,11 +68,17 @@ Relatório:
 
 /\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
 
-para segunda(19/06) {
-    inserts para hospedagens:
-        valor_tot,
-        status
-    condição(if) para valores antes do fim da hospedagem (antes do check_out);
+mudar hospedagem e hospedagem quarto;
+template pronto de hotel ou criar;
+criar numero da hospedagem? (se nn mudar tabelas hospedagem e hospedagem quarto);
+os 2 arquivos;
+query banco de dados para contar serviços.
 
-    fazer tabela de hospedagem por hóspede no relatório.
-}
+
+O QUE FAZER EM CASA:
+1- formulários para cadastrar hospedagem, serviço em um quarto, etc;
+2- select para a contagem de serviços para o relatório:
+	select s.id, s.servico, SUM(qs.qtd) from quarto_servico qs
+	join servico s on qs.id_servico = s.id
+	group by s.id
+	order by SUM(qs.qtd) desc;

@@ -285,4 +285,17 @@ public function selectCatQuar($where, $order, $limit=null, $join1=null, $join2=n
     return $this->execute($query);
 }
 
+public function selectServMC($where=null, $order='SUM(quarto_servico.qtd) desc', $join='servico s', $limit=null, $fields='s.id, s.servico, SUM(quarto_servico.qtd)') {
+    $joinClause  = ' JOIN ' . $join;
+    $onClause    = ' ON quarto_servico.id_servico = s.id';
+    $groupClause = ' GROUP BY s.id';
+    $whereClause = strlen($where) ? ' WHERE ' . $where : '';
+    $orderClause = strlen($order) ? ' ORDER BY ' . $order : '';
+    $limitClause = strlen($limit) ? ' LIMIT ' . $limit : '';
+    
+    $query = 'SELECT ' . $fields . ' FROM ' . $this->table . $joinClause . $onClause . $groupClause . $whereClause . $orderClause . $limitClause;
+    
+    return $this->execute($query);
+}
+
 }
