@@ -77,8 +77,3 @@ query banco de dados para contar serviços.
 
 O QUE FAZER EM CASA:
 1- formulários para cadastrar hospedagem, serviço em um quarto, etc;
-2- select para a contagem de serviços para o relatório:
-	select s.id, s.servico, SUM(qs.qtd) from quarto_servico qs
-	join servico s on qs.id_servico = s.id
-	group by s.id
-	order by SUM(qs.qtd) desc;

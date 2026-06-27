@@ -1,101 +1,43 @@
-    <?php
-    require_once 'app/Entity/Hospede.php';
-    use app\Entity\Hospede;
-    $obHospede = new Hospede;
-
-    if(isset($_POST['nome'], $_POST['email'], $_POST['cpf'], $_POST['telefone'], $_POST['nascimento'], $_POST['endereco'], $_POST['senha'], $_POST['confsenha'])) {
-        $obHospede->nome = $_POST['nome'];
-        $obHospede->email = $_POST['email'];
-        $obHospede->cpf = $_POST['cpf'];
-        $obHospede->telefone = $_POST['telefone'];
-        $obHospede->nascimento = $_POST['nascimento'];
-        $obHospede->endereco = $_POST['endereco'];
-        $obHospede->senha = $_POST['senha'];
-        if($_POST['senha'] != $_POST['confsenha']) {
-            die('Erro: as senhas não coincidem. Volte e tente novamente');
-        }
-        else {
-            $obHospede->cadastrarHospede();
-        }
-        
-        header('Location: gerHospedes.php');
-    }
-?>
-    <!--[if lt IE 8]>
-            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-    <!-- preloader area start -->
-    <div id="preloader">
-        <div class="loader"></div>
-    </div>
-    <!-- preloader area end -->
-    <!-- login area start -->
-    <div class="login-area">
-        <div class="container">
-            <div class="login-box ptb--100">
-                <form action="" method="post">
-                    <div class="login-form-head">
-                        <h4>Cadastro</h4>
-                        <p>Olá, cadastre-se e junte-se a nós!</p>
-                    </div>
-                    <div class="login-form-body">
-                        <div class="form-gp">
-                            <label for="exampleInputName1">Nome</label>
-                            <input type="text" name="nome" id="exampleInputName1" required>
-                            <i class="ti-user"></i>
-                        </div>
-                        <div class="form-gp">
-                            <label for="exampleInputEmail1">Email</label>
-                            <input type="email" name="email" id="exampleInputEmail1" required>
-                            <i class="ti-email"></i>
-                        </div>
-                        <div class="form-gp">
-                            <label for="exampleInputCPF">CPF</label>
-                            <input type="text" name="cpf" id="exampleInputEmail1" required>
-                            <i class="fa fa-list-alt"></i>
-                        </div>
-                        <div class="form-gp">
-                            <label for="exampleInputTel">Telefone</label>
-                            <input type="tel" name="telefone" id="exampleInputEmail1" required>
-                            <i class="fa fa-phone"></i>
-                        </div>
-                        <div class="form-gp">
-                            <label for="exampleInputNasc"></label>
-                            <input type="date" name="nascimento" id="exampleInputEmail1" required>
-                            <i class="fa fa-calendar"></i>
-                        </div>
-                        <div class="form-gp">
-                            <label for="exampleInputPassword1">Endereço</label>
-                            <input type="text" name="endereco" id="exampleInputPassword1" required>
-                            <i class="fa fa-map-o"></i>
-                        </div>
-                        <div class="form-gp">
-                            <label for="exampleInputPassword1">Senha</label>
-                            <input type="password" name="senha" id="exampleInputPassword1" minlength="8" required>
-                            <i class="ti-lock"></i>
-                        </div>
-                        <div class="form-gp">
-                            <label for="exampleInputPassword2">Confirmar Senha</label>
-                            <input type="password" name="confsenha" id="exampleInputPassword2" minlength="8" required>
-                            <i class="ti-lock"></i>
-                        </div>
-                        <div class="submit-btn-area">
-                            <button id="form_submit" type="submit">Enviar <i class="ti-arrow-right"></i></button>
-                            <div class="login-other row mt-4">
-                                <div class="col-6">
-                                    <a class="fb-login" href="#">Cadastrar com <i class="fa fa-facebook"></i></a>
-                                </div>
-                                <div class="col-6">
-                                    <a class="google-login" href="#">Cadastrar com <i class="fa fa-google"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-footer text-center mt-5">
-                            <p class="text-muted">Já tem uma conta? <a href="login.php">Faça o login</a></p>
-                        </div>
-                    </div>
-                </form>
-            </div>
+<div class="col-12 mt-5">
+    <a href="javascript:history.back()" class="btn btn-danger" style="margin-bottom: 30px;">Voltar</a>
+    <div class="card">
+        <div class="card-body">
+            <h4 class="header-title">Cadastro de Hóspede</h4>
+            <form action="" method="POST">
+                <div class="form-group">
+                    <label for="exampleInputText1">Nome</label>
+                    <input type="text" class="form-control" name="nome" id="exampleInputText1" aria-describedby="textHelp">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Email</label>
+                    <input type="email" class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputText2">CPF</label>
+                    <input type="text" class="form-control" name="cpf" id="exampleInputText2" aria-describedby="textHelp">
+                </div>
+                <div class="form-group">
+                    <label for="example-tel-input" class="col-form-label">Telefone</label>
+                    <input class="form-control" type="tel" name="telefone" id="example-tel-input">
+                </div>
+                <div class="form-group">
+                    <label for="example-date-input" class="col-form-label">Data de Nascimento</label>
+                    <input class="form-control" type="date" name="nascimento" id="example-date-input">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputText3">Endereço</label>
+                    <input type="text" class="form-control" name="endereco" id="exampleInputText3" aria-describedby="textHelp">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Senha</label>
+                    <input type="password" class="form-control" name="senha" id="exampleInputPassword1">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword2">Confirmar Senha</label>
+                    <input type="password" class="form-control" name="confsenha" id="exampleInputPassword2">
+                </div>
+                <button type="submit" class="btn btn-primary mt-4 pr-4 pl-4">Submit</button>
+            </form>
         </div>
     </div>
-    <!-- login area end -->
+</div>

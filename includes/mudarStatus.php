@@ -1,6 +1,6 @@
 <?php 
 
-require_once 'app/Entity/Hospedagem.php';
+require_once __DIR__ . '/../app/Db/Database.php';
 use app\Db\Database;
 
 // if(isset($_GET['funcao'])){
@@ -11,5 +11,13 @@ use app\Db\Database;
 if(isset($_GET['check_in'])){
     $updateSts = new Database('hospedagem');
     $updateSts->updateStatusHgem("'Em andamento'", $_GET['id']);
-    var_dump($_GET['id'], $_GET['check_in']);
+
+    header('Location: ../gerHospedagens.php');
+}
+
+if(isset($_GET['check_out'])){
+    $updateSts = new Database('hospedagem');
+    $updateSts->updateStatusHgem("'Concluída'", $_GET['id']);
+
+    header('Location: ../gerHospedagens.php');
 }

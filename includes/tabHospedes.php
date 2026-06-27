@@ -34,6 +34,7 @@ $hospedes = Hospede::getHospedes();
                 <div class="row">
                     <!-- basic table start -->
                     <div class="col-lg-6 mt-5" style="max-width: 100%; flex: 0 0 100%">
+                        <a href="cadastroHospede.php" class="btn btn-primary" style="margin-bottom: 30px;">Cadastrar novo hóspede</a>
                         <div class="card">
                             <div class="card-body">
                                 <h3 class="header-title">Hóspedes</h3>

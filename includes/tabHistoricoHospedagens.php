@@ -1,9 +1,4 @@
-<?php
-require_once 'app/Entity/HistoricosHospedagens.php';
-use app\Entity\HistoricosHospedagens;
-$HistoricosHospedagens = HistoricosHospedagens::getHistoricoHgens();
-$obHH = new HistoricosHospedagens;
-?>
+
 
 <!-- page title area start -->
             <div class="page-title-area">

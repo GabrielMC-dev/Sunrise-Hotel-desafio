@@ -4,19 +4,6 @@ require_once 'app/Entity/Hospedagem.php';
 
 use App\Db\Database;
 use app\Entity\Hospedagem;
-
-if(isset($_GET['check_in'])){
-    $updateSts = new Database('hospedagem');
-    $updateSts->updateStatusHgem("'Em andamento'", $_GET['id']);
-    var_dump($_GET['id'], $_GET['check_in']);
-}
-
-if(isset($_GET['check_in'])){
-
-}
-
-
-
 ?>
 
 
@@ -51,6 +38,7 @@ if(isset($_GET['check_in'])){
                 <div class="row">
                     <!-- basic table start -->
                     <div class="col-lg-6 mt-5" style="max-width: 100%; flex: 0 0 100%">
+                        <a href="cadastroHospedagem.php" class="btn btn-primary" style="margin-bottom: 30px;">Cadastrar nova hospedagem</a>
                         <div class="card">
                             <div class="card-body">
                                 <h3 class="header-title">Hospedagens</h3>
@@ -122,8 +110,8 @@ if(isset($_GET['check_in'])){
                                                     // }
                                                     $botao = '';
                                                     switch($hospedagem->status) {
-                                                        case 'Confirmada': $botao = '<a href="includes/mudarStatus.php?id='.$hospedagem->id.'&check_in="" class="btn btn-primary">Check in</a>'; break;
-                                                        case 'Em andamento': $botao = '<includes/mudarStatus.php?id='.$hospedagem->id.'&check_out="" class="btn btn-primary">Check out</a>'; break;
+                                                        case 'Confirmada': $botao = '<a href="includes/mudarStatus.php?id='.$hospedagem->id.'&check_in="in" class="btn btn-primary">Check in</a>'; break;
+                                                        case 'Em andamento': $botao = '<a href="    includes/mudarStatus.php?id='.$hospedagem->id.'&check_out="out" class="btn btn-info">Check out</a>'; break;
                                                         case 'Cancelada': $botao = '<b style="color: red;">Cancelada</b>'; break;
                                                         case 'Concluída': $botao = '<b style="color: green;">Concluída</b>'; break;
                                                     }

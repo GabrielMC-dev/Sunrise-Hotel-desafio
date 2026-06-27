@@ -1,6 +1,5 @@
 <?php
 
-require_once 'app/Entity/HistoricosHospedagens.php';
 
 
 
