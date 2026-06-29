@@ -24,7 +24,7 @@
                       <label for="example-number-input" class="col-form-label">Quantidade de Quartos</label>
                       <input class="form-control" type="number" name="qtdQuarto" id="example-number-input">
                   </div>
-                <button type="submit" class="btn btn-primary mt-4 pr-4 pl-4">Submit</button>
+                <button type="submit" class="btn btn-primary mt-4 pr-4 pl-4">Cadastrar</button>
             </form>
         </div>
     </div>

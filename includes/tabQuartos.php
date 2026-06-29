@@ -49,6 +49,7 @@ $quartos = Quarto::getQuarto();
                                                     <th scope="col">Valor Diária</th>
                                                     <th scope="col">Capacidade Máxima</th>
                                                     <th scope="col">Status</th>
+                                                    <th scope="col"></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -63,6 +64,7 @@ $quartos = Quarto::getQuarto();
                                                                             <td>'.$quarto->valor_dia.'</td>
                                                                             <td>'.$quarto->capac_max.'</td>
                                                                             <td>'.$quarto->status.'</td>
+                                                                            <td><a href="cadastroML.php?idQuarto='.$quarto->id.'" class="btn btn-primary">Nova Manutenção/Limpeza</a></td>
                                                                         </tr>';
                                                     }
 

@@ -75,7 +75,11 @@ public function updateVTHgem($vt, $id) {
 
 public function updateStatusHgem($status, $id) {
     $query = 'UPDATE '.$this->table.' SET status = '.$status.' WHERE hospedagem.id = '.$id;
-    //var_dump($query); exit;
+    return $this->execute($query);
+}
+
+public function updateStsQuar($id) {
+    $query = 'UPDATE '.$this->table.' SET status = "Ocupado" WHERE quarto.id = '.$id;
     return $this->execute($query);
 }
 
@@ -87,30 +91,6 @@ public function select($where, $order=null, $limit=null, $fields='*') {
     $query = 'SELECT '.$fields.' FROM '.$this->table.' '.$where.' '.$order.' '.$limit;
     return $this->execute($query);
 }
-
-// public function selectJoinHgemHe($where=null, $order=null, $limit=null, $join='hospede he', $onHgemHe=null, $fields='hospedagem.id, 
-//                                                                                                                      he.nome, 
-//                                                                                                                      hospedagem.data, 
-//                                                                                                                      hospedagem.entrada_prevista, 
-//                                                                                                                      hospedagem.saida_prevista, 
-//                                                                                                                      hospedagem.check_in, 
-//                                                                                                                      hospedagem.check_out, 
-//                                                                                                                      hospedagem.qtd_hospede, 
-//                                                                                                                      hospedagem.qtd_quarto, 
-//                                                                                                                      hospedagem.valor_tot, 
-//                                                                                                                      hospedagem.status')
-// {
-//     $join = 'JOIN '.$join;
-//     $onHgemHe = 'ON hospedagem.id_hospede = he.id';
-//     $where = strlen($where) ? 'WHERE '.$where : '';
-//     $order = strlen($order) ? 'ORDER BY '.$order : '';
-//     $limit = strlen($limit) ? 'LIMIT '.$limit : '';
-
-//     $query = 'SELECT '.$fields.' FROM '.$this->table.' '.$join.' '.$onHgemHe.' '.$where.' '.$order.' '.$limit;
-    
-//     return $this->execute($query);
-
-// }
 
 public function selectJoinHgemHeQuar($where, $order=null, $limit=null, $join=null, $fields=null)
 {

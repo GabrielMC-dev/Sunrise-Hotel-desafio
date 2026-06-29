@@ -2,7 +2,7 @@
 
 use App\Db\Database;
 use app\Entity\Manut_limpQuar;
-$HgemQuarServs = Manut_limpQuar::Manut_limpQuar();
+$ManutLimps = Manut_limpQuar::Manut_limpQuar();
 ?>
 
 <!-- page title area start -->
@@ -57,14 +57,14 @@ $HgemQuarServs = Manut_limpQuar::Manut_limpQuar();
                                                 <tbody>
                                                     <?php
                                                         $resultados = '';
-                                                        foreach($HgemQuarServs as $HgemQuarServ) {
+                                                        foreach($ManutLimps as $ManutLimp) {
                                                             $resultados .= '<tr>
-                                                                                <td>'.$HgemQuarServ->id.'</td>
-                                                                                <td>'.$HgemQuarServ->numero.'</td>
-                                                                                <td>'.$HgemQuarServ->data.'</td>
-                                                                                <td>'.$HgemQuarServ->tipo.'</td>
-                                                                                <td>'.$HgemQuarServ->responsavel.'</td>
-                                                                                <td>'.$HgemQuarServ->status.'</td>
+                                                                                <td>'.$ManutLimp->id.'</td>
+                                                                                <td>'.$ManutLimp->numero.'</td>
+                                                                                <td>'.$ManutLimp->data.'</td>
+                                                                                <td>'.$ManutLimp->tipo.'</td>
+                                                                                <td>'.$ManutLimp->responsavel.'</td>
+                                                                                <td>'.$ManutLimp->status.'</td>
                                                                                 <td><buttom class="btn btn-success" name="concluirLM" type="submit">Concluir</td>
                                                                             </tr>';
                                                         }

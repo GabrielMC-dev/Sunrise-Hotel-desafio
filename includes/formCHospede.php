@@ -36,7 +36,7 @@
                     <label for="exampleInputPassword2">Confirmar Senha</label>
                     <input type="password" class="form-control" name="confsenha" id="exampleInputPassword2">
                 </div>
-                <button type="submit" class="btn btn-primary mt-4 pr-4 pl-4">Submit</button>
+                <button type="submit" class="btn btn-primary mt-4 pr-4 pl-4">Cadastrar</button>
             </form>
         </div>
     </div>

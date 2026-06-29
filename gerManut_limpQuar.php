@@ -1,8 +1,6 @@
 <?php
 
 require_once 'app/Entity/Manut_limpQuar.php';
-use \app\Entity\Manut_limpQuar;
-
 
 
 
