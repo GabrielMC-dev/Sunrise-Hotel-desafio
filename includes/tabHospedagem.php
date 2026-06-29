@@ -105,9 +105,6 @@ use app\Entity\Hospedagem;
                                                         $obHospedagem->entrada_prevista = $hospedagem->entrada_prevista;
                                                         $obHospedagem->saida_prevista = $hospedagem->saida_prevista;
 
-                                                    // if($hospedagem->saida_prevista < date('Y-m-d H:i:s') /*and $cancelar=false*/) {
-                                                    //     $hospedagem->status = 'Concluída';
-                                                    // }
                                                     $botao = '';
                                                     switch($hospedagem->status) {
                                                         case 'Confirmada': $botao = '<a href="includes/mudarStatus.php?id='.$hospedagem->id.'&check_in="in" class="btn btn-primary">Check in</a>'; break;

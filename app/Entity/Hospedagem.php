@@ -87,12 +87,9 @@ public function valorTotalHgem($idHgem) {
     
     $obHospedagem = new Hospedagem;
     $hgens = $obHospedagem->valorDiaria('hospedagem_quarto.id_hospedagem ='.$id);
-    //var_dump($hgens[0]->valor_dia);exit;
-    //var_dump($hgens[0]->valor_dia);exit;
-    $valor_dia = 0;
-    $i=0;
+    $valorHgens_tot = 0;
     foreach($hgens as $hgem) {
-        $valor_tot = $valor_dia += $hgem->valor_dia;
+        $valorHgens_tot += $hgem->valor_dia;
     }
     $obHospedagem->getHospedagem($id);
     $qtd_hospede = $obHospedagem->getHospedagem($id)->qtd_hospede;
@@ -102,13 +99,15 @@ public function valorTotalHgem($idHgem) {
     $obHQS->getHgemQuarServ($id);
     $valorServ_tot = $obHQS->getHgemQuarServ($id)->valor_tot;
     
-    $this->valor_tot = $valor_tot * $qtd_hospede * $total_dias + $valorServ_tot;
+    $this->valor_tot = $valorHgens_tot * $qtd_hospede * $total_dias + $valorServ_tot;
     $update = new Database('hospedagem');
     $update->updateVTHgem($this->valor_tot, $id);
-    $var = $this->getHospedagens('hospedagem.id = '.$id, $order=null, $limit=1, $join1=null, $join2=null, $join3=null, $fields='hospedagem.valor_tot');
+    $var = $this->getHospedagens('hospedagem.id = '.$id, $order=null, $limit=null, $join1=null, $join2=null, $join3=null, $fields='hospedagem.valor_tot');
     $this->valor_tot = $var[0]->valor_tot;
     
     return $this->valor_tot;
 }
+
+//reajeitar valor total em questão à tabela de hospedagem_quarto, para que o cálculo passe por ela para saber qual quarto que é para ter noção do preço de cada hospedagem
 
 }

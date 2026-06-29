@@ -2,8 +2,8 @@
     <a href="javascript:history.back()" class="btn btn-danger" style="margin-bottom: 30px;">Voltar</a>
     <div class="card">
         <div class="card-body">
-            <h4 class="header-title">Cadastro de Hóspede</h4>
-            <form action="" method="POST">
+            <h4 class="header-title">Cadastro de Hospedagem</h4>
+            <form action="cadastroHospedagem.php" method="POST">
                 <div class="form-group">
                     <label for="exampleInputText1">ID do Responsável</label>
                     <input type="text" class="form-control" name="idResp" id="exampleInputText1" aria-describedby="textHelp">
