@@ -90,8 +90,6 @@ public function valorTotalHgem($idHgem) {
     $valorHgens_tot = 0;
     foreach($hgens as $hgem) {
         $valorHgens_tot += $hgem->valor_dia;
-        $updateStsQuar = new Database('quarto');
-        $updateStsQuar->updateStsQuar($hgem->id_quarto);
     }
 
     $obHospedagem->getHospedagem($id);

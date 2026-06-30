@@ -99,6 +99,9 @@ use app\Entity\Hospedagem;
                                                     $hospedagens = Hospedagem::getHospedagens($where);
                                                     $obHospedagem = new Hospedagem;
 
+                                                    $obHgemQuar = new HospedagemQuarto;
+                                                    
+
                                                     $resultados = '';
                                                     foreach($hospedagens as $hospedagem) {
 
@@ -107,7 +110,7 @@ use app\Entity\Hospedagem;
 
                                                     $botao = '';
                                                     switch($hospedagem->status) {
-                                                        case 'Confirmada': $botao = '<a href="includes/mudarStatus.php?id='.$hospedagem->id.'&check_in="in" class="btn btn-primary">Check in</a>'; break;
+                                                        case 'Confirmada': $botao = '<a href="includes/mudarStatus.php?id='.$hospedagem->id.'&idQuarti="'..'" class="btn btn-primary">Check in</a>'; break;
                                                         case 'Em andamento': $botao = '<a href="    includes/mudarStatus.php?id='.$hospedagem->id.'&check_out="out" class="btn btn-info">Check out</a>'; break;
                                                         case 'Cancelada': $botao = '<b style="color: red;">Cancelada</b>'; break;
                                                         case 'Concluída': $botao = '<b style="color: green;">Concluída</b>'; break;

@@ -35,6 +35,7 @@ $obHQS = new HgemQuarServ;
                 <div class="row">
                     <!-- basic table start -->
                     <div class="col-lg-6 mt-5" style="max-width: 100%; flex: 0 0 100%">
+                        <a href="cadastroServ.php" class="btn btn-primary" style="margin-bottom: 30px;">Cadastrar novo Serviço</a>
                         <div class="card">
                             <div class="card-body">
                                 <h3 class="header-title">Serviços e Quartos por Hospedagem</h3>

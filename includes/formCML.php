@@ -5,6 +5,7 @@
             <h4 class="header-title">Cadastro de Manutenção/Limpeza</h4>
 
             <form action="cadastroML.php" method="POST">
+               <input type="hidden" name="idQuarto" value="<?= $_GET['idQuarto'] ?>">
                <div class="form-group">
                   <label for="example-date-input" class="col-form-label">Tipo</label>
                   <select name="tipoML" id="tipoML">

@@ -78,8 +78,8 @@ public function updateStatusHgem($status, $id) {
     return $this->execute($query);
 }
 
-public function updateStsQuar($id) {
-    $query = 'UPDATE '.$this->table.' SET status = "Ocupado" WHERE quarto.id = '.$id;
+public function updateStsQuar($sts ,$idQuarto) {
+    $query = 'UPDATE '.$this->table.' SET status = '.$sts.' WHERE quarto.id = '.$idQuarto;
     return $this->execute($query);
 }
 
