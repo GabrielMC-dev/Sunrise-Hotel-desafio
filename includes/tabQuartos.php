@@ -1,6 +1,6 @@
 <?php 
 use \app\Entity\Quarto;
-$quartos = Quarto::getQuarto();
+$quartos = Quarto::getQuarto(null);
 ?>
 
 <!-- page title area start -->

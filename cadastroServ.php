@@ -1,20 +1,20 @@
 <?php
-   
-   require_once 'app/Entity/Manut_limpQuar.php';
-   use app\Entity\Manut_limpQuar;
+require_once 'app/Entity/Servico.php';
 
-   $obML = new Manut_limpQuar;
-   if(isset($_POST['tipoML'], $_POST['dataHora'], $_POST['responsavel'])) {
-   $obML->id_quarto = $_POST['idQuarto'];
-   $obML->tipo = $_POST['tipoML'];
-   $obML->data_h = $_POST['dataHora'];
-   $obML->responsavel = $_POST['responsavel'];
-   $obML->status = 'Agendada';
-   $obML->cadastrarML();
+require_once 'app/Entity/HgemQuarServ.php';
+use app\Entity\HgemQuarServ;
+
+   $obHQS = new HgemQuarServ;
+   if(isset($_POST['idHospedagem'], $_POST['idQuarto'], $_POST['idQuarto'], $_POST['idServico'], $_POST['dataHora'], $_POST['qtd'])) {
+   $obHQS->id = $_POST['idHospedagem'];
+   $obHQS->numero = $_POST['idQuarto'];
+   $obHQS->servico = $_POST['idServico'];
+   $obHQS->data_h = $_POST['dataHora'];
+   $obHQS->qtd = $_POST['qtd'];
+   $obHQS->cadastrarHgemQuarServ();
 
    header('Location: gerQuartos.php'); exit;
    }
-   var_dump($obML->id_quarto);
 
                 
     include __DIR__.'/includes/header.php';

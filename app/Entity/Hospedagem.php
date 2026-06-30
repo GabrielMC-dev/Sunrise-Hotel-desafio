@@ -30,9 +30,7 @@ class Hospedagem {
 
 //--------------------------------------------------------------------------//
 public function realizar_hospm() {
-    //data da hospedagem
     $this->data = date('Y-m-d');
-    //inserir hospedagem no banco
     $obDatabase = new Database('hospedagem');
     $this->id = $obDatabase->insert([
                          'id_hospede'       => $this->id_hospede,
@@ -55,9 +53,9 @@ public static function getHospedagens($where=null,$order=null,$limit=null,$join=
 }
 
 public static function getHospedagem($id) {
-    $id = (int)$id;
-    return (new Database('hospedagem'))->select('hospedagem.id='. $id)
-                                       ->fetchObject(self::class);
+        $id = (int)$id;
+        return (new Database('hospedagem'))->select('hospedagem.id='. $id)
+                                        ->fetchObject(self::class);
 }
 
 public function diasTotais($check_in, $check_out, $id) {

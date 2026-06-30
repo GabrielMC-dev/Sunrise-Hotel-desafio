@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Db;
+namespace app\Db;
 
 use \PDO;
 use \PDOException;
@@ -78,8 +78,8 @@ public function updateStatusHgem($status, $id) {
     return $this->execute($query);
 }
 
-public function updateStsQuar($sts ,$idQuarto) {
-    $query = 'UPDATE '.$this->table.' SET status = '.$sts.' WHERE quarto.id = '.$idQuarto;
+public function updateStsQuar($status ,$idQuarto) {
+    $query = 'UPDATE '.$this->table.' SET status = '.$status.' WHERE quarto.id = '.$idQuarto;
     return $this->execute($query);
 }
 
@@ -116,7 +116,7 @@ public function selectJoinHgemHeQuar($where, $order=null, $limit=null, $join=nul
 
 
 
-public function selectJoinQuarCatquar($where=null, $order=null, $limit=null, $join=null, $fields=null)
+public function selectJoinQuarCatquar($where, $order=null, $limit=null, $join=null, $fields=null)
 {
     if (empty($fields)) {
         $fields = 'quarto.id, quarto.numero, quarto.andar, categoria_quarto.categoria, categoria_quarto.valor_dia, categoria_quarto.capac_max, quarto.status';
@@ -148,7 +148,7 @@ public function selectJoinHgem_Quar_Serv($where, $order, $limit, $join1, $join2,
 {
 
     if (empty($fields)) {
-        $fields = 'quarto_servico.id, quarto.numero, servico.servico, quarto_servico.data_h, quarto_servico.qtd, servico.valor_uni, quarto_servico.valor_tot';
+        $fields = 'quarto_servico.id, quarto_servico.id_hospedagem, quarto.numero, servico.servico, quarto_servico.data_h, quarto_servico.qtd, servico.valor_uni, quarto_servico.valor_tot';
     }
 
     if (empty($join1)) {

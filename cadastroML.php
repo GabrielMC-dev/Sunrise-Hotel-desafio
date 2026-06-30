@@ -14,7 +14,6 @@
 
    header('Location: gerQuartos.php'); exit;
    }
-   var_dump($obML->id_quarto);
 
                 
     include __DIR__.'/includes/header.php';

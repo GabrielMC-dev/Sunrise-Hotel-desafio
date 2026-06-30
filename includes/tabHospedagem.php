@@ -77,6 +77,7 @@ use app\Entity\Hospedagem;
                                                     <th scope="col">Status</th>
                                                     <th scope="col"></th>
                                                     <th scope="col"></th>
+                                                    <th scope="col"></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -99,9 +100,6 @@ use app\Entity\Hospedagem;
                                                     $hospedagens = Hospedagem::getHospedagens($where);
                                                     $obHospedagem = new Hospedagem;
 
-                                                    $obHgemQuar = new HospedagemQuarto;
-                                                    
-
                                                     $resultados = '';
                                                     foreach($hospedagens as $hospedagem) {
 
@@ -110,8 +108,8 @@ use app\Entity\Hospedagem;
 
                                                     $botao = '';
                                                     switch($hospedagem->status) {
-                                                        case 'Confirmada': $botao = '<a href="includes/mudarStatus.php?id='.$hospedagem->id.'&idQuarti="'..'" class="btn btn-primary">Check in</a>'; break;
-                                                        case 'Em andamento': $botao = '<a href="    includes/mudarStatus.php?id='.$hospedagem->id.'&check_out="out" class="btn btn-info">Check out</a>'; break;
+                                                        case 'Confirmada': $botao = '<a href="includes/mudarStatus.php?id='.$hospedagem->id.'" class="btn btn-primary">Check in</a>'; break;
+                                                        case 'Em andamento': $botao = '<a href="    includes/mudarStatus.php?id='.$hospedagem->id.'" class="btn btn-info">Check out</a>'; break;
                                                         case 'Cancelada': $botao = '<b style="color: red;">Cancelada</b>'; break;
                                                         case 'Concluída': $botao = '<b style="color: green;">Concluída</b>'; break;
                                                     }
@@ -125,6 +123,7 @@ use app\Entity\Hospedagem;
                                                                             <td>'.$hospedagem->status.'</td>
                                                                             <td><a href="descricaoHospedagens.php?id='.$hospedagem->id.'" class="btn btn-success">Detalhes</a></td>
                                                                             <td>'.$botao.'</td>
+                                                                            <td><a href="cadastroServ.php?id='.$hospedagem->id.'" class="btn btn-warning">Novo Serviço</td>
                                                                         </tr>';
                                                     }
 

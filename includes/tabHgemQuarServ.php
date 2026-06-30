@@ -35,7 +35,6 @@ $obHQS = new HgemQuarServ;
                 <div class="row">
                     <!-- basic table start -->
                     <div class="col-lg-6 mt-5" style="max-width: 100%; flex: 0 0 100%">
-                        <a href="cadastroServ.php" class="btn btn-primary" style="margin-bottom: 30px;">Cadastrar novo Serviço</a>
                         <div class="card">
                             <div class="card-body">
                                 <h3 class="header-title">Serviços e Quartos por Hospedagem</h3>
@@ -44,7 +43,7 @@ $obHQS = new HgemQuarServ;
                                         <table class="table text-center">
                                             <thead class="text-uppercase">
                                                 <tr>
-                                                    <th scope="col">ID</th>
+                                                    <th scope="col">ID Hospedagem</th>
                                                     <th scope="col">Número Quarto</th>
                                                     <th scope="col">Servico</th>
                                                     <th scope="col">Data e Hora</th>
@@ -61,7 +60,7 @@ $obHQS = new HgemQuarServ;
                                                         $obHQS->valor_uni = $HgemQuarServ->valor_uni;
 
                                                         $resultados .= '<tr>
-                                                                            <td>'.$HgemQuarServ->id.'</td>
+                                                                            <td>'.$HgemQuarServ->id_hospedagem.'</td>
                                                                             <td>'.$HgemQuarServ->numero.'</td>
                                                                             <td>'.$HgemQuarServ->servico.'</td>
                                                                             <td>'.$HgemQuarServ->data_h.'</td>

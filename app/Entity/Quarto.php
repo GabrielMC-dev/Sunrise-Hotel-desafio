@@ -16,9 +16,9 @@ class Quarto {
     private $id_categoria;
     private $status;
 //--------------------------------------------------------------------------//
-public static function getQuarto($where=null,$order=null,$limit=null,$join=null, $on=null, $fields=null) {
+public static function getQuarto($where,$order=null,$limit=null,$join=null, $on=null, $fields=null) {
     return (new Database('quarto'))->selectJoinQuarCatquar($where,$order,$limit,$join,$on,$fields)
-                                       ->fetchAll(PDO::FETCH_OBJ);
+                                   ->fetchAll(PDO::FETCH_OBJ);
 }
 
 }

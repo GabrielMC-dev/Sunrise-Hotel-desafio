@@ -9,6 +9,7 @@ use \PDO;
 
 class HgemQuarServ {
     public $id;
+    public $id_hospedagem;
     public $numero;
     public $servico;
     public $data_h;
@@ -16,6 +17,17 @@ class HgemQuarServ {
     public $valor_uni;
     public $valor_tot;
 //--------------------------------------------------------------------------//
+public function cadastrarHgemQuarServ() {
+    $obDatabase = new Database('quarto_servico');
+    $this->id = $obDatabase->insert([
+                         'id_hospedagem' => $this->id,
+                         'id_quarto'     => $this->numero,
+                         'id_servico'    => $this->servico,
+                         'data_h'        => $this->data_h,
+                         'qtd'           => $this->qtd
+                     ]);
+}
+
 public static function getHgemQuarServs($where=null, $order=null, $limit=null, $join1=null, $join2=null, $join3=null, $fields=null) {
     return (new Database('quarto_servico'))->selectJoinHgem_Quar_Serv($where,$order,$limit,$join1,$join2,$join3,$fields)
                                            ->fetchAll(PDO::FETCH_OBJ);
