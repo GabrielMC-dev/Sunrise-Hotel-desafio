@@ -22,12 +22,8 @@ use app\Entity\Hospedagem;
                         </div>
                     </div>
                     <div class="col-sm-6 clearfix">
-                        <div class="user-profile pull-right">
-                            <img class="avatar user-thumb" src="assets/images/author/avatar.png" alt="avatar">
-                            <h4 class="user-name dropdown-toggle" data-toggle="dropdown">Kumkum Rai <i class="fa fa-angle-down"></i></h4>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="#">Log Out</a>
-                            </div>
+                        <div class="user-profile pull-right">                          
+                            <a class="dropdown-item" href="#">Log Out</a>
                         </div>
                     </div>
                 </div>
@@ -108,8 +104,8 @@ use app\Entity\Hospedagem;
 
                                                     $botao = '';
                                                     switch($hospedagem->status) {
-                                                        case 'Confirmada': $botao = '<a href="includes/mudarStatus.php?id='.$hospedagem->id.'" class="btn btn-primary">Check in</a>'; break;
-                                                        case 'Em andamento': $botao = '<a href="    includes/mudarStatus.php?id='.$hospedagem->id.'" class="btn btn-info">Check out</a>'; break;
+                                                        case 'Confirmada': $botao = '<a href="includes/mudarStatus.php?id='.$hospedagem->id.'&checkIn=1" class="btn btn-primary">Check in</a>'; break;
+                                                        case 'Em andamento': $botao = '<a href="    includes/mudarStatus.php?id='.$hospedagem->id.'&checkOut=1" class="btn btn-info">Check out</a>'; break;
                                                         case 'Cancelada': $botao = '<b style="color: red;">Cancelada</b>'; break;
                                                         case 'Concluída': $botao = '<b style="color: green;">Concluída</b>'; break;
                                                     }

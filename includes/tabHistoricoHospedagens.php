@@ -14,13 +14,7 @@
                     </div>
                     <div class="col-sm-6 clearfix">
                         <div class="user-profile pull-right">
-                            <img class="avatar user-thumb" src="assets/images/author/avatar.png" alt="avatar">
-                            <h4 class="user-name dropdown-toggle" data-toggle="dropdown"> <i class="fa fa-angle-down"></i></h4>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="#">Message</a>
-                                <a class="dropdown-item" href="#">Settings</a>
-                                <a class="dropdown-item" href="#">Log Out</a>
-                            </div>
+                            <a class="dropdown-item" href="#">Log Out</a>
                         </div>
                     </div>
                 </div>
@@ -70,8 +64,8 @@
 
                                                     $botao = '';
                                                     switch($hospedagem->status) {
-                                                        case 'Confirmada': $botao = '<a href="#" class="btn btn-primary" onclick="checkIn()">Check in</a>'; break;
-                                                        case 'Em andamento': $botao = '<a href="#" class="btn btn-info" onclick="checkOut()">Check out</a>'; break;
+                                                        case 'Confirmada': $botao = '<a href="includes/mudarStatus.php?id='.$hospedagem->id.'" class="btn btn-primary">Check in</a>'; break;
+                                                        case 'Em andamento': $botao = '<a href="    includes/mudarStatus.php?id='.$hospedagem->id.'" class="btn btn-info">Check out</a>'; break;
                                                         case 'Cancelada': $botao = '<b style="color: red;">Cancelada</b>'; break;
                                                         case 'Concluída': $botao = '<b style="color: green;">Concluída</b>'; break;
                                                     }

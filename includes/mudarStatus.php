@@ -11,7 +11,12 @@ use app\Entity\HgemQuar;
 //     exit();
 // }
 
-if(isset($_GET['id'])){
+date_default_timezone_set('America/Sao_Paulo');
+$dataHora = new DateTime();
+$dh = $dataHora->format('Y-m-d H:i:s');
+
+
+if(isset($_GET['checkIn'])){
     $updateSts = new Database('hospedagem');
     $updateSts->updateStatusHgem("'Em andamento'", $_GET['id']);
     
@@ -22,10 +27,13 @@ if(isset($_GET['id'])){
         $updateStsQuar->updateStsQuar("'Ocupado'", $hq->id_quarto);
     }
 
+    $updateCheck_in = new Database('hospedagem');
+    $updateCheck_in->updateCheck_io('check_in', $dh, $_GET['id']);
+
     header('Location: ../gerHospedagens.php');
 }
 
-if(isset($_GET['id'])){
+if(isset($_GET['checkOut'])){
     $updateSts = new Database('hospedagem');
     $updateSts->updateStatusHgem("'Concluída'", $_GET['id']);
 
@@ -35,6 +43,9 @@ if(isset($_GET['id'])){
     foreach($hqs as $hq) {
         $updateStsQuar->updateStsQuar("'Disponível'", $hq->id_quarto);
     }
+
+    $updateCheck_out = new Database('hospedagem');
+    $updateCheck_out->updateCheck_io('check_out', $dh, $_GET['id']);
 
     header('Location: ../gerHospedagens.php');
 }

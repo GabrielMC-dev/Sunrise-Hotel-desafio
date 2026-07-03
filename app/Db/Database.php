@@ -83,6 +83,11 @@ public function updateStsQuar($status ,$idQuarto) {
     return $this->execute($query);
 }
 
+public function updateCheck_io($check, $dataHora ,$idHgem) {
+    $query = 'UPDATE '.$this->table.' SET '.$check.' = "'.$dataHora.'" WHERE hospedagem.id = '.$idHgem;
+    return $this->execute($query);
+}
+
 public function select($where, $order=null, $limit=null, $fields='*') {
     $where = strlen($where) ? 'WHERE '.$where : '';
     $order = strlen($order) ? 'ORDER BY '.$order : '';
@@ -246,6 +251,11 @@ public function selectServMC($where=null, $order='SUM(quarto_servico.qtd) desc',
     
     $query = 'SELECT ' . $fields . ' FROM ' . $this->table . $joinClause . $onClause . $groupClause . $whereClause . $orderClause . $limitClause;
     
+    return $this->execute($query);
+}
+
+public function selectSumTaxa() {
+    $query = "SELECT SUM(qtd_hospede) FROM ".$this->table." WHERE STATUS = 'Em andamento'";
     return $this->execute($query);
 }
 

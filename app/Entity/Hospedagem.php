@@ -65,7 +65,7 @@ public function diasTotais($check_in, $check_out, $id) {
     $diferenca = $fim - $inicio;
     $diasFracionados = $diferenca / 86400;
 
-    $diasArredondados = ceil($diasFracionados); 
+    $diasArredondados = floor($diasFracionados);
 
     $this->total_dias = $diasArredondados + 1;
 
@@ -112,6 +112,11 @@ public function valorTotalHgem($idHgem) {
     $this->valor_tot = $var[0]->valor_tot;
     
     return $this->valor_tot;
+}
+
+function getSumTaxa() {
+    return (new Database('hospedagem'))->selectSumTaxa()
+                                       ->fetchAll(PDO::FETCH_OBJ);
 }
 
 //falta o formulário de escolher o quarto do hóspede após o formulário de hospedagem
