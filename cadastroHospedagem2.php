@@ -1,7 +1,7 @@
 <?php
 require_once 'app/Entity/Hospedagem.php';
 use app\Entity\Hospedagem;
-$obHospedagem = new Hospedagem;
+$obHospedagem2 = new HospedagemQuarto;
 
 if(isset($_POST['idResp'], $_POST['ePrevista'], $_POST['sPrevista'], $_POST['qtdHospede'], $_POST['qtdQuarto'])) {
       $obHospedagem->id_hospede = $_POST['idResp'];
@@ -13,9 +13,9 @@ if(isset($_POST['idResp'], $_POST['ePrevista'], $_POST['sPrevista'], $_POST['qtd
       $obHospedagem->status = 'Confirmada';
       $obHospedagem->realizar_hospm();
 
-      header('Location: cadastroHospedagem2.php'); exit;
+      header('Location: gerHospedagens.php'); exit;
       }
 
    include __DIR__.'/includes/header.php';
-   include __DIR__.'/includes/formCHospedagem.php';
+   include __DIR__.'/includes/formCHospedagem2.php';
    include __DIR__.'/includes/footer.php';

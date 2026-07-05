@@ -113,7 +113,7 @@ use app\Entity\Hospedagem;
                             <div class="card-body">
                                 <div class="media mb-1">
                                     <div class="media-body">
-                                        <h4 class="mb-3">Quantos em Manutenção/Indisponíveis</h4>
+                                        <h4 class="mb-3">Quartos em Manutenção/Indisponíveis</h4>
                                         <div style="display: flex;">
                                             <a href="gerQuartosManutInd.php" class="btn btn-success">Ver Mais</a>
                                         </div>
