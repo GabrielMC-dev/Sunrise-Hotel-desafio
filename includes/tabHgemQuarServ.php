@@ -18,7 +18,7 @@ $obHQS = new HgemQuarServ;
                     </div>
                     <div class="col-sm-6 clearfix">
                         <div class="user-profile pull-right">                           
-                            <a class="dropdown-item" href="#">Log Out</a>
+                            <a class="dropdown-item" href="login.php">Log Out</a>
                         </div>
                     </div>
                 </div>

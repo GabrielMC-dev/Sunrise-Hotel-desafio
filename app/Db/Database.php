@@ -88,6 +88,11 @@ public function updateCheck_io($check, $dataHora ,$idHgem) {
     return $this->execute($query);
 }
 
+public function updateStatusML($status, $idML) {
+    $query = 'UPDATE '.$this->table.' SET status = "'.$status.'" WHERE manut_limp.id = '.$idML;
+    return $this->execute($query);
+}
+
 public function select($where, $order=null, $limit=null, $fields='*') {
     $where = strlen($where) ? 'WHERE '.$where : '';
     $order = strlen($order) ? 'ORDER BY '.$order : '';
@@ -256,6 +261,16 @@ public function selectServMC($where=null, $order='SUM(quarto_servico.qtd) desc',
 
 public function selectSumTaxa() {
     $query = "SELECT SUM(qtd_hospede) FROM ".$this->table." WHERE STATUS = 'Em andamento'";
+    return $this->execute($query);
+}
+
+public function selectUltimaHospedagem() {
+    $query = 'SELECT id FROM '.$this->table.' ORDER BY id desc LIMIT 1';
+    return $this->execute($query);
+}
+
+public function selectQuarMRes($fields = 'q.numero, count(*)') {
+    $query = 'SELECT '.$fields.' FROM '.$this->table.' JOIN quarto q ON hospedagem_quarto.id_quarto = q.id GROUP BY hospedagem_quarto.id_quarto ORDER BY count(*) desc';
     return $this->execute($query);
 }
 

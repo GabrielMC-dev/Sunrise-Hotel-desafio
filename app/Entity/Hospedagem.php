@@ -119,6 +119,9 @@ function getSumTaxa() {
                                        ->fetchAll(PDO::FETCH_OBJ);
 }
 
-//falta o formulário de escolher o quarto do hóspede após o formulário de hospedagem
+public function getUltimaHospedagem() {
+    return (new Database('hospedagem'))->selectUltimaHospedagem()
+                                       ->fetchAll(PDO::FETCH_OBJ);
+}
 
 }

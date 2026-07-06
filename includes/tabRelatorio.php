@@ -29,13 +29,13 @@ use app\Entity\Hospedagem;
                     </div>
                     <div class="col-sm-6 clearfix">
                         <div class="user-profile pull-right">
-                            <a class="dropdown-item" href="#">Log Out</a>
+                            <a class="dropdown-item" href="login.php">Log Out</a>
                         </div>
                     </div>
                 </div>
             </div>
             <!-- page title area end -->
-        
+        <a href="javascript:history.back()" class="btn btn-danger">Voltar</a>
             <div class="main-content-inner">
                 <div class="row">
                     <div class="col-lg-6 mt-4">

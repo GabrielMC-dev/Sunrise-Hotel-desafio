@@ -1,8 +1,5 @@
 <?php
 
-require_once 'app/Entity/QuartosMReservados.php';
-use app\Entity\QuartosMReservados;
-
 
 
 

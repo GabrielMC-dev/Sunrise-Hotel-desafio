@@ -19,7 +19,7 @@ $ManutLimps = Manut_limpQuar::Manut_limpQuar();
                     </div>
                     <div class="col-sm-6 clearfix">
                         <div class="user-profile pull-right">
-                            <a class="dropdown-item" href="#">Log Out</a>
+                            <a class="dropdown-item" href="login.php">Log Out</a>
                         </div>
                     </div>
                 </div>
@@ -46,12 +46,29 @@ $ManutLimps = Manut_limpQuar::Manut_limpQuar();
                                                         <th scope="col">Responsável</th>
                                                         <th scope="col">Status</th>
                                                         <th scope="col"></th>
+                                                        <th scope="col"></th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     <?php
                                                         $resultados = '';
+                                                        $botao1='';
+                                                        $botao2='';
                                                         foreach($ManutLimps as $ManutLimp) {
+                                                            switch($ManutLimp->status) {
+                                                                case 'Agendada': $botao1 = '<a href="includes/mudarML.php?concluirML=1&idML='.$ManutLimp->id.'" class="btn btn-success" name="concluirML">Concluir</a>'; break;
+                                                                case 'Concluída': $botao1 = '<p style="color: green;">Concluída</p>'; break;
+                                                                case 'Cancelada': $botao1 = '<p style="color: red;">Cancelada</p>'; break;
+                                                            }
+                                                            if($ManutLimp->status == 'Agendada') {
+                                                                $botao2 = '<a href="includes/mudarML.php?cancelarML=1&idML='.$ManutLimp->id.'" class="btn btn-danger" name="cancelarML">Cancelar</a>';
+                                                            }
+                                                            elseif($ManutLimp->status == 'Concluída') {
+                                                                $botao2 = '<small style="color: green">Impossível cancelar</small>';
+                                                            }
+                                                            else {
+                                                                $botao2 = '<small style="color: red">Impossível cancelar</small>';
+                                                            }
                                                             $resultados .= '<tr>
                                                                                 <td>'.$ManutLimp->id.'</td>
                                                                                 <td>'.$ManutLimp->numero.'</td>
@@ -59,7 +76,8 @@ $ManutLimps = Manut_limpQuar::Manut_limpQuar();
                                                                                 <td>'.$ManutLimp->tipo.'</td>
                                                                                 <td>'.$ManutLimp->responsavel.'</td>
                                                                                 <td>'.$ManutLimp->status.'</td>
-                                                                                <td><buttom class="btn btn-success" name="concluirLM" type="submit">Concluir</td>
+                                                                                <td>'.$botao1.'</td>
+                                                                                <td>'.$botao2.'</td>
                                                                             </tr>';
                                                         }
                                                         echo $resultados;

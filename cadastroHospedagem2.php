@@ -1,20 +1,29 @@
 <?php
 require_once 'app/Entity/Hospedagem.php';
+require_once 'app/Entity/HgemQuar.php';
+
 use app\Entity\Hospedagem;
-$obHospedagem2 = new HospedagemQuarto;
+use app\Entity\HgemQuar;
+$obHgemQuar = new HgemQuar;
 
-if(isset($_POST['idResp'], $_POST['ePrevista'], $_POST['sPrevista'], $_POST['qtdHospede'], $_POST['qtdQuarto'])) {
-      $obHospedagem->id_hospede = $_POST['idResp'];
-      $obHospedagem->data = date('Y-m-d');
-      $obHospedagem->entrada_prevista = $_POST['ePrevista'];
-      $obHospedagem->saida_prevista = $_POST['sPrevista'];
-      $obHospedagem->qtd_hospede = $_POST['qtdHospede'];
-      $obHospedagem->qtd_quarto = $_POST['qtdQuarto'];
-      $obHospedagem->status = 'Confirmada';
-      $obHospedagem->realizar_hospm();
+$obHospedagem = new Hospedagem;
+$hgemAtuais = $obHospedagem->getUltimaHospedagem();
+foreach($hgemAtuais as $hgemAtual) {
+      print_r($hgemAtual->id);
+}
+$idHgem = $hgemAtual->id;
 
-      header('Location: gerHospedagens.php'); exit;
+if (isset($_POST['idHgem'], $_POST['idQuarto']) && is_array($_POST['idQuarto'])) {
+      foreach($_POST['idQuarto'] as $quarto) {
+          $obHgemQuar->id_hospedagem = $idHgem;  
+          $obHgemQuar->id_quarto = $quarto;
+          $obHgemQuar->cadastrarHgemQuar();
+          header('Location: gerHospedagens.php'); exit;
       }
+}
+else {
+      echo 'Falha no cadastro';
+}
 
    include __DIR__.'/includes/header.php';
    include __DIR__.'/includes/formCHospedagem2.php';

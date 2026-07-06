@@ -14,6 +14,7 @@ use \app\Entity\CatQuarto;
 
 require_once 'app/Entity/HgemQuar.php';
 use app\Entity\HgemQuar;
+use app\Entity\HospedagemQuarto;
 
 require_once 'app/Entity/Servico.php';
 use app\Entity\Servico;

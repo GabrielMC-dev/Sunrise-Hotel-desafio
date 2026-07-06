@@ -28,4 +28,9 @@ public function getHgemQuars($id) {
                                               ->fetchAll(PDO::FETCH_OBJ);
 }
 
+public function getHgemQuarss() {
+   return (new Database('hospedagem_quarto'))->selectQuarMRes()
+                                             ->fetchAll(PDO::FETCH_OBJ);
+}
+
 }
