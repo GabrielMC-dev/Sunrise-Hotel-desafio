@@ -35,8 +35,8 @@ use app\Entity\Hospedagem;
                 </div>
             </div>
             <!-- page title area end -->
-        <a href="javascript:history.back()" class="btn btn-danger">Voltar</a>
             <div class="main-content-inner">
+                <a href="javascript:history.back()" class="btn btn-danger" style="margin-top: 30px;">Voltar</a>
                 <div class="row">
                     <div class="col-lg-6 mt-4">
                         <div class="card">

@@ -35,9 +35,4 @@ public static function getHospedes($where=null,$order=null,$limit=null) {
                                     ->fetchAll(PDO::FETCH_OBJ);
 }
 
-/*
-public function getHospedes() {
-    return (new Database('hospede'))->select($where, $order, $limit);
-}
-*/
 }

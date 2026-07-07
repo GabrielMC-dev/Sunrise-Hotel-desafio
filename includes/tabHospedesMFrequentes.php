@@ -1,7 +1,8 @@
 <?php
-require_once 'app/Entity/HospedesMFrequentes.php';
-use app\Entity\HospedesMFrequentes;
-$HospedesMFs = HospedesMFrequentes::getHospedesMFrequentes();
+require_once 'app/Entity/Hospedagem.php';
+use app\Entity\Hospedagem;
+$HMF = new Hospedagem;
+$HospedesMFs = $HMF->getHospedesMF();
 ?>
 
 <!-- page title area start -->
@@ -29,6 +30,7 @@ $HospedesMFs = HospedesMFrequentes::getHospedesMFrequentes();
                 <div class="row">
                     <!-- basic table start -->
                     <div class="col-lg-6 mt-5" style="max-width: 100%; flex: 0 0 100%">
+                        <a href="javascript:history.back()" class="btn btn-danger" style="margin-bottom: 30px;">Voltar</a>
                         <div class="card">
                             <div class="card-body">
                                 <h3 class="header-title">Hóspedes mais Frequentes</h3>
@@ -37,28 +39,23 @@ $HospedesMFs = HospedesMFrequentes::getHospedesMFrequentes();
                                         <table class="table text-center">
                                             <thead class="text-uppercase">
                                                 <tr>
-                                                    <th scope="col">ID Hóspedes mais Frequentes</th>
                                                     <th scope="col">Hóspedes</th>
                                                     <th scope="col">Quantidade de Reservas</th>
-                                                    <th scope="col"></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <?php
-                                                   //  $resultados = '';
-                                                   //  foreach($HospedesMFs as $HospedeMF) {
+                                                    $resultados = '';
+                                                    foreach($HospedesMFs as $HospedeMF) {
 
-                                                   //      $resultados .= '<tr>
-                                                   //                          <td>'./* id do mês/ano */'</td>
-                                                   //                          <td>'./*mês e ano*/'</td>
-                                                   //                          <td>'./*fatura mensal*/'</td>
-                                                   //                      </tr>';
-                                                   //  }
+                                                        $resultados .= '<tr>
+                                                                            <td>'.$HospedeMF->nome.'</td>
+                                                                            <td>'.$HospedeMF->{'count(*)'}.'</td>
+                                                                        </tr>';
+                                                    }
 
-                                                   //  echo $resultados;
+                                                    echo $resultados;
                                                 ?>
-                                                    <td><a href="javascript:history.back()" class="btn btn-danger">Voltar</a></td>
-                                                </tr>
                                             </tbody>
                                             </table>
                                     </div>

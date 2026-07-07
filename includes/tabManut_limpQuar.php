@@ -2,7 +2,7 @@
 
 use App\Db\Database;
 use app\Entity\Manut_limpQuar;
-$ManutLimps = Manut_limpQuar::Manut_limpQuar();
+$ManutLimps = Manut_limpQuar::Manut_limpQuar(null,null,null);
 ?>
 
 <!-- page title area start -->
@@ -13,7 +13,7 @@ $ManutLimps = Manut_limpQuar::Manut_limpQuar();
                             <h4 class="page-title pull-left">Sunrise Hotel</h4>
                             <ul class="breadcrumbs pull-left">
                                 <li><a href="index.php">Início</a></li>
-                                <li><span>Dashboard Manutenção e Limpesa dos Quartos</span></li>
+                                <li><span>Dashboard Manutenção e Limpeza dos Quartos</span></li>
                             </ul>
                         </div>
                     </div>
@@ -32,7 +32,7 @@ $ManutLimps = Manut_limpQuar::Manut_limpQuar();
                     <div class="col-lg-6 mt-5" style="max-width: 100%; flex: 0 0 100%">
                         <div class="card">
                             <div class="card-body">
-                                <h3 class="header-title">Manutenção e Limpesa (Quartos)</h3>
+                                <h3 class="header-title">Manutenção e Limpeza (Quartos)</h3>
                                 <div class="single-table">
                                     <div class="table-responsive">
                                         <form action="<?= $_SERVER['PHP_SELF'] ?>" method="POST">    
@@ -56,18 +56,17 @@ $ManutLimps = Manut_limpQuar::Manut_limpQuar();
                                                         $botao2='';
                                                         foreach($ManutLimps as $ManutLimp) {
                                                             switch($ManutLimp->status) {
-                                                                case 'Agendada': $botao1 = '<a href="includes/mudarML.php?concluirML=1&idML='.$ManutLimp->id.'" class="btn btn-success" name="concluirML">Concluir</a>'; break;
+                                                                case 'Agendada': $botao1 = '<a href="includes/mudarML.php?iniciarML=1&idML='.$ManutLimp->id.'" class="btn btn-warning" name="iniciarML">Iniciar</a>'; break;
                                                                 case 'Concluída': $botao1 = '<p style="color: green;">Concluída</p>'; break;
                                                                 case 'Cancelada': $botao1 = '<p style="color: red;">Cancelada</p>'; break;
+                                                                case 'Em andamento': $botao1 = '<a href="includes/mudarML.php?concluirML=1&idML='.$ManutLimp->id.'" class="btn btn-success" name="concluirML">Concluir</a>'; break;
                                                             }
-                                                            if($ManutLimp->status == 'Agendada') {
-                                                                $botao2 = '<a href="includes/mudarML.php?cancelarML=1&idML='.$ManutLimp->id.'" class="btn btn-danger" name="cancelarML">Cancelar</a>';
-                                                            }
-                                                            elseif($ManutLimp->status == 'Concluída') {
-                                                                $botao2 = '<small style="color: green">Impossível cancelar</small>';
-                                                            }
-                                                            else {
-                                                                $botao2 = '<small style="color: red">Impossível cancelar</small>';
+
+                                                            switch($ManutLimp->status) {
+                                                                case 'Agendada': $botao2 = '<a href="includes/mudarML.php?cancelarML=1&idML='.$ManutLimp->id.'" class="btn btn-danger" name="cancelarML">Cancelar</a>'; break;
+                                                                case 'Concluída': $botao2 = '<small style="color: green;">Impossível cancelar</small>'; break;
+                                                                case 'Cancelada': $botao2 = '<small style="color: red;">Impossível cancelar</small>'; break;
+                                                                case 'Em andamento': $botao2 = '<a href="includes/mudarML.php?cancelarML=1&idML='.$ManutLimp->id.'" class="btn btn-danger" name="cancelarML">Cancelar</a>'; break;
                                                             }
                                                             $resultados .= '<tr>
                                                                                 <td>'.$ManutLimp->id.'</td>

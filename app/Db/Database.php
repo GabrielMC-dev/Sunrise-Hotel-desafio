@@ -192,7 +192,7 @@ public function selectJoinHgem_Quar_Serv($where, $order, $limit, $join1, $join2,
 
 
 
-public function selectJoinManut_limpQuar($where=null, $order=null, $limit=null, $join=null, $fields=null) {
+public function selectJoinManut_limpQuar($where, $fields, $on, $order=null, $limit=null, $join=null) {
     if (empty($fields)) {
         $fields = 'manut_limp.id, quarto.numero, manut_limp.data, manut_limp.tipo, manut_limp.responsavel, manut_limp.status';
     }
@@ -202,13 +202,12 @@ public function selectJoinManut_limpQuar($where=null, $order=null, $limit=null, 
     }
 
     $joinClause  = ' JOIN ' . $join;
-    $onClause    = ' ON manut_limp.id_quarto = quarto.id';
+    $onClause    = strlen($on) ? ' ON ' . $on : ' ON manut_limp.id_quarto = quarto.id';
     $whereClause = strlen($where) ? ' WHERE ' . $where : '';
     $orderClause = strlen($order) ? ' ORDER BY ' . $order : '';
     $limitClause = strlen($limit) ? ' LIMIT ' . $limit : '';
 
     $query = 'SELECT ' . $fields . ' FROM ' . $this->table . $joinClause . $onClause . $whereClause . $orderClause . $limitClause;
-    
     return $this->execute($query);
 }
 
@@ -271,6 +270,11 @@ public function selectUltimaHospedagem() {
 
 public function selectQuarMRes($fields = 'q.numero, count(*)') {
     $query = 'SELECT '.$fields.' FROM '.$this->table.' JOIN quarto q ON hospedagem_quarto.id_quarto = q.id GROUP BY hospedagem_quarto.id_quarto ORDER BY count(*) desc';
+    return $this->execute($query);
+}
+
+public function selectHeMFreq($fields='he.nome, count(*)') {
+    $query = 'SELECT '.$fields.' FROM '.$this->table.' JOIN hospede he ON hospedagem.id_hospede = he.id GROUP BY he.nome ORDER BY count(*) desc';
     return $this->execute($query);
 }
 

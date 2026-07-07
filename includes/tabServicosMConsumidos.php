@@ -29,7 +29,7 @@ $ServicosMConsumidos = HgemQuarServ::getServMC();
                 <div class="row">
                     <!-- basic table start -->
                     <div class="col-lg-6 mt-5" style="max-width: 100%; flex: 0 0 100%">
-                        <a href="javascript:history.back()" class="btn btn-danger">Voltar</a>
+                        <a href="javascript:history.back()" class="btn btn-danger" style="margin-bottom: 30px;">Voltar</a>
                         <div class="card">
                             <div class="card-body">
                                 <h3 class="header-title">Serviços Serviços mais Consumidos</h3>

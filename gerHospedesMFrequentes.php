@@ -1,7 +1,5 @@
 <?php
 
-require_once 'app/Entity/HospedesMFrequentes.php';
-use \app\Entity\HospedesMFrequentes;
 
 
 

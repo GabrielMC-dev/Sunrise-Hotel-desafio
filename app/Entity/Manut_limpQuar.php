@@ -16,8 +16,8 @@ class Manut_limpQuar {
     public $responsavel;
     public $status;
 //--------------------------------------------------------------------------//
-public static function Manut_limpQuar($where=null, $order=null, $limit=null, $join=null, $fields=null) {
-    return (new Database('manut_limp'))->selectJoinManut_limpQuar($where,$order,$limit,$join,$fields)
+public static function Manut_limpQuar($where, $fields, $on, $order=null, $limit=null, $join=null) {
+    return (new Database('manut_limp'))->selectJoinManut_limpQuar($where,$fields,$on,$order,$limit,$join)
                                        ->fetchAll(PDO::FETCH_OBJ);
 }
 

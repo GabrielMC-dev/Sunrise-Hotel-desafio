@@ -58,6 +58,11 @@ public static function getHospedagem($id) {
                                         ->fetchObject(self::class);
 }
 
+public function getHospedesMF() {
+    return (new Database('hospedagem'))->selectHeMFreq()
+                                    ->fetchAll(PDO::FETCH_OBJ);
+}
+
 public function diasTotais($check_in, $check_out, $id) {
     $inicio = strtotime($check_in);
     $fim = strtotime($check_out);
