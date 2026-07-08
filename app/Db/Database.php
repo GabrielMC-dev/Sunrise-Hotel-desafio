@@ -56,13 +56,6 @@ public function updateVTServ($vt, $id) {
     return $this->execute($query);
 }
 
-//UPDATE PARA ATUALIZAR O STATUS DA TABELA DE MANUT_LIMP
-
-// public function updateHgemQuarServ($status, $id) {
-//     $query = 'UPDATE quarto_servico SET status = '.$status.' WHERE id = '.$id;
-//     return $this->execute($query);
-// }
-
 public function updateDiasTot($qtd, $id) {
     $query = 'UPDATE '.$this->table.' SET total_dias = '.$qtd.' WHERE id = '.$id;
     return $this->execute($query);
@@ -88,8 +81,8 @@ public function updateCheck_io($check, $dataHora ,$idHgem) {
     return $this->execute($query);
 }
 
-public function updateStatusML($status, $idML) {
-    $query = 'UPDATE '.$this->table.' SET status = "'.$status.'" WHERE manut_limp.id = '.$idML;
+public function updateFaturaMes($totalHgem, $faturamento, $id) {
+    $query = 'UPDATE '.$this->table.' SET total_hospedagens = '.$totalHgem.', faturamento_total = '.$faturamento.' WHERE id = '.$id;
     return $this->execute($query);
 }
 
@@ -102,7 +95,7 @@ public function select($where, $order=null, $limit=null, $fields='*') {
     return $this->execute($query);
 }
 
-public function selectJoinHgemHeQuar($where, $order=null, $limit=null, $join=null, $fields=null)
+public function selectJoinHgemHeQuar($where, $fields, $order=null, $limit=null, $join=null)
 {
     if (empty($fields)) {
         $fields = 'hospedagem.id, he.nome, hospedagem.data, hospedagem.entrada_prevista, hospedagem.saida_prevista, hospedagem.check_in, hospedagem.check_out, hospedagem.qtd_hospede, hospedagem.qtd_quarto, hospedagem.valor_tot, hospedagem.status';
@@ -275,6 +268,32 @@ public function selectQuarMRes($fields = 'q.numero, count(*)') {
 
 public function selectHeMFreq($fields='he.nome, count(*)') {
     $query = 'SELECT '.$fields.' FROM '.$this->table.' JOIN hospede he ON hospedagem.id_hospede = he.id GROUP BY he.nome ORDER BY count(*) desc';
+    return $this->execute($query);
+    }
+    
+public function selectHgemTotMes($ano, $mes) {
+    $query = 'SELECT COUNT(*) AS total_qtd FROM hospedagem WHERE YEAR(check_out) = '.$ano.' AND MONTH(check_out) = '.$mes.'';
+    return $this->execute($query);
+}
+
+public function selectValorTotHgemMensal() {
+    $query = '';
+    return $this->execute($query);
+}
+
+public function selectFaturaMensal($ano, $mes) {
+    $query = 'SELECT SUM(valor_tot) FROM '.$this->table.' WHERE YEAR(check_out) = '.$ano.' AND MONTH(check_out) = '.$mes.' AND check_out != 0';
+    return $this->execute($query);
+}
+
+public function selectFatMen($where, $ano, $mes) {
+    if(!isset($where)) {
+        $query = 'SELECT * FROM fatura_mensal';
+        }
+    else {
+        $whereClause = ' WHERE ano = '.$ano.' AND mes = '.$mes;
+        $query = 'SELECT * FROM fatura_mensal'.$whereClause;
+    }
     return $this->execute($query);
 }
 

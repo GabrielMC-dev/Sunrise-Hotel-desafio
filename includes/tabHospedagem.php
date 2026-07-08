@@ -63,13 +63,6 @@ use app\Entity\Hospedagem;
                                                     <th scope="col">Data</th>
                                                     <th scope="col">Entrada Prevista</th>
                                                     <th scope="col">Saída Prevista</th>
-                                                    <!-- <th scope="col">Total Dias</th> -->
-                                                    <!-- 
-                                                    <th scope="col">Check-in</th>
-                                                    <th scope="col">Check-out</th>
-                                                    <th scope="col">Qtd Hóspedes</th>
-                                                    <th scope="col">Qtd Quartos</th> -->
-                                                    <!-- <th scope="col">Valor Total</th> -->
                                                     <th scope="col">Status</th>
                                                     <th scope="col"></th>
                                                     <th scope="col"></th>

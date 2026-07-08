@@ -33,17 +33,17 @@ public function realizar_hospm() {
     $this->data = date('Y-m-d');
     $obDatabase = new Database('hospedagem');
     $this->id = $obDatabase->insert([
-                         'id_hospede'       => $this->id_hospede,
-                         'data'             => $this->data,
-                         'entrada_prevista' => $this->entrada_prevista,
-                         'saida_prevista'   => $this->saida_prevista,
-                         'check_in'         => $this->check_in,
-                         'check_out'        => $this->check_out,
-                         'qtd_hospede'      => $this->qtd_hospede,
-                         'qtd_quarto'       => $this->qtd_quarto,
-                         'valor_tot'        => $this->valor_tot,
-                         'status'           => $this->status
-                     ]);
+                                        'id_hospede'       => $this->id_hospede,
+                                        'data'             => $this->data,
+                                        'entrada_prevista' => $this->entrada_prevista,
+                                        'saida_prevista'   => $this->saida_prevista,
+                                        'check_in'         => $this->check_in,
+                                        'check_out'        => $this->check_out,
+                                        'qtd_hospede'      => $this->qtd_hospede,
+                                        'qtd_quarto'       => $this->qtd_quarto,
+                                        'valor_tot'        => $this->valor_tot,
+                                        'status'           => $this->status
+                                    ]);
 }
 
 public static function getHospedagens($where=null,$order=null,$limit=null,$join=null, $fields=null) {
@@ -60,6 +60,16 @@ public static function getHospedagem($id) {
 
 public function getHospedesMF() {
     return (new Database('hospedagem'))->selectHeMFreq()
+                                    ->fetchAll(PDO::FETCH_OBJ);
+}
+
+public function getHospedagensTotMes($ano,$mes) {
+    return (new Database('hospedagem'))->selectHgemTotMes($ano,$mes)
+                                    ->fetchAll(PDO::FETCH_OBJ);
+}
+
+public function getFaturaMensal($ano, $mes) {
+    return (new Database('hospedagem'))->selectFaturaMensal($ano,$mes)
                                     ->fetchAll(PDO::FETCH_OBJ);
 }
 
@@ -107,12 +117,17 @@ public function valorTotalHgem($idHgem) {
     else {
         $valorServ_tot = 0;
     }
-
-    $this->valor_tot = $valorHgens_tot * $qtd_hospede * $total_dias + $valorServ_tot;
+    
+    if(isset($this->check_in, $this->check_out)) {
+        $this->valor_tot = $valorHgens_tot * $qtd_hospede * $total_dias + $valorServ_tot;
+    }
+    else {
+        $this->valor_tot = 0;
+    }
 
     $updateVT = new Database('hospedagem');
     $updateVT->updateVTHgem($this->valor_tot, $id);
-    $var = $this->getHospedagens('hospedagem.id = '.$id, null, null, null, null, null, 'hospedagem.valor_tot');
+    $var = $this->getHospedagens('hospedagem.id = '.$id, 'hospedagem.valor_tot', null, null, null);
 
     $this->valor_tot = $var[0]->valor_tot;
     

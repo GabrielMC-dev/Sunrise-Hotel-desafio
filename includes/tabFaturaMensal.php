@@ -1,10 +1,11 @@
 <?php
-require_once 'app/Entity/FaturaMensal.php';
-use app\Entity\FaturaMensal;
-$FaturasMensais = FaturaMensal::getFatura();
-$obHQS = new FaturaMensal;
-?>
+    require_once 'app/Entity/FaturaMensal.php';
+    use app\Entity\FaturaMensal;
 
+    $fm = new FaturaMensal;
+    $fm->cadastrarFaturamento();
+    $faturasMensais = $fm->getFaturamentos();
+?>
 <!-- page title area start -->
             <div class="page-title-area">
                 <div class="row align-items-center">
@@ -19,8 +20,6 @@ $obHQS = new FaturaMensal;
                     </div>
                     <div class="col-sm-6 clearfix">
                         <div class="user-profile pull-right">
-                            <img class="avatar user-thumb" src="assets/images/author/avatar.png" alt="avatar">
-                            <h4 class="user-name dropdown-toggle" data-toggle="dropdown"> <i class="fa fa-angle-down"></i></h4>
                             <a class="dropdown-item" href="login.php">Log Out</a>
                         </div>
                     </div>
@@ -32,6 +31,7 @@ $obHQS = new FaturaMensal;
                 <div class="row">
                     <!-- basic table start -->
                     <div class="col-lg-6 mt-5" style="max-width: 100%; flex: 0 0 100%">
+                        <a href="javascript:history.back()" class="btn btn-danger" style="margin-bottom: 30px;">Voltar</a>
                         <div class="card">
                             <div class="card-body">
                                 <h3 class="header-title">Fatura Mensal</h3>
@@ -40,28 +40,29 @@ $obHQS = new FaturaMensal;
                                         <table class="table text-center">
                                             <thead class="text-uppercase">
                                                 <tr>
-                                                    <th scope="col">ID mês/ano</th>
-                                                    <th scope="col">Mês/ano</th>
-                                                    <th scope="col">Fatura Mensal</th>
-                                                    <th scope="col"></th>
+                                                    <th scope="col">ID </th>
+                                                    <th scope="col">Ano</th>
+                                                    <th scope="col">Mês</th>
+                                                    <th scope="col">Total de Hospedagens</th>
+                                                    <th scope="col">Faturamento</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <?php
-                                                   //  $resultados = '';
-                                                   //  foreach($FaturasMensais as $FaturaMensal) {
+                                                    $resultados = '';
+                                                    foreach($faturasMensais as $faturaMensal) {
 
-                                                   //      $resultados .= '<tr>
-                                                   //                          <td>'./* id do mês/ano */'</td>
-                                                   //                          <td>'./*mês e ano*/'</td>
-                                                   //                          <td>'./*fatura mensal*/'</td>
-                                                   //                      </tr>';
-                                                   //  }
+                                                        $resultados .= '<tr>
+                                                                            <td>'.$faturaMensal->id.'</td>
+                                                                            <td>'.$faturaMensal->ano.'</td>
+                                                                            <td>'.$faturaMensal->mes.'</td>
+                                                                            <td>'.$faturaMensal->total_hospedagens.'</td>
+                                                                            <td>'.$faturaMensal->faturamento_total.'</td>
+                                                                        </tr>';
+                                                    }
 
-                                                   //  echo $resultados;
+                                                    echo $resultados;
                                                 ?>
-                                                    <td><a href="javascript:history.back()" class="btn btn-danger">Voltar</a></td>
-                                                </tr>
                                             </tbody>
                                             </table>
                                     </div>

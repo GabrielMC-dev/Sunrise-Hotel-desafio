@@ -31,7 +31,7 @@ require_once 'descricaoHospedagens.php';
                 <div class="row">
                     <!-- basic table start -->
                     <div class="col-lg-6 mt-5" style="max-width: 100%; flex: 0 0 100%">
-                        <a href="javascript:history.back()" class="btn btn-danger">Voltar</a>
+                        <a href="javascript:history.back()" class="btn btn-danger" style="margin-bottom: 30px;">Voltar</a>
                         <div class="card">
                             <div class="card-body">
                                 <h3 class="header-title">Detalhes</h3>
@@ -62,9 +62,13 @@ require_once 'descricaoHospedagens.php';
                                                         $diasTotais = '?';
                                                     }
 
-                                                    if($hgem->check_in==0) {$hgem->check_in = '?';}
+                                                    if($hgem->check_in==0) {
+                                                        $hgem->check_in = '?';
+                                                    }
                                                     
-                                                    if($hgem->check_out==0) {$hgem->check_out = '?';}
+                                                    if($hgem->check_out==0) {
+                                                        $hgem->check_out = '?';
+                                                    }
 
                                                     $hgem->entrada_prevista = $obHospedagem->entrada_prevista;
                                                     $hgem->saida_prevista = $obHospedagem->saida_prevista;
