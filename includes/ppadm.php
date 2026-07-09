@@ -5,7 +5,7 @@
                         <div class="breadcrumbs-area clearfix">
                             <h4 class="page-title pull-left">Sunrise Hotel</h4>
                             <ul class="breadcrumbs pull-left">
-                                <li><a href="#">Inicio</a></li>
+                                <li><a href="index.php">Inicio</a></li>
                                 <li><span>Dashboards</span></li>
                             </ul>
                         </div>
@@ -77,10 +77,19 @@
                         <div class="col-lg-4 col-md-6 mt-5">
                             <div class="card card-bordered">
                                 <div class="card-body">
+                                    <h4 style="margin-bottom: 10px;">Gerenciamento de Hóspedes por Hospedagem</h4>
+                                    <p class="title">Gerencia quais hospedes estão em quais hospedagens.
+                                    </p>
+                                    <a href="gerHeHgem.php" class="btn btn-primary">Acessar</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 mt-5">
+                            <div class="card card-bordered">
+                                <div class="card-body">
                                     <h4 style="margin-bottom: 10px;">Relatório Geral de todo o Hotel Sunrise</h4>
                                     <p class="title">Relatório sobre dados e informações específicos do Hotel Sunrise.
                                     </p>
-                                    <!-- FINALIZAR APÓS DEFINIR VALORES DAS OUTRAS TABELAS -->
                                     <a href="Relatorio.php" class="btn btn-primary">Acessar</a>
                                 </div>
                             </div>

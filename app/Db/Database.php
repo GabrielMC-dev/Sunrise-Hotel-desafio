@@ -267,7 +267,7 @@ public function selectQuarMRes($fields = 'q.numero, count(*)') {
 }
 
 public function selectHeMFreq($fields='he.nome, count(*)') {
-    $query = 'SELECT '.$fields.' FROM '.$this->table.' JOIN hospede he ON hospedagem.id_hospede = he.id GROUP BY he.nome ORDER BY count(*) desc';
+    $query = 'select '.$fields.' from hospede_hospedagem join hospede he on hospede_hospedagem.id_hospede = he.id group by he.nome order by count(*) desc, hospede_hospedagem.id_hospede';
     return $this->execute($query);
     }
     
@@ -281,7 +281,7 @@ public function selectValorTotHgemMensal() {
     return $this->execute($query);
 }
 
-public function selectFaturaMensal($ano, $mes) {
+public function selectFaturaMensalHgem($ano, $mes) {
     $query = 'SELECT SUM(valor_tot) FROM '.$this->table.' WHERE YEAR(check_out) = '.$ano.' AND MONTH(check_out) = '.$mes.' AND check_out != 0';
     return $this->execute($query);
 }
@@ -294,6 +294,20 @@ public function selectFatMen($where, $ano, $mes) {
         $whereClause = ' WHERE ano = '.$ano.' AND mes = '.$mes;
         $query = 'SELECT * FROM fatura_mensal'.$whereClause;
     }
+    return $this->execute($query);
+}
+
+public function selectHeHgem($where, $order='hospede_hospedagem.id_hospedagem, hospede_hospedagem.id', $join='hospede h', $limit=null, $fields='hospede_hospedagem.id, h.nome, hospede_hospedagem.id_hospedagem') {
+
+    
+    if(empty($where)) {
+        $whereClause='';
+    }
+    else {
+        $whereClause = 'WHERE '.$where;
+    }
+        
+    $query = 'SELECT '.$fields.' FROM '.$this->table.' JOIN '.$join.' ON hospede_hospedagem.id_hospede = h.id '.$whereClause.' ORDER BY '.$order;
     return $this->execute($query);
 }
 

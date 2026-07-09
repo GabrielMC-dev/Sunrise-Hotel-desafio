@@ -87,13 +87,10 @@ use app\Entity\Hospedagem;
                                                     }
 
                                                     $hospedagens = Hospedagem::getHospedagens($where);
-                                                    $obHospedagem = new Hospedagem;
 
                                                     $resultados = '';
                                                     foreach($hospedagens as $hospedagem) {
 
-                                                        $obHospedagem->entrada_prevista = $hospedagem->entrada_prevista;
-                                                        $obHospedagem->saida_prevista = $hospedagem->saida_prevista;
 
                                                         $botao = '';
                                                         switch($hospedagem->status) {

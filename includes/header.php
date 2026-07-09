@@ -53,7 +53,7 @@
                             <li class="active">
                                 <a href="javascript:void(0)" aria-expanded="true"><i class="ti-dashboard"></i><span>Dashboard</span></a>
                                 <ul class="collapse">
-                                    <li class="active"><a href="#">Tela Principal</a></li>
+                                    <li class="active"><a href="index.php">Tela Principal</a></li>
                                 </ul>
                             </li>
                         </ul>

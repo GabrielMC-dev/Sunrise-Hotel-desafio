@@ -39,7 +39,7 @@ $hospedes = Hospede::getHospedes();
                                                 <tr>
                                                     <th scope="col">ID</th>
                                                     <th scope="col">Nome</th>
-                                                    <th scope="col">CFP</th>
+                                                    <th scope="col">CPF</th>
                                                     <th scope="col">Data Nascimento</th>
                                                     <th scope="col">Endereço</th>
                                                     <th scope="col">Telefone</th>

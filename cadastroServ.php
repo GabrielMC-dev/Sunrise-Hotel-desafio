@@ -13,7 +13,7 @@ use app\Entity\HgemQuarServ;
    $obHQS->qtd = $_POST['qtd'];
    $obHQS->cadastrarHgemQuarServ();
 
-   header('Location: gerQuartos.php'); exit;
+   header('Location: gerHospedagens.php'); exit;
    }
 
                 

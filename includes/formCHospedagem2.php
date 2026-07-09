@@ -3,6 +3,7 @@ use app\Entity\Hospedagem;
 
 $idHgem = $_GET['idHgem'];
 $qtdQuarto = $_GET['qtdQuarto'];
+$qtdHospede = $_GET['qtdHospede'];
 ?>
 
 <div class="col-12 mt-5">
@@ -13,19 +14,29 @@ $qtdQuarto = $_GET['qtdQuarto'];
             <form action="cadastroHospedagem2.php" method="POST">
                 <input type="hidden" name="idHgem">
                 <input type="hidden" name="qtdQuarto">
+                <h5>Selecione os quartos:</h5>
                 <?php
-                    $res = '';
+                    $res1 = '';
                     $i=null;
-                    
-                    use app\Entity\HgemQuar;
-
-                    $hgemquar = new HgemQuar;
                     for($i=1; $i<=$qtdQuarto; $i++) {
-                        $res = '<div class="form-group">
+                        $res1 = '<div class="form-group">
                                     <label for="exampleInputText'.$i.'">ID do Quarto '.$i.'</label>
-                                    <input type="number" class="form-control" name="idQuarto[]" id="exampleInputText'.$i.'" aria-describedby="textHelp" required>
+                                    <input type="number" class="form-control" name="idQuarto[]" id="exampleInputNumber'.$i.'" aria-describedby="textHelp" required>
                                 </div>';
-                        echo $res;
+                        echo $res1;
+                    }
+                ?>
+                <br>
+                <h5>Selecione os hóspedes:</h5>
+                <?php
+                    $res2 = '';
+                    $j=null;
+                    for($j=1; $j<=$qtdHospede; $j++) {
+                        $res2 = '<div class="form-group">
+                                    <label for="exampleInputText'.$j+$i.'">ID do Hóspede '.$j.'</label>
+                                    <input type="number" class="form-control" name="idHospede[]" id="exampleInputNumber'.$j+$i.'" aria-describedby="textHelp" required>
+                                </div>';
+                        echo $res2;
                     }
                 ?>
                 <button type="submit" class="btn btn-primary mt-4 pr-4 pl-4">Avançar</button>

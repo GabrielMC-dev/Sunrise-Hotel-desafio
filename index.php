@@ -19,6 +19,8 @@ use app\Entity\HospedagemQuarto;
 require_once 'app/Entity/Servico.php';
 use app\Entity\Servico;
 
+require_once 'app/Entity/HeHgem.php';
+use app\Entity\HeHgem;
 
 
 include __DIR__.'/includes/header.php';

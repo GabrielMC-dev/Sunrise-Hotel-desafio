@@ -16,8 +16,9 @@ if(isset($_POST['idResp'], $_POST['ePrevista'], $_POST['sPrevista'], $_POST['qtd
       $idHgem = $obHospedagem2->getUltimaHospedagem();
       $idHgem = $idHgem[0]->id;
       $qtdQuarto = $_POST['qtdQuarto'];
+      $qtdHospede = $_POST['qtdHospede'];
 
-      header('Location: cadastroHospedagem2.php?qtdQuarto='.$qtdQuarto.'&idHgem='.$idHgem); exit;
+      header('Location: cadastroHospedagem2.php?qtdQuarto='.$qtdQuarto.'&idHgem='.$idHgem.'&qtdHospede='.$qtdHospede); exit;
       }
 
    include __DIR__.'/includes/header.php';

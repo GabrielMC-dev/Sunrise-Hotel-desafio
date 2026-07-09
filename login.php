@@ -59,9 +59,6 @@
                                     <label class="custom-control-label" for="customControlAutosizing">Lembre de mim</label>
                                 </div>
                             </div>
-                            <div class="col-6 text-right">
-                                <a href="forgot-password.html">Esqueceu sua senha?</a>
-                            </div>
                         </div>
                         <div class="submit-btn-area">
                             <button id="form_submit" type="submit">Submit <i class="ti-arrow-right"></i></button>

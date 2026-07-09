@@ -55,22 +55,22 @@ public static function getHospedagens($where=null,$order=null,$limit=null,$join=
 public static function getHospedagem($id) {
         $id = (int)$id;
         return (new Database('hospedagem'))->select('hospedagem.id='. $id)
-                                        ->fetchObject(self::class);
+                                           ->fetchObject(self::class);
 }
 
 public function getHospedesMF() {
-    return (new Database('hospedagem'))->selectHeMFreq()
-                                    ->fetchAll(PDO::FETCH_OBJ);
+    return (new Database('hospede_hospedagem'))->selectHeMFreq()
+                                               ->fetchAll(PDO::FETCH_OBJ);
 }
 
 public function getHospedagensTotMes($ano,$mes) {
     return (new Database('hospedagem'))->selectHgemTotMes($ano,$mes)
-                                    ->fetchAll(PDO::FETCH_OBJ);
+                                       ->fetchAll(PDO::FETCH_OBJ);
 }
 
 public function getFaturaMensal($ano, $mes) {
-    return (new Database('hospedagem'))->selectFaturaMensal($ano,$mes)
-                                    ->fetchAll(PDO::FETCH_OBJ);
+    return (new Database('hospedagem'))->selectFaturaMensalHgem($ano,$mes)
+                                       ->fetchAll(PDO::FETCH_OBJ);
 }
 
 public function diasTotais($check_in, $check_out, $id) {
