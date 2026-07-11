@@ -1,3 +1,21 @@
+<?php
+    require_once 'app/Entity/Usuario.php';
+    use app\Entity\Usuario;
+    $erro='';
+    if(isset($_POST['email'], $_POST['senha'])) {
+        $obUser = new Usuario;
+        $confUsers = $obUser->getUsuario('email = "'.$_POST['email'].'"');
+        foreach($confUsers as $confUser) {
+            if($_POST['senha'] == $confUser->senha) {
+                header('Location: index.php'); exit;
+                }
+            else {
+                $erro = '<div><p style="color: red; text-align: center;">ERRO! Usuário não existe!</p></div>';
+            }
+        }
+    }
+?>
+
 <!doctype html>
 <html class="no-js" lang="en">
 
@@ -37,19 +55,20 @@
     <div class="login-area">
         <div class="container">
             <div class="login-box ptb--100">
-                <form action="index.php" method="post">
+                <form action="<?= $_SERVER['PHP_SELF'] ?>" method="post">
+                    <?= $erro ?>
                     <div class="login-form-head">
                         <h4>Login</h4>
                     </div>
                     <div class="login-form-body">
                         <div class="form-gp">
                             <label for="exampleInputEmail1">Email</label>
-                            <input type="email" name="email" id="exampleInputEmail1">
+                            <input type="email" name="email" id="exampleInputEmail1" required>
                             <i class="ti-email"></i>
                         </div>
                         <div class="form-gp">
                             <label for="exampleInputPassword1">Senha</label>
-                            <input type="password" name="senha" id="exampleInputPassword1">
+                            <input type="password" name="senha" id="exampleInputPassword1" minlength="8">
                             <i class="ti-lock"></i>
                         </div>
                         <div class="row mb-4 rmber-area">

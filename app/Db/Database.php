@@ -311,4 +311,15 @@ public function selectHeHgem($where, $order='hospede_hospedagem.id_hospedagem, h
     return $this->execute($query);
 }
 
+public function selectUser($where) {
+    if(empty($where)) {
+        $whereClause='';
+    }
+    else {
+        $whereClause = 'WHERE '.$where;
+    }
+    $query = 'SELECT * FROM usuario '.$whereClause;
+    return $this->execute($query);
+}
+
 }

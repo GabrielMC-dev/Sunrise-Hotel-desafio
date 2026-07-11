@@ -16,14 +16,14 @@ class Usuario {
    public function cadastrarUsuario() {
    $obDatabase = new Database('usuario');
    $this->id = $obDatabase->insert([
-                                    'nome'    => $this->nome,
+                                    'nome'  => $this->nome,
                                     'email' => $this->email,
                                     'senha' => $this->senha
                                   ]);
    }
 
    public function getUsuario($where) {
-      return (new Database('usuario'))->selectHeHgem($where)
+      return (new Database('usuario'))->selectUser($where)
                                       ->fetchAll(PDO::FETCH_OBJ);
    }
 

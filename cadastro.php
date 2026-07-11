@@ -3,16 +3,13 @@
     use app\Entity\Usuario;
     $obHospede = new Usuario;
 
-    if(isset($_POST['nome'], $_POST['email'], $_POST['senha'], $_POST['confsenha'])) {
+    if(isset($_POST['nome'], $_POST['email'], $_POST['senha'])) {
         $obHospede->nome = $_POST['nome'];
         $obHospede->email = $_POST['email'];
         $obHospede->senha = $_POST['senha'];
-        if($_POST['senha'] != $_POST['confsenha']) {
-            die('Erro: as senhas não coincidem. Volte e tente novamente');
-        }
-        else {
-            $obHospede->cadastrarUsuario();
-        }
+
+        $obHospede->cadastrarUsuario();
+        header('Location: index.php'); exit;
     }
 ?>
 
@@ -60,7 +57,7 @@
     <div class="login-area">
         <div class="container">
             <div class="login-box ptb--100">
-                <form action="index.php" method="post">
+                <form action="<?= $_SERVER['PHP_SELF'] ?>" method="post">
                     <div class="login-form-head">
                         <h4>Cadastro</h4>
                     </div>
@@ -78,11 +75,6 @@
                         <div class="form-gp">
                             <label for="exampleInputPassword1">Senha</label>
                             <input type="password" name="senha" id="exampleInputPassword1" minlength="8" required>
-                            <i class="ti-lock"></i>
-                        </div>
-                        <div class="form-gp">
-                            <label for="exampleInputPassword2">Confirmar Senha</label>
-                            <input type="password" name="confsenha" id="exampleInputPassword2" minlength="8" required>
                             <i class="ti-lock"></i>
                         </div>
                         <div class="submit-btn-area">
